@@ -38,24 +38,48 @@
 
 
 
-  /* HERO — Color bar background */
-  .hero-section { position: relative; min-height: 100vh; display: flex; align-items: center; overflow: hidden; background: #0a0a0f; }
-  .hero-colorbar { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0.25; }
-  .hero-overlay { position: absolute; inset: 0; background: linear-gradient(105deg, rgba(10,10,15,0.55) 0%, rgba(10,10,15,0.25) 50%, rgba(10,10,15,0.55) 100%); }
-  .hero-overlay-bottom { position: absolute; bottom: 0; left: 0; right: 0; height: 40%; background: linear-gradient(to top, rgba(10,10,15,1) 0%, transparent 100%); }
-  .hero-accent-line { position: absolute; right: 0; top: 0; bottom: 0; width: 3px; background: linear-gradient(to bottom, var(--teal), var(--accent), var(--purple)); z-index: 3; }
-  .hero { position: relative; z-index: 2; padding: 0 3.5rem; max-width: 1200px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 5fr 4fr; gap: 5rem; align-items: center; min-height: 100vh; padding-top: 5rem; }
-  .hero-name { font-family: 'Bebas Neue', var(--serif); font-size: clamp(4rem, 8vw, 8.5rem); font-weight: 400; line-height: 0.88; letter-spacing: 0.03em; color: var(--white); margin-bottom: 1.5rem; text-transform: uppercase; }
-  .hero-name em { font-style: normal; color: var(--accent); display: block; }
-  .hero-tag { font-size: 0.82rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--teal); margin-bottom: 2rem; display: flex; align-items: center; gap: 0.75rem; font-weight: 500; }
+  /* HERO — Split layout: content left, scrolling poster columns right */
+  .hero-section { position: relative; min-height: 100vh; display: flex; overflow: hidden; background: #08080f; }
+
+  /* Sweep lines animation */
+  .hero-sweep { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+  .hero-sweep span { position: absolute; left: -100%; width: 200%; height: 1px; opacity: 0; animation: sweepline 6s ease-in-out infinite; }
+  .hero-sweep span:nth-child(1) { top: 20%; background: linear-gradient(90deg, transparent, #ff2d9b, transparent); animation-delay: 0s; }
+  .hero-sweep span:nth-child(2) { top: 50%; background: linear-gradient(90deg, transparent, #00d4f5, transparent); animation-delay: 2s; }
+  .hero-sweep span:nth-child(3) { top: 78%; background: linear-gradient(90deg, transparent, #bf5fff, transparent); animation-delay: 4s; }
+  @keyframes sweepline { 0%,100% { opacity:0; transform:translateX(0); } 10% { opacity:0.8; } 50% { opacity:0.5; } 90% { opacity:0; transform:translateX(50%); } }
+
+  /* Left content panel */
+  .hero-left { position: relative; z-index: 3; width: 52%; display: flex; flex-direction: column; justify-content: center; padding: 8rem 3.5rem 4rem; background: linear-gradient(to right, #08080f 75%, transparent); }
+  .hero-tag { font-size: 0.78rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--teal); margin-bottom: 1.75rem; display: flex; align-items: center; gap: 0.75rem; font-weight: 500; }
   .hero-tag::before { content: ''; display: block; width: 28px; height: 1px; background: var(--teal); }
-  .hero h1 { font-family: var(--serif); font-size: clamp(1.6rem, 2.8vw, 2.6rem); font-weight: 400; line-height: 1.2; color: rgba(238,234,248,0.88); }
-  .hero h1 em { font-style: italic; color: var(--white); }
-  .hero-right { padding-bottom: 0.5rem; }
-  .hero-desc { font-size: 1rem; color: rgba(238,234,248,0.78); line-height: 1.8; margin-bottom: 2.5rem; max-width: 380px; }
-  .hero-stats { display: flex; gap: 2.5rem; border-top: 0.5px solid rgba(238,234,248,0.15); padding-top: 1.75rem; }
-  .stat-number { font-family: 'Bebas Neue', var(--serif); font-size: 3.2rem; color: var(--white); display: block; line-height: 1; letter-spacing: 0.04em; }
-  .stat-label { font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(238,234,248,0.55); margin-top: 0.3rem; display: block; }
+  .hero-name { font-family: 'Bebas Neue', sans-serif; font-size: clamp(4.5rem, 9vw, 9.5rem); font-weight: 400; line-height: 0.86; letter-spacing: 0.02em; color: var(--white); margin-bottom: 1.5rem; text-transform: uppercase; white-space: nowrap; }
+  .hero-name em { font-style: normal; color: var(--accent); display: block; }
+  .hero-tagline { font-family: var(--serif); font-style: italic; font-size: clamp(1.2rem, 2vw, 1.6rem); color: rgba(238,234,248,0.65); line-height: 1.3; margin-bottom: 2.5rem; }
+  .hero-stats { display: flex; gap: 2.5rem; margin-bottom: 2.5rem; padding-top: 1.75rem; border-top: 0.5px solid rgba(238,234,248,0.12); }
+  .stat-number { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; color: var(--white); display: block; line-height: 1; letter-spacing: 0.04em; }
+  .stat-label { font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(238,234,248,0.4); margin-top: 0.25rem; display: block; }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .hero-btn-primary { font-family: var(--sans); font-size: 0.8rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 500; padding: 0.85rem 2rem; background: var(--teal); color: #08080f; text-decoration: none; transition: background 0.2s; cursor: pointer; border: none; }
+  .hero-btn-primary:hover { background: var(--accent); }
+  .hero-btn-secondary { font-family: var(--sans); font-size: 0.8rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 500; padding: 0.85rem 2rem; background: transparent; color: var(--white); text-decoration: none; border: 1px solid rgba(238,234,248,0.3); transition: border-color 0.2s, color 0.2s; cursor: pointer; }
+  .hero-btn-secondary:hover { border-color: var(--teal); color: var(--teal); }
+
+  /* Right scrolling poster columns */
+  .hero-right { position: absolute; right: 0; top: 0; bottom: 0; width: 55%; display: flex; gap: 6px; overflow: hidden; z-index: 2; }
+  .hero-right::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 40%; background: linear-gradient(to right, #08080f, transparent); z-index: 10; }
+  .hero-right::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 30%; background: linear-gradient(to top, #08080f, transparent); z-index: 10; }
+  .poster-col { display: flex; flex-direction: column; gap: 6px; flex: 1; }
+  .poster-col:nth-child(1) { animation: scrollUp 28s linear infinite; }
+  .poster-col:nth-child(2) { animation: scrollUp 22s linear infinite; animation-delay: -8s; }
+  .poster-col:nth-child(3) { animation: scrollUp 32s linear infinite; animation-delay: -16s; }
+  @keyframes scrollUp { 0% { transform: translateY(0); } 100% { transform: translateY(-50%); } }
+  .poster-img { width: 100%; aspect-ratio: 2/3; object-fit: cover; display: block; filter: brightness(0.75) saturate(0.9); transition: filter 0.3s; flex-shrink: 0; }
+  .poster-img:hover { filter: brightness(1) saturate(1.1); }
+
+  /* Legacy hero grid — not used in new layout */
+  .hero { display: none; }
+  .hero-desc { display: none; }
 
   .divider { border: none; border-top: 0.5px solid var(--border); margin: 0 3rem; }
   section { padding: 5rem 3rem; max-width: 1100px; margin: 0 auto; }
@@ -206,39 +230,67 @@
 </nav>
 
 <div class="hero-section">
-  <svg class="hero-colorbar" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-    <!-- Bold vertical color bands — Miami Vice palette -->
-    <rect x="0"    y="0" width="180" height="900" fill="#ff2d9b"/>
-    <rect x="180"  y="0" width="180" height="900" fill="#bf5fff"/>
-    <rect x="360"  y="0" width="180" height="900" fill="#00d4f5"/>
-    <rect x="540"  y="0" width="180" height="900" fill="#ff2d9b"/>
-    <rect x="720"  y="0" width="180" height="900" fill="#0d0d12"/>
-    <rect x="900"  y="0" width="180" height="900" fill="#00d4f5"/>
-    <rect x="1080" y="0" width="180" height="900" fill="#bf5fff"/>
-    <rect x="1260" y="0" width="180" height="900" fill="#ff2d9b"/>
-    <!-- Diagonal slash accents -->
-    <polygon points="200,0 260,0 60,900 0,900"   fill="#00d4f5" opacity="0.4"/>
-    <polygon points="420,0 480,0 280,900 220,900" fill="#bf5fff" opacity="0.4"/>
-    <polygon points="640,0 700,0 500,900 440,900" fill="#ff2d9b" opacity="0.4"/>
-    <polygon points="860,0 920,0 720,900 660,900" fill="#00d4f5" opacity="0.4"/>
-    <polygon points="1080,0 1140,0 940,900 880,900" fill="#bf5fff" opacity="0.4"/>
-    <polygon points="1300,0 1360,0 1160,900 1100,900" fill="#ff2d9b" opacity="0.4"/>
-  </svg>
-  <div class="hero-overlay"></div>
-  <div class="hero-overlay-bottom"></div>
-  <div class="hero-accent-line"></div>
-  <div class="hero">
-    <div>
-      <div class="hero-tag">Creative Editor &amp; Story Architect</div>
-      <h2 class="hero-name">Stephanie<em>Erickson</em></h2>
-      <h1>Crafting stories that <em>captivate</em></h1>
+  <div class="hero-sweep"><span></span><span></span><span></span></div>
+
+  <div class="hero-left">
+    <div class="hero-tag">Creative Editor &amp; Story Architect</div>
+    <h2 class="hero-name">STEPHANIE<em>ERICKSON</em></h2>
+    <p class="hero-tagline">Crafting stories that captivate</p>
+    <div class="hero-stats">
+      <div><span class="stat-number">65+</span><span class="stat-label">Credits</span></div>
+      <div><span class="stat-number">18+</span><span class="stat-label">Networks</span></div>
     </div>
-    <div class="hero-right">
-      <p class="hero-desc">A creative editor and story architect with an expansive portfolio spanning HBO, Discovery, HGTV, ABC, Roku and MTV. Every screen. Every format. One standard.</p>
-      <div class="hero-stats">
-        <div><span class="stat-number">65+</span><span class="stat-label">Credits</span></div>
-        <div><span class="stat-number">18+</span><span class="stat-label">Networks</span></div>
-      </div>
+    <div class="hero-btns">
+      <a class="hero-btn-primary" href="#work">View Work</a>
+      <a class="hero-btn-secondary" href="#contact">Get in Touch</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="poster-col">
+      <img class="poster-img" src="images/BachelorMansionTakeoverHero.jpg" alt="" loading="lazy">
+        <img class="poster-img" src="images/THE_CLIMB_HBO.avif" alt="" loading="lazy">
+        <img class="poster-img" src="images/Face_Off_Hero.jpg" alt="" loading="lazy">
+        <img class="poster-img" src="images/The_Impact.jpg" alt="" loading="lazy">
+        <img class="poster-img" src="images/Last_outpost.jpg" alt="" loading="lazy">
+        <img class="poster-img" src="images/Drop_The_mic.jpg" alt="" loading="lazy">
+        <img class="poster-img" src="images/BachelorMansionTakeoverHero.jpg" alt="" loading="lazy">
+        <img class="poster-img" src="images/THE_CLIMB_HBO.avif" alt="" loading="lazy">
+        <img class="poster-img" src="images/Face_Off_Hero.jpg" alt="" loading="lazy">
+        <img class="poster-img" src="images/The_Impact.jpg" alt="" loading="lazy">
+        <img class="poster-img" src="images/Last_outpost.jpg" alt="" loading="lazy">
+        <img class="poster-img" src="images/Drop_The_mic.jpg" alt="" loading="lazy">
+        
+    </div>
+    <div class="poster-col">
+      <img class="poster-img" src="images/The_Great_American_Baking_Show.jpg" alt="" loading="lazy">
+        <img class="poster-img" src="images/FakeUpHero.jpeg" alt="" loading="lazy">
+        <img class="poster-img" src="images/AlaskaLastFrontierHero.jpg" alt="" loading="lazy">
+        <img class="poster-img" src="images/RELATIVELY_FAMOUS-_RANCH_RULES_hero.jpg" alt="" loading="lazy">
+        <img class="poster-img" src="images/Amazingness.jpg" alt="" loading="lazy">
+        <img class="poster-img" src="images/Girls_who_like_boys_Hero.jpg" alt="" loading="lazy">
+        <img class="poster-img" src="images/The_Great_American_Baking_Show.jpg" alt="" loading="lazy">
+        <img class="poster-img" src="images/FakeUpHero.jpeg" alt="" loading="lazy">
+        <img class="poster-img" src="images/AlaskaLastFrontierHero.jpg" alt="" loading="lazy">
+        <img class="poster-img" src="images/RELATIVELY_FAMOUS-_RANCH_RULES_hero.jpg" alt="" loading="lazy">
+        <img class="poster-img" src="images/Amazingness.jpg" alt="" loading="lazy">
+        <img class="poster-img" src="images/Girls_who_like_boys_Hero.jpg" alt="" loading="lazy">
+        
+    </div>
+    <div class="poster-col">
+      <img class="poster-img" src="images/BarbieDreamHouseChallenge.jpg" alt="" loading="lazy">
+        <img class="poster-img" src="images/Instant_Influencer_w_James_Charles.jpeg" alt="" loading="lazy">
+        <img class="poster-img" src="images/FastFoodiesHero.jpg" alt="" loading="lazy">
+        <img class="poster-img" src="images/WRAP_BATTLE.jpg" alt="" loading="lazy">
+        <img class="poster-img" src="images/Dream_machines_2.jpeg" alt="" loading="lazy">
+        <img class="poster-img" src="images/The_Hills.jpg" alt="" loading="lazy">
+        <img class="poster-img" src="images/BarbieDreamHouseChallenge.jpg" alt="" loading="lazy">
+        <img class="poster-img" src="images/Instant_Influencer_w_James_Charles.jpeg" alt="" loading="lazy">
+        <img class="poster-img" src="images/FastFoodiesHero.jpg" alt="" loading="lazy">
+        <img class="poster-img" src="images/WRAP_BATTLE.jpg" alt="" loading="lazy">
+        <img class="poster-img" src="images/Dream_machines_2.jpeg" alt="" loading="lazy">
+        <img class="poster-img" src="images/The_Hills.jpg" alt="" loading="lazy">
+        
     </div>
   </div>
 </div>
@@ -246,6 +298,7 @@
 <hr class="divider">
 
 <section id="work">
+  <p style="font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 1.25rem; line-height: 1.7; color: var(--teal); margin: 0 0 2.5rem; padding-left: 1.5rem; border-left: 2px solid var(--accent);">She edits television. She produces verticals and leads the creative edit. She tells stories that people cannot stop watching, on any screen, in any format.</p>
   <div class="section-label">Selected Work</div>
   <div class="filter-bar">
     <button class="filter-btn active" data-filter="all">All</button>
@@ -678,7 +731,6 @@
       <!-- QUOTE PLACEHOLDER — replace with something personal and funny -->
       <blockquote class="about-quote">&#8220;Add something funny and personal here.&#8221;</blockquote>
 
-      <p style="font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 1.1rem; line-height: 1.7; color: var(--teal); margin: 2rem 0 2.5rem; padding-left: 1.5rem; border-left: 2px solid var(--accent);">She edits television. She produces verticals and leads the creative edit. She tells stories that people cannot stop watching, on any screen, in any format.</p>
       <div class="about-credentials">
         <span class="about-cred">IATSE Local 700</span>
         <span class="about-cred-dot">·</span>
