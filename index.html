@@ -140,7 +140,7 @@
   .work-card { background: #16162a; position: relative; overflow: hidden; cursor: pointer; aspect-ratio: 2/3; }
   .work-card.wide { grid-column: 1 / -1; aspect-ratio: 21/9; }
   .work-card.hidden { display: none; }
-  .work-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94); filter: brightness(0.88); }
+  .work-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top; transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94); filter: brightness(0.88); }
   .work-card:hover img { transform: scale(1.04); filter: brightness(0.72); }
 
   .work-info { position: absolute; bottom: 0; left: 0; right: 0; padding: 1.25rem 1.5rem; background: linear-gradient(to top, rgba(17,17,16,0.84) 0%, transparent 100%); }
@@ -305,19 +305,19 @@
       <div class="poster-wrap"><img class="poster-img" src="images/Drop The mic.jpg" alt="" loading="lazy"></div>
       <div class="poster-wrap"><img class="poster-img" src="images/Amazingness.jpg" alt="" loading="lazy"></div>
       <div class="poster-wrap"><img class="poster-img" src="images/Girls who like boys Hero.jpg" alt="" loading="lazy"></div>
-      <div class="poster-wrap"><img class="poster-img" src="images/The_Hills.jpg" alt="" loading="lazy"></div>
+      <div class="poster-wrap"><img class="poster-img" src="images/The Hills.jpg" alt="" loading="lazy"></div>
       <div class="poster-wrap"><img class="poster-img" src="images/BarbieDreamHouseChallenge.jpg" alt="" loading="lazy"></div>
       <div class="poster-wrap"><img class="poster-img" src="images/Drop The mic.jpg" alt="" loading="lazy"></div>
       <div class="poster-wrap"><img class="poster-img" src="images/Amazingness.jpg" alt="" loading="lazy"></div>
       <div class="poster-wrap"><img class="poster-img" src="images/Girls who like boys Hero.jpg" alt="" loading="lazy"></div>
-      <div class="poster-wrap"><img class="poster-img" src="images/The_Hills.jpg" alt="" loading="lazy"></div>
+      <div class="poster-wrap"><img class="poster-img" src="images/The Hills.jpg" alt="" loading="lazy"></div>
       <div class="poster-wrap"><img class="poster-img" src="images/BarbieDreamHouseChallenge.jpg" alt="" loading="lazy"></div></div>
     <div class="poster-col large">
       <div class="poster-wrap"><img class="poster-img" src="images/BachelorMansionTakeoverHero.jpg" alt="" loading="lazy"></div>
       <div class="poster-wrap"><img class="poster-img" src="images/Face Off Hero.jpg" alt="" loading="lazy"></div>
       <div class="poster-wrap"><img class="poster-img" src="images/FakeUpHero.jpeg" alt="" loading="lazy"></div>
       <div class="poster-wrap"><img class="poster-img" src="images/The Great American Baking Show.jpg" alt="" loading="lazy"></div>
-      <div class="poster-wrap"><img class="poster-img" src="images/The_Impact.jpg" alt="" loading="lazy"></div>
+      <div class="poster-wrap"><img class="poster-img" src="images/The Impact.jpg" alt="" loading="lazy"></div>
       <div class="poster-wrap"><img class="poster-img" src="images/Last outpost.jpg" alt="" loading="lazy"></div>
       <div class="poster-wrap"><img class="poster-img" src="images/AlaskaLastFrontierHero.jpg" alt="" loading="lazy"></div>
       <div class="poster-wrap"><img class="poster-img" src="images/FastFoodiesHero.jpg" alt="" loading="lazy"></div>
@@ -325,7 +325,7 @@
       <div class="poster-wrap"><img class="poster-img" src="images/Face Off Hero.jpg" alt="" loading="lazy"></div>
       <div class="poster-wrap"><img class="poster-img" src="images/FakeUpHero.jpeg" alt="" loading="lazy"></div>
       <div class="poster-wrap"><img class="poster-img" src="images/The Great American Baking Show.jpg" alt="" loading="lazy"></div>
-      <div class="poster-wrap"><img class="poster-img" src="images/The_Impact.jpg" alt="" loading="lazy"></div>
+      <div class="poster-wrap"><img class="poster-img" src="images/The Impact.jpg" alt="" loading="lazy"></div>
       <div class="poster-wrap"><img class="poster-img" src="images/Last outpost.jpg" alt="" loading="lazy"></div>
       <div class="poster-wrap"><img class="poster-img" src="images/AlaskaLastFrontierHero.jpg" alt="" loading="lazy"></div>
       <div class="poster-wrap"><img class="poster-img" src="images/FastFoodiesHero.jpg" alt="" loading="lazy"></div></div>
@@ -413,7 +413,7 @@
     </div>
 
     <div class="work-card wide" data-tags="competition,docuseries">
-      <img src="images/THE CLIMB HBO.avif" alt="The Climb" style="object-position: center top;">
+      <img src="images/THE CLIMB HBO.avif" style="object-fit: cover; object-position: center top;" alt="The Climb" style="object-position: center top;">
       <div class="work-info">
         <div class="work-network">HBO</div>
         <div class="work-title">The Climb</div>
@@ -459,7 +459,7 @@
     </div>
 
     <div class="work-card" data-tags="competition,christmas">
-      <img src="images/WRAP BATTLE.jpg" alt="Wrap Battle">
+      <img src="images/WRAP BATTLE.jpg" style="object-fit: cover; object-position: center top;" alt="Wrap Battle">
       <div class="work-info">
         <div class="work-network">Freeform</div>
         <div class="work-title">Wrap Battle</div>
@@ -547,7 +547,7 @@
     </div>
 
     <div class="work-card" data-tags="competition,makeup">
-      <img src="images/Face Off Hero.jpg" alt="Face Off">
+      <img src="images/Face Off Hero.jpg" style="object-fit: cover; object-position: center top;" alt="Face Off">
       <div class="work-info">
         <div class="work-network">Syfy</div>
         <div class="work-title">Face Off, Seasons 1 through 13</div>
@@ -556,7 +556,7 @@
       <div class="work-overlay"><div class="overlay-network-label">Watch</div><div class="overlay-links"><a class="overlay-link" href="https://www.syfy.com/face-off" target="_blank">Syfy</a></div></div>
     </div>
     <div class="work-card" data-tags="docuseries">
-      <img src="images/Naked and afraid.jpg" alt="Naked and Afraid Origins" style="object-position: center center;">
+      <img src="images/Naked and afraid.jpg" style="object-fit: cover; object-position: center top;" alt="Naked and Afraid Origins" style="object-position: center center;">
       <div class="work-info">
         <div class="work-network">Discovery</div>
         <div class="work-title">Naked &amp; Afraid: Origins</div>
@@ -597,7 +597,7 @@
     </div>
 
     <div class="work-card" data-tags="docuseries">
-      <img src="images/The_Impact.jpg" alt="The Impact Atlanta">
+      <img src="images/The Impact.jpg" alt="The Impact Atlanta">
       <div class="work-info">
         <div class="work-network">BET+</div>
         <div class="work-title">The Impact: Atlanta</div>
@@ -636,7 +636,7 @@
     </div>
 
     <div class="work-card" data-tags="docuseries">
-      <img src="images/The_Hills.jpg" alt="The Hills The Aftershow">
+      <img src="images/The Hills.jpg" alt="The Hills The Aftershow">
       <div class="work-info">
         <div class="work-network">MTV</div>
         <div class="work-title">The Hills: The Aftershow</div>
@@ -688,7 +688,7 @@
     </div>
 
     <div class="work-card" data-tags="home-makeover">
-      <img src="images/Get a room with carson and thom.avif" alt="Get a Room with Carson and Thom">
+      <img src="images/Get a room with carson and thom.avif" style="object-fit: cover; object-position: center top;" alt="Get a Room with Carson and Thom">
       <div class="work-info">
         <div class="work-network">Bravo</div>
         <div class="work-title">Get a Room with Carson &amp; Thom</div>
@@ -701,7 +701,7 @@
     </div>
 
     <div class="work-card" data-tags="home-makeover">
-      <img src="images/Mobile Home disaster.jpg" alt="Mobile Home Disaster">
+      <img src="images/Mobile Home disaster.jpg" style="object-fit: contain; background: #8b6914;" alt="Mobile Home Disaster">
       <div class="work-info">
         <div class="work-network">CMT</div>
         <div class="work-title">Mobile Home Disaster</div>
@@ -715,7 +715,7 @@
 
     <!-- NESS ROW — Ridiculousness, Deliciousness, Adorableness side by side -->
     <div class="work-card" data-tags="competition,talent">
-      <img src="images/Ridiculousness.jpeg" alt="Ridiculousness">
+      <img src="images/Ridiculousness.jpeg" style="object-fit: contain; background: #cc0000;" alt="Ridiculousness">
       <div class="work-info">
         <div class="work-network">MTV</div>
         <div class="work-title">Ridiculousness</div>
@@ -728,7 +728,7 @@
     </div>
 
     <div class="work-card" data-tags="food">
-      <img src="images/Deliciousness.jpg" alt="Deliciousness">
+      <img src="images/Deliciousness.jpg" style="object-fit: contain; background: #000;" alt="Deliciousness">
       <div class="work-info">
         <div class="work-network">MTV</div>
         <div class="work-title">Deliciousness</div>
@@ -741,7 +741,7 @@
     </div>
 
     <div class="work-card" data-tags="talent">
-      <img src="images/Adorableness.jpg" alt="Adorableness">
+      <img src="images/Adorableness.jpg" style="object-fit: contain; background: #1a3a8f;" alt="Adorableness">
       <div class="work-info">
         <div class="work-network">MTV</div>
         <div class="work-title">Adorableness</div>
@@ -754,7 +754,7 @@
     </div>
 
     <div class="work-card wide" data-tags="competition,home-makeover">
-      <img src="images/100 Day Hotel Challenge.png" alt="100 Day Hotel Challenge" style="object-position: center top;">
+      <img src="images/100 Day Hotel Challenge.png" style="object-fit: cover; object-position: center top;" alt="100 Day Hotel Challenge" style="object-position: center top;">
       <div class="work-info">
         <div class="work-network">HGTV / MAX</div>
         <div class="work-title">100 Day Hotel Challenge</div>
