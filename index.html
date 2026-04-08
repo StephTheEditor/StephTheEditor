@@ -6,7 +6,7 @@
 <title>Stephanie Erickson, Creative Editor and Story Architect</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&family=Inter:wght@900&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
@@ -50,7 +50,7 @@
   .hero-bar:nth-child(4) { background: #ff2d9b; animation-delay: 3s; }
   .hero-bar:nth-child(5) { background: #00d4f5; animation-delay: 1.5s; }
   .hero-bar:nth-child(6) { background: #bf5fff; animation-delay: 2.5s; }
-  @keyframes barpulse { 0%,100% { opacity:0; } 30% { opacity:0.45; } 60% { opacity:0.3; } }
+  @keyframes barpulse { 0%,100% { opacity:0; } 30% { opacity:0.55; } 60% { opacity:0.38; } }
 
   /* Diagonal slash overlays */
   .hero-slashes { position: absolute; inset: 0; z-index: 1; pointer-events: none; overflow: hidden; }
@@ -58,7 +58,7 @@
   .hero-slash:nth-child(1) { left: 16%; background: #ff2d9b; animation-delay: 0s; width: 2px; }
   .hero-slash:nth-child(2) { left: 33%; background: #00d4f5; animation-delay: 1.8s; width: 1px; }
   .hero-slash:nth-child(3) { left: 50%; background: #bf5fff; animation-delay: 3.6s; width: 2px; }
-  @keyframes slashpulse { 0%,100% { opacity:0; } 40% { opacity:0.9; } 70% { opacity:0.5; } }
+  @keyframes slashpulse { 0%,100% { opacity:0; } 40% { opacity:1; } 70% { opacity:0.65; } }
 
   /* Horizontal sweep lines */
   .hero-sweep { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
@@ -69,16 +69,17 @@
   @keyframes sweepline { 0% { opacity:0; transform:translateX(-10%); } 15% { opacity:1; } 70% { opacity:0.6; } 100% { opacity:0; transform:translateX(40%); } }
 
   /* Dark overlay over everything behind content */
-  .hero-overlay { position: absolute; inset: 0; z-index: 2; background: rgba(8,8,15,0.52); }
+  .hero-overlay { position: absolute; inset: 0; z-index: 2; background: rgba(8,8,15,0.35); }
   /* Stronger dark on left where text lives */
-  .hero-overlay-left { position: absolute; inset: 0; z-index: 2; background: linear-gradient(to right, rgba(8,8,15,0.95) 45%, rgba(8,8,15,0.4) 75%, transparent); }
+  .hero-overlay-left { position: absolute; inset: 0; z-index: 2; background: linear-gradient(to right, rgba(8,8,15,0.98) 35%, rgba(8,8,15,0.7) 55%, rgba(8,8,15,0.15) 75%, transparent); }
 
   /* Left content panel */
-  .hero-left { position: relative; z-index: 5; width: 50%; display: flex; flex-direction: column; justify-content: center; padding: 6rem 3.5rem 6rem 3.5rem; min-height: 100vh; }
+  .hero-left { position: relative; z-index: 5; width: 48%; display: flex; flex-direction: column; justify-content: center; padding: 6rem 0 6rem 3.5rem; min-height: 100vh; overflow: visible; }
   .hero-tag { font-size: 0.78rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--teal); margin-bottom: 1.75rem; display: flex; align-items: center; gap: 0.75rem; font-weight: 500; }
   .hero-tag::before { content: ''; display: block; width: 28px; height: 1px; background: var(--teal); }
-  .hero-name { font-family: 'Bebas Neue', sans-serif; font-size: clamp(4.5rem, 8.5vw, 9rem); font-weight: 400; line-height: 0.86; letter-spacing: 0.02em; color: var(--white); margin-bottom: 1.5rem; text-transform: uppercase; white-space: nowrap; }
-  .hero-name em { font-style: normal; color: var(--accent); display: block; }
+  .hero-name { font-family: 'Helvetica Neue', 'Helvetica', 'Inter', Arial, sans-serif; font-size: clamp(4rem, 8.5vw, 9.5rem); font-weight: 900; line-height: 0.86; letter-spacing: -0.02em; color: var(--white); margin-bottom: 1.5rem; text-transform: uppercase; white-space: nowrap; position: relative; z-index: 20; }
+  .hero-name .n-first { color: #eeeaf8; display: inline; }
+  .hero-name .n-last { color: #ff2d9b; display: inline; text-shadow: 0 0 60px rgba(255,45,155,0.5), 0 0 120px rgba(255,45,155,0.25); }
   .hero-tagline { font-family: var(--serif); font-style: italic; font-size: clamp(1.1rem, 1.8vw, 1.5rem); color: rgba(238,234,248,0.65); line-height: 1.35; margin-bottom: 2.5rem; }
   .hero-stats { display: flex; gap: 2.5rem; margin-bottom: 2.5rem; padding-top: 1.75rem; border-top: 0.5px solid rgba(238,234,248,0.15); }
   .stat-number { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; color: var(--white); display: block; line-height: 1; letter-spacing: 0.04em; }
@@ -90,14 +91,14 @@
   .hero-btn-secondary:hover { border-color: var(--teal); color: var(--teal); }
 
   /* Right scrolling poster columns — 3 cols, outer smaller, middle larger */
-  .hero-right { position: absolute; right: 0; top: 0; bottom: 0; width: 56%; z-index: 3; display: flex; gap: 6px; overflow: hidden; padding: 0; }
+  .hero-right { position: absolute; right: 0; top: 0; bottom: 0; width: 42%; z-index: 3; display: flex; gap: 5px; overflow: hidden; padding: 0; }
   .hero-right::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 50%; background: linear-gradient(to right, rgba(8,8,15,1) 0%, rgba(8,8,15,0.85) 40%, rgba(8,8,15,0.3) 75%, transparent); z-index: 10; }
   .hero-right::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 25%; background: linear-gradient(to top, rgba(8,8,15,1), transparent); z-index: 10; }
 
   /* Three columns: small | large | small */
   .poster-col { display: flex; flex-direction: column; gap: 8px; overflow: hidden; }
-  .poster-col.small { width: 26%; animation: scrollUp 30s linear infinite; align-self: flex-start; }
-  .poster-col.large { width: 46%; animation: scrollUp 24s linear infinite; animation-delay: -10s; margin-top: -4rem; margin-bottom: -4rem; z-index: 4; filter: drop-shadow(-8px 0 24px rgba(0,0,0,0.8)) drop-shadow(8px 0 24px rgba(0,0,0,0.8)); }
+  .poster-col.small { width: 25%; animation: scrollUp 30s linear infinite; align-self: flex-start; }
+  .poster-col.large { width: 48%; animation: scrollUp 24s linear infinite; animation-delay: -10s; margin-top: -3rem; margin-bottom: -3rem; z-index: 4; filter: drop-shadow(-6px 0 18px rgba(0,0,0,0.9)) drop-shadow(6px 0 18px rgba(0,0,0,0.9)); }
   .poster-col.small:last-child { animation-duration: 36s; animation-delay: -20s; align-self: flex-start; }
   @keyframes scrollUp { from { transform: translateY(0); } to { transform: translateY(-50%); } }
   .poster-img { width: 100%; aspect-ratio: 2/3; object-fit: cover; display: block; filter: brightness(0.6) saturate(0.5) contrast(1.1); transition: filter 0.3s; flex-shrink: 0; }
@@ -285,7 +286,7 @@
 
   <div class="hero-left">
     <div class="hero-tag">Creative Editor &amp; Story Architect</div>
-    <h2 class="hero-name">STEPHANIE<em>ERICKSON</em></h2>
+    <h2 class="hero-name"><span class="n-first">STEPHANIE </span><span class="n-last">ERICKSON</span></h2>
     <p class="hero-tagline">Crafting stories that captivate</p>
     <div class="hero-stats">
       <div><span class="stat-number">65+</span><span class="stat-label">Credits</span></div>
