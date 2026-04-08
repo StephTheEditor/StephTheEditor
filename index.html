@@ -50,7 +50,7 @@
   .hero-bar:nth-child(4) { background: #ff2d9b; animation-delay: 3s; }
   .hero-bar:nth-child(5) { background: #00d4f5; animation-delay: 1.5s; }
   .hero-bar:nth-child(6) { background: #bf5fff; animation-delay: 2.5s; }
-  @keyframes barpulse { 0%,100% { opacity:0; } 30% { opacity:0.18; } 60% { opacity:0.12; } }
+  @keyframes barpulse { 0%,100% { opacity:0; } 30% { opacity:0.45; } 60% { opacity:0.3; } }
 
   /* Diagonal slash overlays */
   .hero-slashes { position: absolute; inset: 0; z-index: 1; pointer-events: none; overflow: hidden; }
@@ -58,7 +58,7 @@
   .hero-slash:nth-child(1) { left: 16%; background: #ff2d9b; animation-delay: 0s; width: 2px; }
   .hero-slash:nth-child(2) { left: 33%; background: #00d4f5; animation-delay: 1.8s; width: 1px; }
   .hero-slash:nth-child(3) { left: 50%; background: #bf5fff; animation-delay: 3.6s; width: 2px; }
-  @keyframes slashpulse { 0%,100% { opacity:0; } 40% { opacity:0.6; } 70% { opacity:0.3; } }
+  @keyframes slashpulse { 0%,100% { opacity:0; } 40% { opacity:0.9; } 70% { opacity:0.5; } }
 
   /* Horizontal sweep lines */
   .hero-sweep { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
@@ -66,15 +66,15 @@
   .hero-sweep span:nth-child(1) { top: 22%; background: linear-gradient(90deg, transparent, #ff2d9b 40%, transparent); animation-delay: 0s; }
   .hero-sweep span:nth-child(2) { top: 55%; background: linear-gradient(90deg, transparent, #00d4f5 40%, transparent); animation-delay: 2.3s; }
   .hero-sweep span:nth-child(3) { top: 80%; background: linear-gradient(90deg, transparent, #bf5fff 40%, transparent); animation-delay: 4.6s; }
-  @keyframes sweepline { 0% { opacity:0; transform:translateX(-10%); } 15% { opacity:1; } 70% { opacity:0.4; } 100% { opacity:0; transform:translateX(40%); } }
+  @keyframes sweepline { 0% { opacity:0; transform:translateX(-10%); } 15% { opacity:1; } 70% { opacity:0.6; } 100% { opacity:0; transform:translateX(40%); } }
 
   /* Dark overlay over everything behind content */
-  .hero-overlay { position: absolute; inset: 0; z-index: 2; background: rgba(8,8,15,0.78); }
+  .hero-overlay { position: absolute; inset: 0; z-index: 2; background: rgba(8,8,15,0.52); }
   /* Stronger dark on left where text lives */
   .hero-overlay-left { position: absolute; inset: 0; z-index: 2; background: linear-gradient(to right, rgba(8,8,15,0.95) 45%, rgba(8,8,15,0.4) 75%, transparent); }
 
   /* Left content panel */
-  .hero-left { position: relative; z-index: 5; width: 50%; display: flex; flex-direction: column; justify-content: center; padding: 8rem 3.5rem 4rem 3.5rem; }
+  .hero-left { position: relative; z-index: 5; width: 50%; display: flex; flex-direction: column; justify-content: center; padding: 6rem 3.5rem 6rem 3.5rem; min-height: 100vh; }
   .hero-tag { font-size: 0.78rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--teal); margin-bottom: 1.75rem; display: flex; align-items: center; gap: 0.75rem; font-weight: 500; }
   .hero-tag::before { content: ''; display: block; width: 28px; height: 1px; background: var(--teal); }
   .hero-name { font-family: 'Bebas Neue', sans-serif; font-size: clamp(4.5rem, 8.5vw, 9rem); font-weight: 400; line-height: 0.86; letter-spacing: 0.02em; color: var(--white); margin-bottom: 1.5rem; text-transform: uppercase; white-space: nowrap; }
@@ -90,18 +90,34 @@
   .hero-btn-secondary:hover { border-color: var(--teal); color: var(--teal); }
 
   /* Right scrolling poster columns — 3 cols, outer smaller, middle larger */
-  .hero-right { position: absolute; right: 0; top: 0; bottom: 0; width: 58%; z-index: 3; display: flex; gap: 8px; overflow: hidden; padding: 0; }
-  .hero-right::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 45%; background: linear-gradient(to right, rgba(8,8,15,0.95), rgba(8,8,15,0.6), transparent); z-index: 10; }
+  .hero-right { position: absolute; right: 0; top: 0; bottom: 0; width: 56%; z-index: 3; display: flex; gap: 6px; overflow: hidden; padding: 0; }
+  .hero-right::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 50%; background: linear-gradient(to right, rgba(8,8,15,1) 0%, rgba(8,8,15,0.85) 40%, rgba(8,8,15,0.3) 75%, transparent); z-index: 10; }
   .hero-right::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 25%; background: linear-gradient(to top, rgba(8,8,15,1), transparent); z-index: 10; }
 
   /* Three columns: small | large | small */
   .poster-col { display: flex; flex-direction: column; gap: 8px; overflow: hidden; }
-  .poster-col.small { width: 28%; animation: scrollUp 30s linear infinite; }
-  .poster-col.large { width: 44%; animation: scrollUp 24s linear infinite; animation-delay: -10s; }
-  .poster-col.small:last-child { animation-duration: 36s; animation-delay: -20s; }
+  .poster-col.small { width: 26%; animation: scrollUp 30s linear infinite; align-self: flex-start; }
+  .poster-col.large { width: 46%; animation: scrollUp 24s linear infinite; animation-delay: -10s; margin-top: -4rem; margin-bottom: -4rem; z-index: 4; filter: drop-shadow(-8px 0 24px rgba(0,0,0,0.8)) drop-shadow(8px 0 24px rgba(0,0,0,0.8)); }
+  .poster-col.small:last-child { animation-duration: 36s; animation-delay: -20s; align-self: flex-start; }
   @keyframes scrollUp { from { transform: translateY(0); } to { transform: translateY(-50%); } }
-  .poster-img { width: 100%; aspect-ratio: 2/3; object-fit: cover; display: block; filter: brightness(0.65) saturate(0.85); transition: filter 0.3s; flex-shrink: 0; }
-  .poster-img:hover { filter: brightness(0.9) saturate(1.1); }
+  .poster-img { width: 100%; aspect-ratio: 2/3; object-fit: cover; display: block; filter: brightness(0.6) saturate(0.5) contrast(1.1); transition: filter 0.3s; flex-shrink: 0; }
+  .poster-col.large .poster-img { filter: brightness(0.72) saturate(0.7) contrast(1.05); }
+  .poster-img:hover { filter: brightness(0.9) saturate(0.8); }
+
+  /* Poster wrapper for pseudo-element overlays */
+  .poster-wrap { position: relative; width: 100%; aspect-ratio: 2/3; flex-shrink: 0; overflow: hidden; }
+  .poster-wrap .poster-img { width: 100%; height: 100%; aspect-ratio: unset; }
+
+  /* Left column — pink neon bleeds in from the left edge */
+  .poster-col.small:first-child .poster-wrap::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to right, rgba(255,45,155,0.55) 0%, transparent 65%); }
+  .poster-col.small:first-child .poster-wrap::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(255,45,155,0.22) 0%, transparent 40%); z-index: 2; }
+
+  /* Center column — very subtle pink/teal edge bleed, mostly true */
+  .poster-col.large .poster-wrap::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to right, rgba(255,45,155,0.18) 0%, transparent 30%, transparent 70%, rgba(0,212,245,0.18) 100%); }
+
+  /* Right column — teal neon bleeds in from the right edge */
+  .poster-col.small:last-child .poster-wrap::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to left, rgba(0,212,245,0.55) 0%, transparent 65%); }
+  .poster-col.small:last-child .poster-wrap::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,212,245,0.2) 0%, transparent 40%); z-index: 2; }
 
   /* Legacy */
   .hero { display: none; }
@@ -283,48 +299,46 @@
 
   <div class="hero-right">
     <div class="poster-col small">
-      <img class="poster-img" src="images/Drop_The_mic.jpg" alt="" loading="lazy">
-      <img class="poster-img" src="images/WRAP_BATTLE.jpg" alt="" loading="lazy">
-      <img class="poster-img" src="images/Amazingness.jpg" alt="" loading="lazy">
-      <img class="poster-img" src="images/Girls_who_like_boys_Hero.jpg" alt="" loading="lazy">
-      <img class="poster-img" src="images/The_Hills.jpg" alt="" loading="lazy">
-      <img class="poster-img" src="images/BarbieDreamHouseChallenge.jpg" alt="" loading="lazy">
-      <img class="poster-img" src="images/Drop_The_mic.jpg" alt="" loading="lazy">
-      <img class="poster-img" src="images/WRAP_BATTLE.jpg" alt="" loading="lazy">
-      <img class="poster-img" src="images/Amazingness.jpg" alt="" loading="lazy">
-      <img class="poster-img" src="images/Girls_who_like_boys_Hero.jpg" alt="" loading="lazy">
-      <img class="poster-img" src="images/The_Hills.jpg" alt="" loading="lazy">
-      <img class="poster-img" src="images/BarbieDreamHouseChallenge.jpg" alt="" loading="lazy"></div>
+      <div class="poster-wrap"><img class="poster-img" src="images/Drop_The_mic.jpg" alt="" loading="lazy"></div>
+      <div class="poster-wrap"><img class="poster-img" src="images/Amazingness.jpg" alt="" loading="lazy"></div>
+      <div class="poster-wrap"><img class="poster-img" src="images/Girls_who_like_boys_Hero.jpg" alt="" loading="lazy"></div>
+      <div class="poster-wrap"><img class="poster-img" src="images/The_Hills.jpg" alt="" loading="lazy"></div>
+      <div class="poster-wrap"><img class="poster-img" src="images/BarbieDreamHouseChallenge.jpg" alt="" loading="lazy"></div>
+      <div class="poster-wrap"><img class="poster-img" src="images/Drop_The_mic.jpg" alt="" loading="lazy"></div>
+      <div class="poster-wrap"><img class="poster-img" src="images/Amazingness.jpg" alt="" loading="lazy"></div>
+      <div class="poster-wrap"><img class="poster-img" src="images/Girls_who_like_boys_Hero.jpg" alt="" loading="lazy"></div>
+      <div class="poster-wrap"><img class="poster-img" src="images/The_Hills.jpg" alt="" loading="lazy"></div>
+      <div class="poster-wrap"><img class="poster-img" src="images/BarbieDreamHouseChallenge.jpg" alt="" loading="lazy"></div></div>
     <div class="poster-col large">
-      <img class="poster-img" src="images/BachelorMansionTakeoverHero.jpg" alt="" loading="lazy">
-      <img class="poster-img" src="images/Face_Off_Hero.jpg" alt="" loading="lazy">
-      <img class="poster-img" src="images/FakeUpHero.jpeg" alt="" loading="lazy">
-      <img class="poster-img" src="images/The_Great_American_Baking_Show.jpg" alt="" loading="lazy">
-      <img class="poster-img" src="images/The_Impact.jpg" alt="" loading="lazy">
-      <img class="poster-img" src="images/Last_outpost.jpg" alt="" loading="lazy">
-      <img class="poster-img" src="images/AlaskaLastFrontierHero.jpg" alt="" loading="lazy">
-      <img class="poster-img" src="images/FastFoodiesHero.jpg" alt="" loading="lazy">
-      <img class="poster-img" src="images/BachelorMansionTakeoverHero.jpg" alt="" loading="lazy">
-      <img class="poster-img" src="images/Face_Off_Hero.jpg" alt="" loading="lazy">
-      <img class="poster-img" src="images/FakeUpHero.jpeg" alt="" loading="lazy">
-      <img class="poster-img" src="images/The_Great_American_Baking_Show.jpg" alt="" loading="lazy">
-      <img class="poster-img" src="images/The_Impact.jpg" alt="" loading="lazy">
-      <img class="poster-img" src="images/Last_outpost.jpg" alt="" loading="lazy">
-      <img class="poster-img" src="images/AlaskaLastFrontierHero.jpg" alt="" loading="lazy">
-      <img class="poster-img" src="images/FastFoodiesHero.jpg" alt="" loading="lazy"></div>
+      <div class="poster-wrap"><img class="poster-img" src="images/BachelorMansionTakeoverHero.jpg" alt="" loading="lazy"></div>
+      <div class="poster-wrap"><img class="poster-img" src="images/Face_Off_Hero.jpg" alt="" loading="lazy"></div>
+      <div class="poster-wrap"><img class="poster-img" src="images/FakeUpHero.jpeg" alt="" loading="lazy"></div>
+      <div class="poster-wrap"><img class="poster-img" src="images/The_Great_American_Baking_Show.jpg" alt="" loading="lazy"></div>
+      <div class="poster-wrap"><img class="poster-img" src="images/The_Impact.jpg" alt="" loading="lazy"></div>
+      <div class="poster-wrap"><img class="poster-img" src="images/Last_outpost.jpg" alt="" loading="lazy"></div>
+      <div class="poster-wrap"><img class="poster-img" src="images/AlaskaLastFrontierHero.jpg" alt="" loading="lazy"></div>
+      <div class="poster-wrap"><img class="poster-img" src="images/FastFoodiesHero.jpg" alt="" loading="lazy"></div>
+      <div class="poster-wrap"><img class="poster-img" src="images/BachelorMansionTakeoverHero.jpg" alt="" loading="lazy"></div>
+      <div class="poster-wrap"><img class="poster-img" src="images/Face_Off_Hero.jpg" alt="" loading="lazy"></div>
+      <div class="poster-wrap"><img class="poster-img" src="images/FakeUpHero.jpeg" alt="" loading="lazy"></div>
+      <div class="poster-wrap"><img class="poster-img" src="images/The_Great_American_Baking_Show.jpg" alt="" loading="lazy"></div>
+      <div class="poster-wrap"><img class="poster-img" src="images/The_Impact.jpg" alt="" loading="lazy"></div>
+      <div class="poster-wrap"><img class="poster-img" src="images/Last_outpost.jpg" alt="" loading="lazy"></div>
+      <div class="poster-wrap"><img class="poster-img" src="images/AlaskaLastFrontierHero.jpg" alt="" loading="lazy"></div>
+      <div class="poster-wrap"><img class="poster-img" src="images/FastFoodiesHero.jpg" alt="" loading="lazy"></div></div>
     <div class="poster-col small">
-      <img class="poster-img" src="images/RELATIVELY_FAMOUS-_RANCH_RULES_hero.jpg" alt="" loading="lazy">
-      <img class="poster-img" src="images/Instant_Influencer_w_James_Charles.jpeg" alt="" loading="lazy">
-      <img class="poster-img" src="images/Dream_machines_2.jpeg" alt="" loading="lazy">
-      <img class="poster-img" src="images/LagunaBeachHero.jpg" alt="" loading="lazy">
-      <img class="poster-img" src="images/Bridezillas.jpg" alt="" loading="lazy">
-      <img class="poster-img" src="images/MauiFeverHero.jpg" alt="" loading="lazy">
-      <img class="poster-img" src="images/RELATIVELY_FAMOUS-_RANCH_RULES_hero.jpg" alt="" loading="lazy">
-      <img class="poster-img" src="images/Instant_Influencer_w_James_Charles.jpeg" alt="" loading="lazy">
-      <img class="poster-img" src="images/Dream_machines_2.jpeg" alt="" loading="lazy">
-      <img class="poster-img" src="images/LagunaBeachHero.jpg" alt="" loading="lazy">
-      <img class="poster-img" src="images/Bridezillas.jpg" alt="" loading="lazy">
-      <img class="poster-img" src="images/MauiFeverHero.jpg" alt="" loading="lazy"></div>
+      <div class="poster-wrap"><img class="poster-img" src="images/RELATIVELY_FAMOUS-_RANCH_RULES_hero.jpg" alt="" loading="lazy"></div>
+      <div class="poster-wrap"><img class="poster-img" src="images/Instant_Influencer_w_James_Charles.jpeg" alt="" loading="lazy"></div>
+      <div class="poster-wrap"><img class="poster-img" src="images/Dream_machines_2.jpeg" alt="" loading="lazy"></div>
+      <div class="poster-wrap"><img class="poster-img" src="images/LagunaBeachHero.jpg" alt="" loading="lazy"></div>
+      <div class="poster-wrap"><img class="poster-img" src="images/Bridezillas.jpg" alt="" loading="lazy"></div>
+      <div class="poster-wrap"><img class="poster-img" src="images/MauiFeverHero.jpg" alt="" loading="lazy"></div>
+      <div class="poster-wrap"><img class="poster-img" src="images/RELATIVELY_FAMOUS-_RANCH_RULES_hero.jpg" alt="" loading="lazy"></div>
+      <div class="poster-wrap"><img class="poster-img" src="images/Instant_Influencer_w_James_Charles.jpeg" alt="" loading="lazy"></div>
+      <div class="poster-wrap"><img class="poster-img" src="images/Dream_machines_2.jpeg" alt="" loading="lazy"></div>
+      <div class="poster-wrap"><img class="poster-img" src="images/LagunaBeachHero.jpg" alt="" loading="lazy"></div>
+      <div class="poster-wrap"><img class="poster-img" src="images/Bridezillas.jpg" alt="" loading="lazy"></div>
+      <div class="poster-wrap"><img class="poster-img" src="images/MauiFeverHero.jpg" alt="" loading="lazy"></div></div>
   </div>
 </div>
 
