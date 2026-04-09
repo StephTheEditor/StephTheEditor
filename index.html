@@ -40,93 +40,125 @@
 
   /* HERO — Miami Vice animated background + split content/posters */
   /* ── HERO ── */
-  .hero-section { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; background: #08080f; }
+  .hero-section { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; background: #000000; }
 
-  /* Animated color bars */
-  .hero-bars { position: absolute; inset: 0; z-index: 0; display: flex; }
-  .hero-bar { flex: 1; opacity: 0; animation: barpulse 8s ease-in-out infinite; }
-  .hero-bar:nth-child(1) { background: #ff2d9b; animation-delay: 0s; }
-  .hero-bar:nth-child(2) { background: #bf5fff; animation-delay: 1s; }
-  .hero-bar:nth-child(3) { background: #00d4f5; animation-delay: 2s; }
-  .hero-bar:nth-child(4) { background: #ff2d9b; animation-delay: 3s; }
-  .hero-bar:nth-child(5) { background: #00d4f5; animation-delay: 1.5s; }
-  .hero-bar:nth-child(6) { background: #bf5fff; animation-delay: 2.5s; }
-  @keyframes barpulse { 0%,100% { opacity:0; } 25% { opacity:0.55; } 55% { opacity:0.38; } }
+  /* Subtle drifting lines — barely visible */
+  .hero-lines { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+  .hero-line { position: absolute; left: 0; right: 0; height: 1px; background: rgba(255,255,255,0.04); animation: driftline 18s ease-in-out infinite; }
+  .hero-line:nth-child(1) { top: 28%; animation-delay: 0s; }
+  .hero-line:nth-child(2) { top: 62%; animation-delay: 7s; animation-duration: 22s; }
+  .hero-line:nth-child(3) { top: 80%; animation-delay: 13s; animation-duration: 26s; }
+  @keyframes driftline { 0%,100% { opacity:0; } 30% { opacity:1; } 70% { opacity:0.6; } }
 
-  /* Diagonal slashes */
-  .hero-slashes { position: absolute; inset: 0; z-index: 1; pointer-events: none; overflow: hidden; }
-  .hero-slash { position: absolute; top: 0; bottom: 0; width: 3px; opacity: 0; animation: slashpulse 5s ease-in-out infinite; transform: skewX(-20deg); }
-  .hero-slash:nth-child(1) { left: 16%; background: #ff2d9b; animation-delay: 0s; width: 2px; }
-  .hero-slash:nth-child(2) { left: 33%; background: #00d4f5; animation-delay: 1.8s; width: 1px; }
-  .hero-slash:nth-child(3) { left: 50%; background: #bf5fff; animation-delay: 3.6s; width: 2px; }
-  @keyframes slashpulse { 0%,100% { opacity:0; } 40% { opacity:1; } 70% { opacity:0.65; } }
-
-  /* Sweep lines */
-  .hero-sweep { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
-  .hero-sweep span { position: absolute; left: -100%; width: 300%; height: 1px; opacity: 0; animation: sweepline 7s ease-in-out infinite; }
-  .hero-sweep span:nth-child(1) { top: 22%; background: linear-gradient(90deg, transparent, #ff2d9b 40%, transparent); animation-delay: 0s; }
-  .hero-sweep span:nth-child(2) { top: 55%; background: linear-gradient(90deg, transparent, #00d4f5 40%, transparent); animation-delay: 2.3s; }
-  .hero-sweep span:nth-child(3) { top: 80%; background: linear-gradient(90deg, transparent, #bf5fff 40%, transparent); animation-delay: 4.6s; }
-  @keyframes sweepline { 0% { opacity:0; transform:translateX(-10%); } 15% { opacity:1; } 70% { opacity:0.6; } 100% { opacity:0; transform:translateX(40%); } }
-
-  /* Dark overlay */
-  .hero-overlay { position: absolute; inset: 0; z-index: 2; background: rgba(8,8,15,0.45); }
-
-  /* Content panel — full width centered */
+  /* Content */
   .hero-content { position: relative; z-index: 5; width: 100%; max-width: 1100px; padding: 0 4rem; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; min-height: 100vh; }
 
-  /* Tag line above name */
-  .hero-tag { font-size: 0.82rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--teal); margin-bottom: 2rem; display: flex; align-items: center; gap: 0.75rem; font-weight: 500; opacity: 0; animation: fadein 0.6s ease 0.3s forwards; }
-  .hero-tag::before { content: ''; display: block; width: 28px; height: 1px; background: var(--teal); }
-  @keyframes fadein { from { opacity:0; transform: translateY(8px); } to { opacity:1; transform: translateY(0); } }
+  /* Tag */
+  .hero-tag { font-size: 0.82rem; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 2rem; display: flex; align-items: center; gap: 0.75rem; font-weight: 400; opacity: 0; animation: fadein 0.6s ease 0.3s forwards; }
+  .hero-tag::before { content: ''; display: block; width: 28px; height: 1px; background: rgba(255,255,255,0.35); }
+  @keyframes fadein { from { opacity:0; transform: translateY(6px); } to { opacity:1; transform: translateY(0); } }
 
-  /* NEON NAME */
-  .hero-name { font-family: 'Bebas Neue', sans-serif; font-size: clamp(5rem, 11vw, 13rem); font-weight: 400; line-height: 0.86; letter-spacing: 0.03em; text-transform: uppercase; white-space: nowrap; margin-bottom: 0; color: transparent; animation: neon-on 3s ease forwards; animation-delay: 0.8s; }
-  .hero-name .n-first { color: transparent; text-shadow: none; animation: neon-white 3s ease forwards 0.8s; }
-  .hero-name .n-last { color: transparent; text-shadow: none; animation: neon-pink 3s ease forwards 0.8s; }
-
-  /* Neon flicker — white for first name */
-  @keyframes neon-white {
-    0%   { color: transparent; text-shadow: none; }
-    30%  { color: rgba(238,234,248,0.9); text-shadow: 0 0 8px #fff, 0 0 20px rgba(238,234,248,0.6); }
-    35%  { color: transparent; text-shadow: none; }
-    40%  { color: rgba(238,234,248,0.9); text-shadow: 0 0 8px #fff, 0 0 20px rgba(238,234,248,0.6); }
-    42%  { color: transparent; text-shadow: none; }
-    50%  { color: #eeeaf8; text-shadow: 0 0 10px #fff, 0 0 30px rgba(238,234,248,0.5), 0 0 60px rgba(238,234,248,0.2); }
-    100% { color: #eeeaf8; text-shadow: 0 0 10px #fff, 0 0 30px rgba(238,234,248,0.5), 0 0 60px rgba(238,234,248,0.2); }
+  /* NEON NAME — simulates glass tube letterforms */
+  .hero-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(5rem, 11vw, 13rem);
+    font-weight: 400;
+    line-height: 0.86;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    margin-bottom: 0;
+    color: transparent;
+  }
+  .hero-name .n-first,
+  .hero-name .n-last {
+    color: transparent;
+    text-shadow: none;
+    animation: neon-pink-on 2.8s ease forwards 0.8s;
   }
 
-  /* Neon flicker — hot pink for last name */
-  @keyframes neon-pink {
+  /* Real neon tube effect — bright edges, slightly dimmer center achieved via layered shadows */
+  @keyframes neon-pink-on {
     0%   { color: transparent; text-shadow: none; }
-    30%  { color: rgba(255,45,155,0.9); text-shadow: 0 0 8px #ff2d9b, 0 0 20px rgba(255,45,155,0.8); }
-    35%  { color: transparent; text-shadow: none; }
-    40%  { color: rgba(255,45,155,0.9); text-shadow: 0 0 8px #ff2d9b, 0 0 20px rgba(255,45,155,0.8); }
-    42%  { color: transparent; text-shadow: none; }
-    50%  { color: #ff2d9b; text-shadow: 0 0 10px #ff2d9b, 0 0 40px rgba(255,45,155,0.8), 0 0 80px rgba(255,45,155,0.4), 0 0 120px rgba(255,45,155,0.2); }
-    100% { color: #ff2d9b; text-shadow: 0 0 10px #ff2d9b, 0 0 40px rgba(255,45,155,0.8), 0 0 80px rgba(255,45,155,0.4), 0 0 120px rgba(255,45,155,0.2); }
+    25%  { color: rgba(255,45,155,0.95);
+           text-shadow:
+             0 0 2px #fff,
+             0 0 6px #ff2d9b,
+             0 0 15px #ff2d9b,
+             0 0 30px rgba(255,45,155,0.8); }
+    28%  { color: rgba(255,45,155,0.1); text-shadow: none; }
+    35%  { color: rgba(255,45,155,0.95);
+           text-shadow:
+             0 0 2px #fff,
+             0 0 6px #ff2d9b,
+             0 0 15px #ff2d9b,
+             0 0 30px rgba(255,45,155,0.8); }
+    37%  { color: rgba(255,45,155,0.3); text-shadow: 0 0 4px #ff2d9b; }
+    45%  { color: #ff2d9b;
+           text-shadow:
+             0 0 2px #fff,
+             0 0 8px #ff2d9b,
+             0 0 20px #ff2d9b,
+             0 0 50px rgba(255,45,155,0.7),
+             0 0 100px rgba(255,45,155,0.3); }
+    /* Subtle steady pulse once on */
+    70%  { color: #ff2d9b;
+           text-shadow:
+             0 0 2px #fff,
+             0 0 6px #ff2d9b,
+             0 0 16px #ff2d9b,
+             0 0 40px rgba(255,45,155,0.6),
+             0 0 80px rgba(255,45,155,0.25); }
+    100% { color: #ff2d9b;
+           text-shadow:
+             0 0 2px #fff,
+             0 0 8px #ff2d9b,
+             0 0 20px #ff2d9b,
+             0 0 50px rgba(255,45,155,0.7),
+             0 0 100px rgba(255,45,155,0.3); }
   }
 
-  /* NEON QUOTE — flickers on after name settles */
-  .hero-quote { font-family: var(--serif); font-style: italic; font-size: clamp(1rem, 1.8vw, 1.4rem); color: transparent; margin-top: 1.5rem; margin-bottom: 2.5rem; animation: neon-teal 1.5s ease forwards 3.2s; }
-  @keyframes neon-teal {
-    0%   { color: transparent; text-shadow: none; }
-    30%  { color: rgba(0,212,245,0.9); text-shadow: 0 0 8px #00d4f5, 0 0 20px rgba(0,212,245,0.6); }
-    35%  { color: transparent; text-shadow: none; }
-    60%  { color: #00d4f5; text-shadow: 0 0 8px #00d4f5, 0 0 25px rgba(0,212,245,0.5); }
-    100% { color: #00d4f5; text-shadow: 0 0 8px #00d4f5, 0 0 25px rgba(0,212,245,0.5); }
+  /* Steady neon pulse after sign is on */
+  .hero-name .n-first,
+  .hero-name .n-last { animation: neon-pink-on 2.8s ease forwards 0.8s, neon-pulse 4s ease-in-out infinite 3.8s; }
+  @keyframes neon-pulse {
+    0%,100% { text-shadow: 0 0 2px #fff, 0 0 8px #ff2d9b, 0 0 20px #ff2d9b, 0 0 50px rgba(255,45,155,0.7), 0 0 100px rgba(255,45,155,0.3); }
+    50%     { text-shadow: 0 0 2px #fff, 0 0 6px #ff2d9b, 0 0 14px #ff2d9b, 0 0 35px rgba(255,45,155,0.5), 0 0 70px rgba(255,45,155,0.2); }
   }
 
-  /* Stats and buttons fade in last */
-  .hero-stats { display: flex; gap: 2.5rem; padding-top: 1.75rem; border-top: 0.5px solid rgba(238,234,248,0.15); margin-bottom: 2.5rem; opacity: 0; animation: fadein 0.6s ease 3.8s forwards; }
+  /* NEON QUOTE — teal, smaller, flickers on after name */
+  .hero-quote {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(1.2rem, 2.2vw, 2rem);
+    letter-spacing: 0.18em;
+    color: transparent;
+    margin-top: 1.2rem;
+    margin-bottom: 2.5rem;
+    font-style: normal;
+    animation: neon-teal-on 1.8s ease forwards 3.4s, neon-teal-pulse 5s ease-in-out infinite 5.4s;
+  }
+  @keyframes neon-teal-on {
+    0%   { color: transparent; text-shadow: none; }
+    30%  { color: rgba(0,212,245,0.9); text-shadow: 0 0 2px #fff, 0 0 8px #00d4f5, 0 0 20px #00d4f5; }
+    33%  { color: rgba(0,212,245,0.1); text-shadow: none; }
+    55%  { color: #00d4f5; text-shadow: 0 0 2px #fff, 0 0 8px #00d4f5, 0 0 20px #00d4f5, 0 0 45px rgba(0,212,245,0.6); }
+    100% { color: #00d4f5; text-shadow: 0 0 2px #fff, 0 0 8px #00d4f5, 0 0 20px #00d4f5, 0 0 45px rgba(0,212,245,0.6); }
+  }
+  @keyframes neon-teal-pulse {
+    0%,100% { text-shadow: 0 0 2px #fff, 0 0 8px #00d4f5, 0 0 20px #00d4f5, 0 0 45px rgba(0,212,245,0.6); }
+    50%     { text-shadow: 0 0 2px #fff, 0 0 5px #00d4f5, 0 0 14px #00d4f5, 0 0 30px rgba(0,212,245,0.4); }
+  }
+
+  /* Stats and buttons */
+  .hero-stats { display: flex; gap: 2.5rem; padding-top: 1.75rem; border-top: 0.5px solid rgba(255,255,255,0.1); margin-bottom: 2.5rem; opacity: 0; animation: fadein 0.6s ease 4s forwards; }
   .stat-number { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; color: var(--white); display: block; line-height: 1; letter-spacing: 0.04em; }
-  .stat-label { font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(238,234,248,0.4); margin-top: 0.25rem; display: block; }
-  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; opacity: 0; animation: fadein 0.6s ease 4s forwards; }
-  .hero-btn-primary { font-family: var(--sans); font-size: 0.8rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 500; padding: 0.85rem 2rem; background: var(--teal); color: #08080f; text-decoration: none; transition: background 0.2s; border: none; display: inline-block; }
-  .hero-btn-primary:hover { background: var(--accent); color: #fff; }
-  .hero-btn-secondary { font-family: var(--sans); font-size: 0.8rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 500; padding: 0.85rem 2rem; background: transparent; color: var(--white); text-decoration: none; border: 1px solid rgba(238,234,248,0.3); transition: border-color 0.2s, color 0.2s; display: inline-block; }
-  .hero-btn-secondary:hover { border-color: var(--teal); color: var(--teal); }
-  .hero-networks { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(238,234,248,0.25); margin-top: 2rem; font-family: var(--sans); opacity: 0; animation: fadein 0.6s ease 4.2s forwards; }
+  .stat-label { font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-top: 0.25rem; display: block; }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; opacity: 0; animation: fadein 0.6s ease 4.2s forwards; }
+  .hero-btn-primary { font-family: var(--sans); font-size: 0.8rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 500; padding: 0.85rem 2rem; background: #ff2d9b; color: #000; text-decoration: none; transition: all 0.2s; border: none; display: inline-block; }
+  .hero-btn-primary:hover { background: #00d4f5; color: #000; }
+  .hero-btn-secondary { font-family: var(--sans); font-size: 0.8rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 500; padding: 0.85rem 2rem; background: transparent; color: rgba(255,255,255,0.7); text-decoration: none; border: 1px solid rgba(255,255,255,0.2); transition: all 0.2s; display: inline-block; }
+  .hero-btn-secondary:hover { border-color: #00d4f5; color: #00d4f5; }
+  .hero-networks { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.18); margin-top: 2rem; font-family: var(--sans); opacity: 0; animation: fadein 0.6s ease 4.4s forwards; }
 
   .hero-desc { display: none; }
 
@@ -279,20 +311,16 @@
 </nav>
 
 <div class="hero-section">
-  <div class="hero-bars">
-    <div class="hero-bar"></div><div class="hero-bar"></div><div class="hero-bar"></div>
-    <div class="hero-bar"></div><div class="hero-bar"></div><div class="hero-bar"></div>
+  <div class="hero-lines">
+    <div class="hero-line"></div>
+    <div class="hero-line"></div>
+    <div class="hero-line"></div>
   </div>
-  <div class="hero-slashes">
-    <div class="hero-slash"></div><div class="hero-slash"></div><div class="hero-slash"></div>
-  </div>
-  <div class="hero-sweep"><span></span><span></span><span></span></div>
-  <div class="hero-overlay"></div>
 
   <div class="hero-content">
     <div class="hero-tag">Creative Editor &amp; Story Architect</div>
     <h2 class="hero-name"><span class="n-first">STEPHANIE </span><span class="n-last">ERICKSON</span></h2>
-    <p class="hero-quote">&ldquo;Chronologically challenged. Narratively gifted.&rdquo;</p>
+    <p class="hero-quote">&ldquo;It&rsquo;s just TV.&rdquo;</p>
     <div class="hero-stats">
       <div><span class="stat-number">65+</span><span class="stat-label">Credits</span></div>
       <div><span class="stat-number">18+</span><span class="stat-label">Networks</span></div>
