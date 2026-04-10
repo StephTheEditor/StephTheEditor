@@ -55,41 +55,90 @@
 
   @keyframes fadein { from { opacity:0; transform: translateY(8px); } to { opacity:1; transform: translateY(0); } }
 
-  /* NEON NAME */
+  /* ── PREMIUM ANIMATION SYSTEM ── */
+
+  /* cubic-bezier: fast-in, slow-out — high contrast easing */
+
   .hero-name { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3.84rem, 8.9vw, 10.2rem); font-weight: 400; line-height: 0.86; letter-spacing: 0.04em; text-transform: uppercase; white-space: nowrap; margin-bottom: 0; color: transparent; }
-  .hero-name .n-first, .hero-name .n-last { color: transparent; text-shadow: none; animation: neon-blue-on 2.8s ease forwards 0.8s, neon-blue-pulse 4s ease-in-out infinite 3.8s; }
 
-  @keyframes neon-blue-on {
-    0%   { color: transparent; text-shadow: none; }
-    25%  { color: rgba(0,212,245,0.95); text-shadow: 0 0 2px #fff, 0 0 6px #00d4f5, 0 0 15px #00d4f5, 0 0 30px rgba(0,212,245,0.8); }
-    28%  { color: rgba(0,212,245,0.1); text-shadow: none; }
-    35%  { color: rgba(0,212,245,0.95); text-shadow: 0 0 2px #fff, 0 0 6px #00d4f5, 0 0 15px #00d4f5, 0 0 30px rgba(0,212,245,0.8); }
-    37%  { color: rgba(0,212,245,0.3); text-shadow: 0 0 4px #00d4f5; }
-    45%  { color: #00d4f5; text-shadow: 0 0 2px #fff, 0 0 8px #00d4f5, 0 0 20px #00d4f5, 0 0 50px rgba(0,212,245,0.7), 0 0 100px rgba(0,212,245,0.3), 0 0 180px rgba(0,212,245,0.15); }
-    70%  { color: #00d4f5; text-shadow: 0 0 2px #fff, 0 0 6px #00d4f5, 0 0 16px #00d4f5, 0 0 40px rgba(0,212,245,0.6), 0 0 80px rgba(0,212,245,0.25); }
-    100% { color: #00d4f5; text-shadow: 0 0 2px #fff, 0 0 8px #00d4f5, 0 0 20px #00d4f5, 0 0 50px rgba(0,212,245,0.7), 0 0 100px rgba(0,212,245,0.3), 0 0 180px rgba(0,212,245,0.15); }
-  }
-  @keyframes neon-blue-pulse {
-    0%,100% { text-shadow: 0 0 2px #fff, 0 0 8px #00d4f5, 0 0 20px #00d4f5, 0 0 50px rgba(0,212,245,0.7), 0 0 100px rgba(0,212,245,0.3); }
-    50%     { text-shadow: 0 0 2px #fff, 0 0 6px #00d4f5, 0 0 14px #00d4f5, 0 0 35px rgba(0,212,245,0.5), 0 0 70px rgba(0,212,245,0.2); }
+  /* STEPHANIE — snap-settle with scale overshoot, text first then glow blooms */
+  .hero-name .n-first {
+    color: transparent;
+    text-shadow: none;
+    animation:
+      name-text-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards 0.06s,
+      name-glow-bloom 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards 0.22s,
+      name-idle-pulse 6s ease-in-out infinite 1.2s;
   }
 
-  /* THE EDITOR — ultralight sans, extreme letter spacing, pink whisper */
-  .hero-quote { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: clamp(0.72rem, 1.22vw, 1rem); letter-spacing: 0.45em; text-transform: uppercase; color: transparent; margin-top: 1.2rem; margin-bottom: 0; padding-left: 3.5rem; animation: neon-pink-on 1.8s ease forwards 3.4s, neon-pink-pulse 5s ease-in-out infinite 5.4s; }
-  @keyframes neon-pink-on {
-    0%   { color: transparent; text-shadow: none; }
-    30%  { color: rgba(255,45,155,0.9); text-shadow: 0 0 2px #fff, 0 0 8px #ff2d9b, 0 0 20px #ff2d9b; }
-    33%  { color: rgba(255,45,155,0.1); text-shadow: none; }
-    55%  { color: #ff2d9b; text-shadow: 0 0 2px #fff, 0 0 8px #ff2d9b, 0 0 20px #ff2d9b, 0 0 45px rgba(255,45,155,0.6); }
-    100% { color: #ff2d9b; text-shadow: 0 0 2px #fff, 0 0 8px #ff2d9b, 0 0 20px #ff2d9b, 0 0 45px rgba(255,45,155,0.6); }
+  /* ERICKSON — 80ms stagger after STEPHANIE */
+  .hero-name .n-last {
+    color: transparent;
+    text-shadow: none;
+    animation:
+      name-text-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards 0.14s,
+      name-glow-bloom 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards 0.30s,
+      name-idle-pulse 6s ease-in-out infinite 1.28s;
   }
-  @keyframes neon-pink-pulse {
-    0%,100% { text-shadow: 0 0 2px #fff, 0 0 8px #ff2d9b, 0 0 20px #ff2d9b, 0 0 45px rgba(255,45,155,0.6); }
-    50%     { text-shadow: 0 0 2px #fff, 0 0 5px #ff2d9b, 0 0 14px #ff2d9b, 0 0 30px rgba(255,45,155,0.4); }
+
+  /* Phase 1: text snaps in with scale overshoot — no glow yet */
+  @keyframes name-text-in {
+    0%   { color: transparent; transform: scale(0.98); opacity: 0; }
+    /* fast snap — 25% of duration = ~138ms */
+    25%  { color: rgba(0,212,245,0.92); transform: scale(1.018); opacity: 1; }
+    /* micro-overshoot peaks then settles */
+    40%  { transform: scale(1.008); }
+    100% { color: #00d4f5; transform: scale(1); opacity: 1; }
+  }
+
+  /* Phase 2: glow blooms after text is visible — light emission feel */
+  @keyframes name-glow-bloom {
+    0%   { text-shadow: 0 0 1px rgba(0,212,245,0.3); }
+    /* tight edge definition first */
+    30%  { text-shadow: 0 0 1px #fff, 0 0 4px #00d4f5, 0 0 8px rgba(0,212,245,0.6); }
+    /* glow radiates outward — not uniform, heavier on inner radii */
+    65%  { text-shadow: 0 0 1px #fff, 0 0 6px #00d4f5, 0 0 14px #00d4f5, 0 0 32px rgba(0,212,245,0.55), 0 0 55px rgba(0,212,245,0.22); }
+    /* settles slightly dimmer — not full blast at rest */
+    100% { text-shadow: 0 0 1px #fff, 0 0 5px #00d4f5, 0 0 12px #00d4f5, 0 0 28px rgba(0,212,245,0.5), 0 0 50px rgba(0,212,245,0.18); }
+  }
+
+  /* Idle: barely perceptible slow pulse — amplitude kept very low */
+  @keyframes name-idle-pulse {
+    0%, 100% { text-shadow: 0 0 1px #fff, 0 0 5px #00d4f5, 0 0 12px #00d4f5, 0 0 28px rgba(0,212,245,0.5), 0 0 50px rgba(0,212,245,0.18); }
+    50%       { text-shadow: 0 0 1px #fff, 0 0 4px #00d4f5, 0 0 9px #00d4f5, 0 0 20px rgba(0,212,245,0.38), 0 0 38px rgba(0,212,245,0.12); }
+  }
+
+  /* THE EDITOR — enters after name settles, simple opacity, no complex motion */
+  .hero-quote {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    font-size: clamp(0.72rem, 1.22vw, 1rem);
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    color: transparent;
+    margin-top: 1.2rem;
+    margin-bottom: 0;
+    padding-left: 3.5rem;
+    animation:
+      subtitle-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards 1.0s,
+      subtitle-idle 7s ease-in-out infinite 2s;
+  }
+
+  /* Subtitle: clean fade with slight upward drift — no flicker, no complexity */
+  @keyframes subtitle-in {
+    0%   { color: transparent; text-shadow: none; opacity: 0; transform: translateY(3px); }
+    40%  { opacity: 0.7; color: rgba(255,45,155,0.85); transform: translateY(0); }
+    100% { opacity: 1; color: #ff2d9b; text-shadow: 0 0 1px rgba(255,255,255,0.4), 0 0 6px #ff2d9b, 0 0 14px rgba(255,45,155,0.45); transform: translateY(0); }
+  }
+
+  /* Subtitle idle: very slow barely-there pulse */
+  @keyframes subtitle-idle {
+    0%, 100% { text-shadow: 0 0 1px rgba(255,255,255,0.4), 0 0 6px #ff2d9b, 0 0 14px rgba(255,45,155,0.45); }
+    50%       { text-shadow: 0 0 1px rgba(255,255,255,0.2), 0 0 4px #ff2d9b, 0 0 10px rgba(255,45,155,0.3); }
   }
 
   /* Network strip — bottom whisper */
-  .hero-networks { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.48); font-family: var(--sans); opacity: 0; animation: fadein 0.8s ease 4s forwards; position: absolute; bottom: 3rem; left: 0; right: 0; text-align: center; }
+  .hero-networks { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.48); font-family: var(--sans); opacity: 0; animation: fadein 0.6s cubic-bezier(0.22, 1, 0.36, 1) 1.8s forwards; position: absolute; bottom: 3rem; left: 0; right: 0; text-align: center; }
 
   .hero-desc { display: none; }
 
