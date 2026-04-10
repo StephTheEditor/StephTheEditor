@@ -77,7 +77,7 @@
   }
 
   /* THE EDITOR — ultralight sans, extreme letter spacing, pink whisper */
-  .hero-quote { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: clamp(0.65rem, 1.1vw, 0.9rem); letter-spacing: 0.45em; text-transform: uppercase; color: transparent; margin-top: 1.2rem; margin-bottom: 0; animation: neon-pink-on 1.8s ease forwards 3.4s, neon-pink-pulse 5s ease-in-out infinite 5.4s; }
+  .hero-quote { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: clamp(0.72rem, 1.22vw, 1rem); letter-spacing: 0.45em; text-transform: uppercase; color: transparent; margin-top: 1.2rem; margin-bottom: 0; padding-left: 3.5rem; animation: neon-pink-on 1.8s ease forwards 3.4s, neon-pink-pulse 5s ease-in-out infinite 5.4s; }
   @keyframes neon-pink-on {
     0%   { color: transparent; text-shadow: none; }
     30%  { color: rgba(255,45,155,0.9); text-shadow: 0 0 2px #fff, 0 0 8px #ff2d9b, 0 0 20px #ff2d9b; }
@@ -222,11 +222,6 @@
     .award-row { grid-template-columns: 1fr 2fr; } .award-badge { display: none; }
     .form-row { grid-template-columns: 1fr; }
   }
-
-  /* TV FUZZ TRANSITION */
-  .tv-fuzz { position: fixed; inset: 0; z-index: 9999; pointer-events: none; opacity: 0; transition: opacity 0.1s; }
-  .tv-fuzz canvas { width: 100%; height: 100%; display: block; }
-  .tv-fuzz.active { pointer-events: all; }
 </style>
 </head>
 <body>
@@ -1085,77 +1080,5 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 <!-- TV FUZZ OVERLAY -->
-<div class="tv-fuzz" id="tvFuzz"><canvas id="fuzzCanvas"></canvas></div>
-
-<script>
-(function() {
-  const fuzz = document.getElementById('tvFuzz');
-  const canvas = document.getElementById('fuzzCanvas');
-  const ctx = canvas.getContext('2d');
-  let animFrame, isRunning = false;
-
-  function resize() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-  }
-  resize();
-  window.addEventListener('resize', resize);
-
-  function drawFuzz(intensity) {
-    const w = canvas.width, h = canvas.height;
-    const img = ctx.createImageData(w, h);
-    const d = img.data;
-    for (let i = 0; i < d.length; i += 4) {
-      const v = Math.random() < intensity ? Math.floor(Math.random() * 255) : 0;
-      d[i] = d[i+1] = d[i+2] = v;
-      d[i+3] = Math.random() < intensity ? 220 : 0;
-    }
-    ctx.putImageData(img, 0, 0);
-  }
-
-  function loop() {
-    if (!isRunning) return;
-    drawFuzz(0.82);
-    animFrame = requestAnimationFrame(loop);
-  }
-
-  function getTop(el) {
-    return el ? el.getBoundingClientRect().top + window.scrollY : Infinity;
-  }
-
-  window.addEventListener('scroll', () => {
-    const networks = document.querySelector('.hero-networks');
-    const manifesto = document.getElementById('manifesto-quote');
-    if (!networks || !manifesto) return;
-
-    const networksTop = getTop(networks);
-    const manifestoTop = getTop(manifesto);
-    const scrollBottom = window.scrollY + window.innerHeight;
-
-    if (scrollBottom < networksTop) {
-      // Before fuzz zone
-      fuzz.style.opacity = '0';
-      if (isRunning) { isRunning = false; cancelAnimationFrame(animFrame); }
-
-    } else if (scrollBottom >= networksTop && scrollBottom <= manifestoTop) {
-      // In fuzz zone — ramp from 0 to 1
-      const progress = (scrollBottom - networksTop) / (manifestoTop - networksTop);
-      const opacity = Math.min(progress * 1.5, 1);
-      fuzz.style.opacity = String(opacity);
-      if (!isRunning) { isRunning = true; loop(); }
-
-    } else {
-      // Past manifesto — fade out over 300px of scroll
-      const fadeOut = Math.min((scrollBottom - manifestoTop) / 300, 1);
-      fuzz.style.opacity = String(Math.max(1 - fadeOut, 0));
-      if (fadeOut >= 1 && isRunning) {
-        isRunning = false;
-        cancelAnimationFrame(animFrame);
-        fuzz.style.opacity = '0';
-      }
-    }
-  }, { passive: true });
-})();
-</script>
 </body>
 </html>
