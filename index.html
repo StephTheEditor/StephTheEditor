@@ -59,24 +59,46 @@
 
   .hero-name { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3.84rem, 8.9vw, 10.2rem); font-weight: 400; line-height: 0.86; letter-spacing: 0.04em; text-transform: uppercase; white-space: nowrap; margin-bottom: 0; color: transparent; }
 
-  /* Both spans start cold — JS drives all states */
-  .hero-name .n-first, .hero-name .n-last { color: transparent; text-shadow: none; will-change: color, text-shadow; }
+  /* STEPHANIE — snap then settle, glow blooms separately */
+  .hero-name .n-first { color: transparent; text-shadow: none; animation: neon-blue-on 2.8s ease forwards 0.8s, neon-blue-pulse 4s ease-in-out infinite 3.8s; }
 
-  /* THE EDITOR — 20% larger, JS reveals */
-  .hero-quote { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: clamp(0.86rem, 1.46vw, 1.2rem); letter-spacing: 0.45em; text-transform: uppercase; color: transparent; text-shadow: none; margin-top: 1.2rem; margin-bottom: 0; padding-left: 3.5rem; }
+  /* ERICKSON — 80ms stagger */
+  .hero-name .n-last  { color: transparent; text-shadow: none; animation: neon-blue-on 2.8s ease forwards 0.88s, neon-blue-pulse 4s ease-in-out infinite 3.88s; }
 
-  /* Idle breathing — CSS handles rest state after JS powers on */
-  @keyframes neon-breathe {
-    0%,100% { text-shadow: 0 0 2px #fff, 0 0 8px #00d4f5, 0 0 20px #00d4f5, 0 0 50px rgba(0,212,245,0.7), 0 0 100px rgba(0,212,245,0.3), 0 0 180px rgba(0,212,245,0.15); }
-    50%      { text-shadow: 0 0 2px #fff, 0 0 6px #00d4f5, 0 0 14px #00d4f5, 0 0 35px rgba(0,212,245,0.5), 0 0 70px rgba(0,212,245,0.2), 0 0 130px rgba(0,212,245,0.1); }
+  @keyframes neon-blue-on {
+    0%   { color: transparent; text-shadow: none; }
+    25%  { color: rgba(0,212,245,0.95); text-shadow: 0 0 2px #fff, 0 0 6px #00d4f5, 0 0 15px #00d4f5, 0 0 30px rgba(0,212,245,0.8); }
+    28%  { color: rgba(0,212,245,0.1); text-shadow: none; }
+    35%  { color: rgba(0,212,245,0.95); text-shadow: 0 0 2px #fff, 0 0 6px #00d4f5, 0 0 15px #00d4f5, 0 0 30px rgba(0,212,245,0.8); }
+    37%  { color: rgba(0,212,245,0.3); text-shadow: 0 0 4px #00d4f5; }
+    45%  { color: #00d4f5; text-shadow: 0 0 2px #fff, 0 0 8px #00d4f5, 0 0 20px #00d4f5, 0 0 50px rgba(0,212,245,0.7), 0 0 100px rgba(0,212,245,0.3), 0 0 180px rgba(0,212,245,0.15); }
+    70%  { color: #00d4f5; text-shadow: 0 0 2px #fff, 0 0 6px #00d4f5, 0 0 16px #00d4f5, 0 0 40px rgba(0,212,245,0.6), 0 0 80px rgba(0,212,245,0.25); }
+    100% { color: #00d4f5; text-shadow: 0 0 2px #fff, 0 0 8px #00d4f5, 0 0 20px #00d4f5, 0 0 50px rgba(0,212,245,0.7), 0 0 100px rgba(0,212,245,0.3), 0 0 180px rgba(0,212,245,0.15); }
   }
+
+  @keyframes neon-blue-pulse {
+    0%,100% { text-shadow: 0 0 2px #fff, 0 0 8px #00d4f5, 0 0 20px #00d4f5, 0 0 50px rgba(0,212,245,0.7), 0 0 100px rgba(0,212,245,0.3); }
+    50%     { text-shadow: 0 0 2px #fff, 0 0 6px #00d4f5, 0 0 14px #00d4f5, 0 0 35px rgba(0,212,245,0.5), 0 0 70px rgba(0,212,245,0.2); }
+  }
+
+  /* THE EDITOR — 20% larger, pink flicker on, then idle pulse */
+  .hero-quote { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: clamp(0.86rem, 1.46vw, 1.2rem); letter-spacing: 0.45em; text-transform: uppercase; color: transparent; margin-top: 1.2rem; margin-bottom: 0; padding-left: 3.5rem; animation: neon-pink-on 1.8s ease forwards 3.4s, neon-pink-pulse 5s ease-in-out infinite 5.4s; }
+
+  @keyframes neon-pink-on {
+    0%   { color: transparent; text-shadow: none; }
+    30%  { color: rgba(255,45,155,0.9); text-shadow: 0 0 2px #fff, 0 0 8px #ff2d9b, 0 0 20px #ff2d9b; }
+    33%  { color: rgba(255,45,155,0.1); text-shadow: none; }
+    55%  { color: #ff2d9b; text-shadow: 0 0 2px #fff, 0 0 8px #ff2d9b, 0 0 20px #ff2d9b, 0 0 45px rgba(255,45,155,0.6); }
+    100% { color: #ff2d9b; text-shadow: 0 0 2px #fff, 0 0 8px #ff2d9b, 0 0 20px #ff2d9b, 0 0 45px rgba(255,45,155,0.6); }
+  }
+
   @keyframes neon-pink-pulse {
     0%,100% { text-shadow: 0 0 2px #fff, 0 0 8px #ff2d9b, 0 0 20px #ff2d9b, 0 0 45px rgba(255,45,155,0.6); }
-    50%      { text-shadow: 0 0 2px #fff, 0 0 5px #ff2d9b, 0 0 14px #ff2d9b, 0 0 30px rgba(255,45,155,0.4); }
+    50%     { text-shadow: 0 0 2px #fff, 0 0 5px #ff2d9b, 0 0 14px #ff2d9b, 0 0 30px rgba(255,45,155,0.4); }
   }
 
   /* Network strip */
-  .hero-networks { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.48); font-family: var(--sans); opacity: 0; position: absolute; bottom: 3rem; left: 0; right: 0; text-align: center; transition: opacity 1s ease; }
+  .hero-networks { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.48); font-family: var(--sans); opacity: 0; animation: fadein 0.6s cubic-bezier(0.22, 1, 0.36, 1) 4.2s forwards; position: absolute; bottom: 3rem; left: 0; right: 0; text-align: center; }
 
   .hero-desc { display: none; }
 
@@ -262,9 +284,9 @@
     <div class="hero-line"></div>
   </div>
   <div class="hero-content">
-    <h2 class="hero-name"><span class="n-first">STEPHANIE&nbsp;</span><span class="n-last">ERICKSON</span></h2>
-    <p class="hero-quote">The Editor</p>
-    <p class="hero-networks">HBO &nbsp;&middot;&nbsp; ABC &nbsp;&middot;&nbsp; HGTV &nbsp;&middot;&nbsp; Discovery &nbsp;&middot;&nbsp; Bravo &nbsp;&middot;&nbsp; YouTube</p>
+    <h2 class="hero-name"><span class="n-first" id="nFirst">STEPHANIE&nbsp;</span><span class="n-last" id="nLast">ERICKSON</span></h2>
+    <p class="hero-quote" id="nSub">The Editor</p>
+    <p class="hero-networks" id="nNets">HBO &nbsp;&middot;&nbsp; ABC &nbsp;&middot;&nbsp; HGTV &nbsp;&middot;&nbsp; Discovery &nbsp;&middot;&nbsp; Bravo &nbsp;&middot;&nbsp; YouTube</p>
   </div>
 </div>
 
@@ -1062,95 +1084,6 @@ document.addEventListener('DOMContentLoaded', function() {
 }); // end DOMContentLoaded
 </script>
 
-<!-- TV FUZZ OVERLAY -->
 
-
-<script>
-(function() {
-  var first = document.querySelector('.hero-name .n-first');
-  var last  = document.querySelector('.hero-name .n-last');
-  var sub   = document.querySelector('.hero-quote');
-  var nets  = document.querySelector('.hero-networks');
-
-  function applyState(el, color, shadow, dur) {
-    el.style.transition = dur > 0
-      ? 'color ' + dur + 'ms ease, text-shadow ' + dur + 'ms ease'
-      : 'none';
-    el.style.color = color;
-    el.style.textShadow = shadow;
-  }
-
-  // ±jitter so no two loads feel identical
-  function j(base, range) {
-    return base + (Math.random() - 0.5) * range;
-  }
-
-  var GLOW_FULL = '0 0 2px #fff, 0 0 8px #00d4f5, 0 0 20px #00d4f5, 0 0 50px rgba(0,212,245,0.7), 0 0 100px rgba(0,212,245,0.3), 0 0 180px rgba(0,212,245,0.15)';
-  var GLOW_REST = GLOW_FULL;
-
-  function runNeon(el, offset) {
-    // Cold
-    applyState(el, 'transparent', 'none', 0);
-
-    // Pre-glow — cathode warmth
-    setTimeout(function() {
-      applyState(el, 'rgba(0,212,245,0.06)', '0 0 1px rgba(255,255,255,0.5)', 400);
-    }, j(300, 60) + offset);
-
-    // First strike
-    setTimeout(function() {
-      applyState(el, 'rgba(0,212,245,0.75)', '0 0 1px #fff, 0 0 4px #00d4f5, 0 0 10px rgba(0,212,245,0.8)', 55);
-    }, j(700, 80) + offset);
-
-    // Dropout
-    setTimeout(function() {
-      applyState(el, 'rgba(0,212,245,0.04)', '0 0 1px rgba(255,255,255,0.1)', 85);
-    }, j(820, 60) + offset);
-
-    // Second strike — stronger
-    setTimeout(function() {
-      applyState(el, 'rgba(0,212,245,0.9)', '0 0 2px #fff, 0 0 6px #00d4f5, 0 0 14px #00d4f5, 0 0 30px rgba(0,212,245,0.65)', 50);
-    }, j(1050, 70) + offset);
-
-    // Dim — current stabilizing
-    setTimeout(function() {
-      applyState(el, 'rgba(0,212,245,0.48)', '0 0 1px rgba(255,255,255,0.5), 0 0 3px #00d4f5, 0 0 8px rgba(0,212,245,0.5)', 110);
-    }, j(1180, 60) + offset);
-
-    // Full power
-    setTimeout(function() {
-      applyState(el, '#00d4f5', GLOW_FULL, 200);
-    }, j(1480, 80) + offset);
-
-    // Hand off to CSS breathing idle
-    setTimeout(function() {
-      el.style.transition = 'none';
-      el.style.color = '#00d4f5';
-      el.style.textShadow = GLOW_REST;
-      el.style.animation = 'neon-breathe 5s ease-in-out infinite ' + (offset * 2) + 'ms';
-    }, 2400 + offset);
-  }
-
-  // STEPHANIE first, ERICKSON 130ms later
-  runNeon(first, 0);
-  runNeon(last, 130);
-
-  // THE EDITOR — fades in after name settles
-  setTimeout(function() {
-    sub.style.transition = 'color 1.4s ease, text-shadow 1.4s ease, opacity 1.4s ease';
-    sub.style.opacity = '1';
-    sub.style.color = '#ff2d9b';
-    sub.style.textShadow = '0 0 2px #fff, 0 0 8px #ff2d9b, 0 0 20px #ff2d9b, 0 0 45px rgba(255,45,155,0.6)';
-    setTimeout(function() {
-      sub.style.animation = 'neon-pink-pulse 5s ease-in-out infinite';
-    }, 1500);
-  }, 2500);
-
-  // Networks last
-  setTimeout(function() {
-    nets.style.opacity = '1';
-  }, 3200);
-})();
-</script>
 </body>
 </html>
