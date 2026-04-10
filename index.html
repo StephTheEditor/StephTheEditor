@@ -28,10 +28,10 @@
   nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 3rem; background: rgba(13,13,18,0.94); backdrop-filter: blur(8px); border-bottom: 0.5px solid var(--border); }
   .nav-logo { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 0.72rem; letter-spacing: 0.38em; text-transform: uppercase; color: #ff2d9b; text-decoration: none; text-shadow: 0 0 8px #ff2d9b, 0 0 20px rgba(255,45,155,0.5); transition: text-shadow 0.3s; }
   .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
-  .nav-links a { font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .nav-links a { font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(238,234,248,0.75); text-decoration: none; transition: color 0.2s; }
   .nav-links a:hover { color: var(--teal); }
-  .nav-resume-btn { font-family: var(--sans); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(238,234,248,0.7) !important; background: transparent; padding: 0.45rem 1.1rem; cursor: pointer; display: inline-block; transition: all 0.2s; border: 0.5px solid rgba(238,234,248,0.25); }
-  .nav-resume-btn:hover { background: transparent !important; color: #00d4f5 !important; border-color: #00d4f5 !important; }
+  .nav-resume-btn { font-family: var(--sans); font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted) !important; background: transparent; padding: 0; cursor: pointer; display: inline-block; transition: color 0.2s; border: none; text-decoration: none; }
+  .nav-resume-btn:hover { color: var(--teal) !important; }
   .nav-social { display: flex; align-items: center; gap: 1.5rem; margin-left: 1.5rem; padding-left: 1.5rem; border-left: 0.5px solid var(--border); }
   .nav-social-link { color: rgba(238,234,248,0.45); text-decoration: none; transition: color 0.2s, opacity 0.2s; display: flex; align-items: center; }
   .nav-social-link:hover { color: #ff2d9b; opacity: 1; }
@@ -51,7 +51,7 @@
   @keyframes driftline { 0%,100% { opacity:0; } 30% { opacity:1; } 70% { opacity:0.6; } }
 
   /* Content panel */
-  .hero-content { position: relative; z-index: 5; width: 100%; padding: 0 8rem 0 2.5rem; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; min-height: 100vh; }
+  .hero-content { position: relative; z-index: 5; width: 100%; padding: 0 8rem 0 5rem; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; min-height: 100vh; }
 
   /* Tag line */
 
@@ -91,7 +91,7 @@
   }
 
   /* Network strip — bottom whisper */
-  .hero-networks { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.48); margin-top: 4rem; font-family: var(--sans); opacity: 0; animation: fadein 0.8s ease 4s forwards; text-align: left; }
+  .hero-networks { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.48); font-family: var(--sans); opacity: 0; animation: fadein 0.8s ease 4s forwards; position: absolute; bottom: 3rem; left: 0; right: 0; text-align: center; }
 
   .hero-desc { display: none; }
 
@@ -222,6 +222,11 @@
     .award-row { grid-template-columns: 1fr 2fr; } .award-badge { display: none; }
     .form-row { grid-template-columns: 1fr; }
   }
+
+  /* TV FUZZ TRANSITION */
+  .tv-fuzz { position: fixed; inset: 0; z-index: 9999; pointer-events: none; opacity: 0; transition: opacity 0.1s; }
+  .tv-fuzz canvas { width: 100%; height: 100%; display: block; }
+  .tv-fuzz.active { pointer-events: all; }
 </style>
 </head>
 <body>
@@ -1077,6 +1082,82 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
 }); // end DOMContentLoaded
+</script>
+
+<!-- TV FUZZ OVERLAY -->
+<div class="tv-fuzz" id="tvFuzz"><canvas id="fuzzCanvas"></canvas></div>
+
+<script>
+(function() {
+  const fuzz = document.getElementById('tvFuzz');
+  const canvas = document.getElementById('fuzzCanvas');
+  const ctx = canvas.getContext('2d');
+  let animFrame, startTime, triggered = false;
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  function drawFuzz(intensity) {
+    const w = canvas.width, h = canvas.height;
+    const imageData = ctx.createImageData(w, h);
+    const data = imageData.data;
+    for (let i = 0; i < data.length; i += 4) {
+      const v = Math.random() < intensity ? Math.floor(Math.random() * 255) : 0;
+      data[i] = data[i+1] = data[i+2] = v;
+      data[i+3] = Math.random() < intensity ? 200 : 0;
+    }
+    ctx.putImageData(imageData, 0, 0);
+  }
+
+  function animateFuzz(timestamp) {
+    if (!startTime) startTime = timestamp;
+    const elapsed = timestamp - startTime;
+    const duration = 2800;
+
+    if (elapsed < 200) {
+      // Flash on
+      fuzz.style.opacity = '1';
+      drawFuzz(0.9);
+    } else if (elapsed < duration - 300) {
+      // Flicker and fade
+      const progress = (elapsed - 200) / (duration - 500);
+      const intensity = 0.85 * (1 - progress * 0.6);
+      fuzz.style.opacity = String(1 - progress * 0.3);
+      drawFuzz(intensity);
+    } else {
+      // Fade out
+      fuzz.style.opacity = '0';
+      setTimeout(() => {
+        fuzz.classList.remove('active');
+        triggered = false;
+      }, 300);
+      return;
+    }
+    animFrame = requestAnimationFrame(animateFuzz);
+  }
+
+  // Trigger on scroll past hero
+  const hero = document.querySelector('.hero-section');
+  let lastScrollY = 0;
+
+  window.addEventListener('scroll', () => {
+    const heroBottom = hero ? hero.offsetHeight : window.innerHeight;
+    const scrollY = window.scrollY;
+
+    if (scrollY > heroBottom * 0.6 && lastScrollY <= heroBottom * 0.6 && !triggered) {
+      triggered = true;
+      startTime = null;
+      fuzz.classList.add('active');
+      cancelAnimationFrame(animFrame);
+      animFrame = requestAnimationFrame(animateFuzz);
+    }
+    lastScrollY = scrollY;
+  }, { passive: true });
+})();
 </script>
 </body>
 </html>
