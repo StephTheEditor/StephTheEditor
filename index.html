@@ -51,14 +51,14 @@
   @keyframes driftline { 0%,100% { opacity:0; } 30% { opacity:1; } 70% { opacity:0.6; } }
 
   /* Content panel */
-  .hero-content { position: relative; z-index: 5; width: 100%; padding: 0 8rem 0 5rem; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; min-height: 100vh; }
+  .hero-content { position: relative; z-index: 5; width: 100%; padding: 0 8rem 0 8rem; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; min-height: 100vh; }
 
   /* Tag line */
 
   @keyframes fadein { from { opacity:0; transform: translateY(8px); } to { opacity:1; transform: translateY(0); } }
 
   /* NEON NAME */
-  .hero-name { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3rem, 7vw, 8rem); font-weight: 400; line-height: 0.86; letter-spacing: 0.04em; text-transform: uppercase; white-space: nowrap; margin-bottom: 0; color: transparent; }
+  .hero-name { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3.84rem, 8.9vw, 10.2rem); font-weight: 400; line-height: 0.86; letter-spacing: 0.04em; text-transform: uppercase; white-space: nowrap; margin-bottom: 0; color: transparent; }
   .hero-name .n-first, .hero-name .n-last { color: transparent; text-shadow: none; animation: neon-blue-on 2.8s ease forwards 0.8s, neon-blue-pulse 4s ease-in-out infinite 3.8s; }
 
   @keyframes neon-blue-on {
@@ -293,7 +293,7 @@
 <hr class="divider">
 
 <section id="work">
-  <p style="font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 1.25rem; line-height: 1.7; color: var(--teal); margin: 0 0 2.5rem; padding-left: 1.5rem; border-left: 2px solid var(--accent);">She edits television. She produces verticals and leads the creative edit. She tells stories that people cannot stop watching, on any screen, in any format.</p>
+  <p id="manifesto-quote" style="font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 1.25rem; line-height: 1.7; color: var(--teal); margin: 0 0 2.5rem; padding-left: 1.5rem; border-left: 2px solid var(--accent);">She edits television. She produces verticals and leads the creative edit. She tells stories that people cannot stop watching, on any screen, in any format.</p>
   <div class="section-label">Selected Work</div>
   <div class="filter-bar">
     <button class="filter-btn active" data-filter="all">All</button>
@@ -1092,7 +1092,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const fuzz = document.getElementById('tvFuzz');
   const canvas = document.getElementById('fuzzCanvas');
   const ctx = canvas.getContext('2d');
-  let animFrame, startTime, triggered = false;
+  let animFrame, isRunning = false;
 
   function resize() {
     canvas.width = window.innerWidth;
@@ -1103,59 +1103,57 @@ document.addEventListener('DOMContentLoaded', function() {
 
   function drawFuzz(intensity) {
     const w = canvas.width, h = canvas.height;
-    const imageData = ctx.createImageData(w, h);
-    const data = imageData.data;
-    for (let i = 0; i < data.length; i += 4) {
+    const img = ctx.createImageData(w, h);
+    const d = img.data;
+    for (let i = 0; i < d.length; i += 4) {
       const v = Math.random() < intensity ? Math.floor(Math.random() * 255) : 0;
-      data[i] = data[i+1] = data[i+2] = v;
-      data[i+3] = Math.random() < intensity ? 200 : 0;
+      d[i] = d[i+1] = d[i+2] = v;
+      d[i+3] = Math.random() < intensity ? 220 : 0;
     }
-    ctx.putImageData(imageData, 0, 0);
+    ctx.putImageData(img, 0, 0);
   }
 
-  function animateFuzz(timestamp) {
-    if (!startTime) startTime = timestamp;
-    const elapsed = timestamp - startTime;
-    const duration = 2800;
-
-    if (elapsed < 200) {
-      // Flash on
-      fuzz.style.opacity = '1';
-      drawFuzz(0.9);
-    } else if (elapsed < duration - 300) {
-      // Flicker and fade
-      const progress = (elapsed - 200) / (duration - 500);
-      const intensity = 0.85 * (1 - progress * 0.6);
-      fuzz.style.opacity = String(1 - progress * 0.3);
-      drawFuzz(intensity);
-    } else {
-      // Fade out
-      fuzz.style.opacity = '0';
-      setTimeout(() => {
-        fuzz.classList.remove('active');
-        triggered = false;
-      }, 300);
-      return;
-    }
-    animFrame = requestAnimationFrame(animateFuzz);
+  function loop() {
+    if (!isRunning) return;
+    drawFuzz(0.82);
+    animFrame = requestAnimationFrame(loop);
   }
 
-  // Trigger on scroll past hero
-  const hero = document.querySelector('.hero-section');
-  let lastScrollY = 0;
+  function getTop(el) {
+    return el ? el.getBoundingClientRect().top + window.scrollY : Infinity;
+  }
 
   window.addEventListener('scroll', () => {
-    const heroBottom = hero ? hero.offsetHeight : window.innerHeight;
-    const scrollY = window.scrollY;
+    const networks = document.querySelector('.hero-networks');
+    const manifesto = document.getElementById('manifesto-quote');
+    if (!networks || !manifesto) return;
 
-    if (scrollY > heroBottom * 0.6 && lastScrollY <= heroBottom * 0.6 && !triggered) {
-      triggered = true;
-      startTime = null;
-      fuzz.classList.add('active');
-      cancelAnimationFrame(animFrame);
-      animFrame = requestAnimationFrame(animateFuzz);
+    const networksTop = getTop(networks);
+    const manifestoTop = getTop(manifesto);
+    const scrollBottom = window.scrollY + window.innerHeight;
+
+    if (scrollBottom < networksTop) {
+      // Before fuzz zone
+      fuzz.style.opacity = '0';
+      if (isRunning) { isRunning = false; cancelAnimationFrame(animFrame); }
+
+    } else if (scrollBottom >= networksTop && scrollBottom <= manifestoTop) {
+      // In fuzz zone — ramp from 0 to 1
+      const progress = (scrollBottom - networksTop) / (manifestoTop - networksTop);
+      const opacity = Math.min(progress * 1.5, 1);
+      fuzz.style.opacity = String(opacity);
+      if (!isRunning) { isRunning = true; loop(); }
+
+    } else {
+      // Past manifesto — fade out over 300px of scroll
+      const fadeOut = Math.min((scrollBottom - manifestoTop) / 300, 1);
+      fuzz.style.opacity = String(Math.max(1 - fadeOut, 0));
+      if (fadeOut >= 1 && isRunning) {
+        isRunning = false;
+        cancelAnimationFrame(animFrame);
+        fuzz.style.opacity = '0';
+      }
     }
-    lastScrollY = scrollY;
   }, { passive: true });
 })();
 </script>
