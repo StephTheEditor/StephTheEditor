@@ -55,60 +55,32 @@
 
   @keyframes fadein { from { opacity:0; transform: translateY(8px); } to { opacity:1; transform: translateY(0); } }
 
-  /* ── PREMIUM ANIMATION SYSTEM ── */
+  /* ── REEL NEON — CINEMATIC TITLE ANIMATION ── */
 
-  /* cubic-bezier: fast-in, slow-out — high contrast easing */
-
-  .hero-name { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3.84rem, 8.9vw, 10.2rem); font-weight: 400; line-height: 0.86; letter-spacing: 0.04em; text-transform: uppercase; white-space: nowrap; margin-bottom: 0; color: transparent; }
-
-  /* STEPHANIE — snap-settle with scale overshoot, text first then glow blooms */
-  .hero-name .n-first {
+  .hero-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3.84rem, 8.9vw, 10.2rem);
+    font-weight: 400;
+    line-height: 0.86;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    margin-bottom: 0;
     color: transparent;
-    text-shadow: none;
-    animation:
-      name-text-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards 0.06s,
-      name-glow-bloom 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards 0.22s,
-      name-idle-pulse 6s ease-in-out infinite 1.2s;
   }
 
-  /* ERICKSON — 80ms stagger after STEPHANIE */
+  /* Base state — both spans start invisible */
+  .hero-name .n-first,
   .hero-name .n-last {
+    display: inline-block;
     color: transparent;
     text-shadow: none;
-    animation:
-      name-text-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards 0.14s,
-      name-glow-bloom 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards 0.30s,
-      name-idle-pulse 6s ease-in-out infinite 1.28s;
+    opacity: 0;
+    transform: scale(0.98);
+    will-change: transform, opacity, color, text-shadow;
   }
 
-  /* Phase 1: text snaps in with scale overshoot — no glow yet */
-  @keyframes name-text-in {
-    0%   { color: transparent; transform: scale(0.98); opacity: 0; }
-    /* fast snap — 25% of duration = ~138ms */
-    25%  { color: rgba(0,212,245,0.92); transform: scale(1.018); opacity: 1; }
-    /* micro-overshoot peaks then settles */
-    40%  { transform: scale(1.008); }
-    100% { color: #00d4f5; transform: scale(1); opacity: 1; }
-  }
-
-  /* Phase 2: glow blooms after text is visible — light emission feel */
-  @keyframes name-glow-bloom {
-    0%   { text-shadow: 0 0 1px rgba(0,212,245,0.3); }
-    /* tight edge definition first */
-    30%  { text-shadow: 0 0 1px #fff, 0 0 4px #00d4f5, 0 0 8px rgba(0,212,245,0.6); }
-    /* glow radiates outward — not uniform, heavier on inner radii */
-    65%  { text-shadow: 0 0 1px #fff, 0 0 6px #00d4f5, 0 0 14px #00d4f5, 0 0 32px rgba(0,212,245,0.55), 0 0 55px rgba(0,212,245,0.22); }
-    /* settles slightly dimmer — not full blast at rest */
-    100% { text-shadow: 0 0 1px #fff, 0 0 5px #00d4f5, 0 0 12px #00d4f5, 0 0 28px rgba(0,212,245,0.5), 0 0 50px rgba(0,212,245,0.18); }
-  }
-
-  /* Idle: barely perceptible slow pulse — amplitude kept very low */
-  @keyframes name-idle-pulse {
-    0%, 100% { text-shadow: 0 0 1px #fff, 0 0 5px #00d4f5, 0 0 12px #00d4f5, 0 0 28px rgba(0,212,245,0.5), 0 0 50px rgba(0,212,245,0.18); }
-    50%       { text-shadow: 0 0 1px #fff, 0 0 4px #00d4f5, 0 0 9px #00d4f5, 0 0 20px rgba(0,212,245,0.38), 0 0 38px rgba(0,212,245,0.12); }
-  }
-
-  /* THE EDITOR — enters after name settles, simple opacity, no complex motion */
+  /* THE EDITOR — starts hidden, JS reveals it */
   .hero-quote {
     font-family: 'DM Sans', sans-serif;
     font-weight: 300;
@@ -119,26 +91,54 @@
     margin-top: 1.2rem;
     margin-bottom: 0;
     padding-left: 3.5rem;
-    animation:
-      subtitle-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards 1.0s,
-      subtitle-idle 7s ease-in-out infinite 2s;
+    opacity: 0;
+    will-change: opacity, color, text-shadow;
   }
 
-  /* Subtitle: clean fade with slight upward drift — no flicker, no complexity */
-  @keyframes subtitle-in {
-    0%   { color: transparent; text-shadow: none; opacity: 0; transform: translateY(3px); }
-    40%  { opacity: 0.7; color: rgba(255,45,155,0.85); transform: translateY(0); }
-    100% { opacity: 1; color: #ff2d9b; text-shadow: 0 0 1px rgba(255,255,255,0.4), 0 0 6px #ff2d9b, 0 0 14px rgba(255,45,155,0.45); transform: translateY(0); }
+  /* Grain overlay — subtle material texture */
+  .hero-grain {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 4;
+    opacity: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+    background-size: 256px 256px;
+    mix-blend-mode: overlay;
+    transition: opacity 0.4s ease;
   }
 
-  /* Subtitle idle: very slow barely-there pulse */
-  @keyframes subtitle-idle {
-    0%, 100% { text-shadow: 0 0 1px rgba(255,255,255,0.4), 0 0 6px #ff2d9b, 0 0 14px rgba(255,45,155,0.45); }
-    50%       { text-shadow: 0 0 1px rgba(255,255,255,0.2), 0 0 4px #ff2d9b, 0 0 10px rgba(255,45,155,0.3); }
+  /* Glow states — named for JS to apply */
+  .glow-none   { text-shadow: none; }
+  .glow-edge   { text-shadow: 0 0 1px rgba(255,255,255,0.9), 0 0 3px #00d4f5, 0 0 6px rgba(0,212,245,0.7); }
+  .glow-mid    { text-shadow: 0 0 1px #fff, 0 0 5px #00d4f5, 0 0 10px #00d4f5, 0 0 22px rgba(0,212,245,0.55); }
+  .glow-full   { text-shadow: 0 0 1px #fff, 0 0 5px #00d4f5, 0 0 12px #00d4f5, 0 0 26px rgba(0,212,245,0.52), 0 0 48px rgba(0,212,245,0.18); }
+  .glow-flick1 { text-shadow: 0 0 1px #fff, 0 0 6px #00d4f5, 0 0 14px #00d4f5, 0 0 30px rgba(0,212,245,0.6), 0 0 52px rgba(0,212,245,0.22); }
+  .glow-flick2 { text-shadow: 0 0 1px rgba(255,255,255,0.5), 0 0 3px #00d4f5, 0 0 7px rgba(0,212,245,0.5); }
+  .glow-rest   { text-shadow: 0 0 1px #fff, 0 0 5px #00d4f5, 0 0 11px #00d4f5, 0 0 24px rgba(0,212,245,0.48), 0 0 44px rgba(0,212,245,0.16); }
+
+  /* Idle breathing — nearly imperceptible amplitude */
+  @keyframes neon-breathe {
+    0%, 100% { text-shadow: 0 0 1px #fff, 0 0 5px #00d4f5, 0 0 11px #00d4f5, 0 0 24px rgba(0,212,245,0.48), 0 0 44px rgba(0,212,245,0.16); }
+    50%       { text-shadow: 0 0 1px #fff, 0 0 4px #00d4f5, 0 0 9px #00d4f5, 0 0 19px rgba(0,212,245,0.38), 0 0 36px rgba(0,212,245,0.11); }
+  }
+  @keyframes grain-drift {
+    0%   { background-position: 0px 0px; }
+    100% { background-position: 256px 256px; }
+  }
+
+  /* Subtitle rest */
+  .subtitle-rest {
+    color: #ff2d9b;
+    text-shadow: 0 0 1px rgba(255,255,255,0.3), 0 0 5px #ff2d9b, 0 0 12px rgba(255,45,155,0.4);
+  }
+  @keyframes subtitle-breathe {
+    0%, 100% { text-shadow: 0 0 1px rgba(255,255,255,0.3), 0 0 5px #ff2d9b, 0 0 12px rgba(255,45,155,0.4); }
+    50%       { text-shadow: 0 0 1px rgba(255,255,255,0.15), 0 0 3px #ff2d9b, 0 0 8px rgba(255,45,155,0.28); }
   }
 
   /* Network strip — bottom whisper */
-  .hero-networks { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.48); font-family: var(--sans); opacity: 0; animation: fadein 0.6s cubic-bezier(0.22, 1, 0.36, 1) 1.8s forwards; position: absolute; bottom: 3rem; left: 0; right: 0; text-align: center; }
+  .hero-networks { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.48); font-family: var(--sans); opacity: 0; transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1); position: absolute; bottom: 3rem; left: 0; right: 0; text-align: center; }
 
   .hero-desc { display: none; }
 
@@ -323,11 +323,12 @@
     <div class="hero-line"></div>
     <div class="hero-line"></div>
   </div>
+  <div class="hero-grain" id="heroGrain"></div>
 
   <div class="hero-content">
-    <h2 class="hero-name"><span class="n-first">STEPHANIE </span><span class="n-last">ERICKSON</span></h2>
-    <p class="hero-quote">The Editor</p>
-    <p class="hero-networks">HBO &nbsp;&middot;&nbsp; ABC &nbsp;&middot;&nbsp; HGTV &nbsp;&middot;&nbsp; Discovery &nbsp;&middot;&nbsp; Bravo &nbsp;&middot;&nbsp; YouTube</p>
+    <h2 class="hero-name"><span class="n-first" id="nameFirst">STEPHANIE </span><span class="n-last" id="nameLast">ERICKSON</span></h2>
+    <p class="hero-quote" id="heroSubtitle">The Editor</p>
+    <p class="hero-networks" id="heroNetworks">HBO &nbsp;&middot;&nbsp; ABC &nbsp;&middot;&nbsp; HGTV &nbsp;&middot;&nbsp; Discovery &nbsp;&middot;&nbsp; Bravo &nbsp;&middot;&nbsp; YouTube</p>
   </div>
 </div>
 
@@ -1126,5 +1127,170 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 <!-- TV FUZZ OVERLAY -->
+
+<script>
+(function() {
+  const first    = document.getElementById('nameFirst');
+  const last     = document.getElementById('nameLast');
+  const subtitle = document.getElementById('heroSubtitle');
+  const networks = document.getElementById('heroNetworks');
+  const grain    = document.getElementById('heroGrain');
+
+  // Easing functions
+  function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
+  function easeInOut(t) { return t < 0.5 ? 2*t*t : 1-Math.pow(-2*t+2,2)/2; }
+
+  // Lerp scale via transform
+  function setScale(el, s) { el.style.transform = 'scale(' + s + ')'; }
+  function setOpacity(el, o) { el.style.opacity = o; }
+
+  // Apply a named glow class (removes others)
+  const glowClasses = ['glow-none','glow-edge','glow-mid','glow-full','glow-flick1','glow-flick2','glow-rest'];
+  function setGlow(el, cls) {
+    glowClasses.forEach(c => el.classList.remove(c));
+    el.classList.add(cls);
+  }
+
+  // Transition text-shadow smoothly by toggling with CSS transition
+  function applyGlowWithTransition(el, cls, duration) {
+    el.style.transition = 'text-shadow ' + duration + 'ms cubic-bezier(0.4,0,0.2,1)';
+    setGlow(el, cls);
+  }
+
+  function setColor(el, c) { el.style.color = c; }
+
+  // ── SEQUENCER ──
+  // All times in ms from page load
+
+  // Pre-warm: grain at 0% opacity, barely visible
+  setTimeout(() => {
+    grain.style.opacity = '0.025';
+    grain.style.animation = 'grain-drift 8s linear infinite';
+  }, 0);
+
+  // ── STEPHANIE: PHASE 1 — TEXT ARRIVAL (0ms–250ms) ──
+  // t=0: start
+  const T0 = 40; // slight pre-delay so paint is ready
+
+  // Animate opacity + scale for STEPHANIE over 250ms
+  const p1Dur = 250;
+  const p1Start = T0;
+  let p1Raf;
+  function animateArrival(el, startTime, delay) {
+    setTimeout(() => {
+      // Set initial color — sharp, barely lit
+      setColor(el, '#00d4f5');
+      setGlow(el, 'glow-none');
+      const start = performance.now();
+      function step(now) {
+        const t = Math.min((now - start) / p1Dur, 1);
+        const easedT = easeOut(t);
+        // Opacity: 0 → 1
+        setOpacity(el, easedT);
+        // Scale: 0.98 → 1.02 → 1.0 (overshoot at 60% then settle)
+        let scale;
+        if (t < 0.55) {
+          scale = 0.98 + (1.02 - 0.98) * (t / 0.55);
+        } else {
+          const settle = (t - 0.55) / 0.45;
+          scale = 1.02 + (1.0 - 1.02) * easeOut(settle);
+        }
+        setScale(el, scale);
+        if (t < 1) {
+          requestAnimationFrame(step);
+        } else {
+          setOpacity(el, 1);
+          setScale(el, 1);
+        }
+      }
+      requestAnimationFrame(step);
+    }, delay);
+  }
+
+  animateArrival(first, T0, T0);         // STEPHANIE at 40ms
+  animateArrival(last,  T0, T0 + 80);    // ERICKSON at 120ms — 80ms stagger
+
+  // ── PHASE 2 — GLOW BLOOM (200ms–600ms) ──
+  // Starts while text is still arriving, glow trails text by ~160ms
+
+  function bloomGlow(el, startDelay) {
+    // Step 1: tight edge glow
+    setTimeout(() => {
+      applyGlowWithTransition(el, 'glow-edge', 80);
+    }, startDelay);
+    // Step 2: mid glow radiates out
+    setTimeout(() => {
+      applyGlowWithTransition(el, 'glow-mid', 150);
+    }, startDelay + 120);
+    // Step 3: atmosphere layer
+    setTimeout(() => {
+      applyGlowWithTransition(el, 'glow-full', 200);
+    }, startDelay + 300);
+  }
+
+  bloomGlow(first, T0 + 160);     // STEPHANIE glow at ~200ms
+  bloomGlow(last,  T0 + 240);     // ERICKSON glow at ~280ms
+
+  // ── PHASE 3 — POWER STABILIZATION (550ms–750ms) ──
+  // 1-2 subtle flickers — glow intensity shifts, NOT opacity
+  const stabBase = T0 + 550;
+
+  function stabilize(el, offset) {
+    setTimeout(() => {
+      // Flicker 1: brief intensity surge
+      applyGlowWithTransition(el, 'glow-flick1', 40);
+      setTimeout(() => {
+        // Dip
+        applyGlowWithTransition(el, 'glow-flick2', 30);
+        setTimeout(() => {
+          // Settle to rest
+          applyGlowWithTransition(el, 'glow-rest', 120);
+        }, 55);
+      }, 70);
+    }, stabBase + offset);
+  }
+
+  stabilize(first, 0);
+  stabilize(last, 35);
+
+  // ── PHASE 4 — RESTING STATE — continuous breathing ──
+  const restTime = T0 + 900;
+
+  function startIdle(el, phaseOffset) {
+    setTimeout(() => {
+      el.style.transition = 'none';
+      setGlow(el, 'glow-rest');
+      // Hand off to CSS breathing animation
+      el.style.animation = 'neon-breathe 4s ease-in-out infinite ' + phaseOffset + 'ms';
+    }, restTime);
+  }
+
+  startIdle(first, 0);
+  startIdle(last, 400); // offset phase so they don't pulse in unison
+
+  // ── SUBTITLE — enters after name settles (~1000ms) ──
+  setTimeout(() => {
+    subtitle.style.transition = 'opacity 0.5s cubic-bezier(0.3, 0, 0.1, 1), color 0.5s cubic-bezier(0.3, 0, 0.1, 1), transform 0.5s cubic-bezier(0.3, 0, 0.1, 1)';
+    subtitle.style.transform = 'translateY(4px)';
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        subtitle.style.opacity = '1';
+        subtitle.classList.add('subtitle-rest');
+        subtitle.style.transform = 'translateY(0)';
+      });
+    });
+    // Breathing idle after subtitle settles
+    setTimeout(() => {
+      subtitle.style.animation = 'subtitle-breathe 6s ease-in-out infinite';
+    }, 600);
+  }, T0 + 950);
+
+  // ── NETWORKS — fade in last ──
+  setTimeout(() => {
+    networks.style.opacity = '1';
+  }, T0 + 1200);
+
+})();
+</script>
 </body>
 </html>
