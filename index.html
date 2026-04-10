@@ -6,7 +6,7 @@
 <title>Stephanie Erickson, Creative Editor and Story Architect</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&family=Inter:wght@900&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
@@ -28,8 +28,8 @@
   nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.1rem 3rem; background: rgba(13,13,18,0.94); backdrop-filter: blur(8px); border-bottom: 0.5px solid var(--border); }
   .nav-logo { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 0.72rem; letter-spacing: 0.38em; text-transform: uppercase; color: #ff2d9b; text-decoration: none; text-shadow: 0 0 2px #fff, 0 0 8px #ff2d9b, 0 0 20px #ff2d9b, 0 0 45px rgba(255,45,155,0.6); animation: neon-pink-pulse 5s ease-in-out infinite; display: flex; align-items: center; }
   .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
-  .nav-links a { font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: #bf5fff; text-decoration: none; transition: color 0.2s; }
-  .nav-links a:hover { color: #fff; }
+  .nav-links a { font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: #bf5fff; text-decoration: none; transition: color 0.2s; text-shadow: 0 0 8px rgba(191,95,255,0.8), 0 0 20px rgba(191,95,255,0.4); }
+  .nav-links a:hover { color: #bf5fff; text-shadow: 0 0 10px rgba(191,95,255,0.9); }
   .nav-social { display: flex; align-items: center; gap: 1.5rem; margin-left: 1.5rem; padding-left: 1.5rem; border-left: 0.5px solid var(--border); }
   .nav-social-link { color: rgba(238,234,248,0.45); text-decoration: none; transition: color 0.2s, opacity 0.2s; display: flex; align-items: center; }
   .nav-social-link:hover { color: #ff2d9b; opacity: 1; }
@@ -110,14 +110,13 @@
 
   .divider { border: none; border-top: 0.5px solid var(--border); margin: 0 3rem; }
   section { padding: 5rem 3rem; max-width: 1100px; margin: 0 auto; }
-  .section-label { font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--teal); margin-bottom: 3rem; display: flex; align-items: center; gap: 1rem; font-weight: 400; }
+  .section-label { font-size: 0.85rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--teal); margin-bottom: 3rem; display: flex; align-items: center; gap: 1rem; font-weight: 500; }
   .section-label::after { content: ''; flex: 1; height: 0.5px; background: var(--border); }
 
   /* FILTER */
-  .filter-bar { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 3rem; }
-  .filter-btn { font-family: var(--sans); font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; border: 0.5px solid var(--border); background: transparent; color: rgba(238,234,248,0.55); padding: 0.42rem 1rem; border-radius: 999px; cursor: pointer; transition: all 0.2s; }
-  .filter-btn:hover { color: var(--white); border-color: rgba(238,234,248,0.35); }
-  .filter-btn.active { background: var(--accent); color: #0d0d12; border-color: var(--accent); }
+  .filter-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+  .filter-btn { font-family: var(--sans); font-size: 0.82rem; letter-spacing: 0.06em; text-transform: uppercase; border: 0.5px solid var(--border); background: transparent; color: var(--white); padding: 0.5rem 1.1rem; border-radius: 999px; cursor: pointer; transition: all 0.2s; }
+  .filter-btn:hover, .filter-btn.active { background: var(--accent); color: var(--white); border-color: var(--accent); }
 
   /* GRID */
   .works-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px; background: var(--border); border: 0.5px solid var(--border); }
@@ -129,10 +128,10 @@
 
   .work-info { position: absolute; bottom: 0; left: 0; right: 0; padding: 1.25rem 1.5rem; background: linear-gradient(to top, rgba(17,17,16,0.84) 0%, transparent 100%); }
   .work-network { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(250,250,248,0.7); margin-bottom: 0.25rem; }
-  .work-title { font-family: var(--sans); font-size: 0.95rem; font-weight: 400; color: var(--white); line-height: 1.2; letter-spacing: 0.01em; }
+  .work-title { font-family: var(--serif); font-size: 1rem; color: var(--white); font-weight: 400; line-height: 1.2; }
   .work-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.45rem; }
-  .work-tag { font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.16rem 0.55rem; border-radius: 999px; border: 0.5px solid var(--teal); color: var(--teal); }
-  .work-tag.role { border-color: rgba(238,234,248,0.3); color: rgba(238,234,248,0.5); }
+  .work-tag { font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.18rem 0.6rem; border-radius: 999px; border: 0.5px solid var(--teal); color: var(--teal); }
+  .work-tag.role { border-color: rgba(238,234,248,0.35); color: rgba(238,234,248,0.55); }
 
   .work-overlay { position: absolute; inset: 0; background: rgba(13,13,18,0.82); display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 1.5rem; opacity: 0; transition: opacity 0.3s; text-align: center; gap: 0.75rem; }
   .work-card:hover .work-overlay { opacity: 1; }
@@ -150,57 +149,55 @@
   .credit-item { display: flex; flex-direction: column; gap: 0.15rem; }
   .credit-label { font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
   .credit-value { font-size: 0.9rem; color: var(--white); }
-  .about-body p { font-size: 1rem; line-height: 1.9; color: rgba(238,234,248,0.8); margin-bottom: 2rem; }
-  .about-quote { font-family: var(--serif); font-style: italic; font-size: 1.45rem; line-height: 1.5; color: var(--muted); margin: 2.5rem 0; padding: 0; border: none; opacity: 0.75; }
+  .about-body p { font-size: 1rem; line-height: 1.85; color: rgba(238,234,248,0.85); margin-bottom: 1.5rem; }
+  .about-quote { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 1.6rem; line-height: 1.5; color: var(--muted); margin: 2.5rem 0; padding: 0; border: none; opacity: 0.6; }
   .about-credentials { display: flex; flex-wrap: wrap; gap: 0.5rem 0; align-items: center; margin-top: 1rem; padding-top: 1.5rem; border-top: 0.5px solid var(--border); }
   .about-cred { font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
   .about-cred-dot { color: var(--teal); font-size: 0.8rem; margin: 0 0.5rem; }
-  .about-body p:first-child { color: rgba(238,234,248,0.95); font-size: 1.05rem; line-height: 1.9; }
+  .about-body p:first-child { color: var(--white); font-size: 1rem; line-height: 1.85; }
   .specialties { margin-top: 2.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
   .specialty { font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--white); padding: 0.75rem 1rem; border: 0.5px solid var(--border); display: flex; align-items: center; gap: 0.5rem; }
   .specialty::before { content: ''; display: block; width: 6px; height: 6px; background: var(--accent); border-radius: 50%; flex-shrink: 0; }
 
   /* CREDITS TABLE — editorial layout */
   .credits-section { margin-top: 3rem; }
-  .credits-category { font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--teal); margin: 2.5rem 0 0.75rem; display: flex; align-items: center; gap: 1rem; font-weight: 400; }
+  .credits-category { font-size: 0.85rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--teal); margin: 2.5rem 0 1rem; display: flex; align-items: center; gap: 1rem; font-weight: 500; }
   .credits-category::after { content: ''; flex: 1; height: 0.5px; background: var(--border); }
   .credits-table { width: 100%; border-collapse: collapse; }
   .credits-table tr { border-bottom: 0.5px solid var(--border); transition: background 0.15s; }
   .credits-table tr:hover { background: rgba(238,234,248,0.03); }
   .credits-table tr:last-child { border-bottom: none; }
-  .credits-table td { padding: 0.85rem 0.5rem 0.85rem 0; font-size: 0.88rem; vertical-align: middle; color: rgba(238,234,248,0.85); line-height: 1.3; }
-  .ct-net { color: rgba(155,143,192,0.6); font-size: 0.78rem; padding-left: 1.5rem; }
+  .credits-table td { padding: 1rem 0.5rem 1rem 0; font-size: 0.95rem; vertical-align: middle; color: var(--white); line-height: 1.3; }
+  .ct-net { color: var(--muted); font-size: 0.82rem; padding-left: 1.5rem; }
   .ct-role { text-align: right; white-space: nowrap; padding-left: 1rem; }
-  .ct-lead { font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); border: 0.5px solid rgba(0,212,245,0.5); padding: 0.18rem 0.65rem; border-radius: 999px; }
-  .ct-ed { display: none; }
+  .ct-lead { font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); border: 0.5px solid var(--accent); padding: 0.18rem 0.65rem; border-radius: 999px; }
+  .ct-ed { font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); border: 0.5px solid var(--border); padding: 0.18rem 0.65rem; border-radius: 999px; }
 
   /* PRESS */
-  .press-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; border-top: 0.5px solid var(--border); margin-bottom: 4rem; }
-  .press-item { background: transparent; padding: 2rem 2.5rem; display: flex; flex-direction: column; gap: 0.75rem; border-left: none; }
+  .press-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5px; background: var(--border); border: 0.5px solid var(--border); margin-bottom: 4rem; }
+  .press-item { background: #16162a; padding: 2.5rem; display: flex; flex-direction: column; gap: 1rem; }
   .press-outlet { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--teal); }
-  .press-quote { font-family: var(--sans); font-weight: 300; font-style: italic; font-size: 1.1rem; line-height: 1.6; color: var(--white); flex: 1; }
-  .press-meta { font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); opacity: 0.7; }
-  .press-item { border-bottom: 0.5px solid var(--border); }
+  .press-quote { font-family: var(--serif); font-style: italic; font-size: 1.2rem; line-height: 1.5; color: var(--white); flex: 1; }
+  .press-meta { font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--white); opacity: 0.45; }
 
   /* AWARDS */
   .awards-list { display: flex; flex-direction: column; }
-  .award-row { display: grid; grid-template-columns: 80px 1fr auto; gap: 2rem; padding: 1.25rem 0; border-top: 0.5px solid var(--border); align-items: center; }
-  .award-year { font-family: var(--sans); font-size: 0.95rem; letter-spacing: 0.05em; color: var(--purple); font-weight: 300; }
-  .award-name { font-size: 0.92rem; color: var(--white); font-weight: 400; }
-  .award-show { font-size: 0.78rem; color: var(--muted); margin-top: 0.25rem; opacity: 0.8; }
+  .award-row { display: grid; grid-template-columns: 1fr 2fr 1fr; gap: 2rem; padding: 1.5rem 0; border-top: 0.5px solid var(--border); align-items: center; }
+  .award-year { font-family: var(--serif); font-size: 1.5rem; color: var(--white); font-weight: 400; }
+  .award-name { font-size: 0.95rem; color: var(--white); }
+  .award-show { font-size: 0.78rem; color: var(--white); opacity: 0.65; margin-top: 0.2rem; }
   .award-badge { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.3rem 0.75rem; border-radius: 999px; text-align: center; display: inline-block; }
-  .badge-winner { background: rgba(0,212,245,0.08); color: var(--accent); border: 0.5px solid rgba(0,212,245,0.4); }
-  .badge-nom { background: transparent; color: var(--muted); border: 0.5px solid var(--border); }
+  .badge-winner { background: rgba(255,45,155,0.12); color: var(--accent); border: 0.5px solid var(--accent); }
+  .badge-nom { background: rgba(155,143,192,0.1); color: var(--muted); border: 0.5px solid var(--border); }
 
   /* CONTACT */
   .contact-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
-  .contact-left h2 { font-family: var(--sans); font-size: clamp(1.5rem, 2.5vw, 2rem); font-weight: 300; line-height: 1.3; margin-bottom: 1.5rem; color: rgba(238,234,248,0.95); letter-spacing: 0.01em; }
-  .contact-left h2 em { font-style: normal; color: rgba(238,234,248,0.5); }
-  .contact-left p { font-size: 0.95rem; color: rgba(238,234,248,0.6); line-height: 1.8; margin-bottom: 2rem; }
+  .contact-left h2 { font-family: var(--serif); font-size: clamp(2.5rem, 4vw, 3.5rem); font-weight: 400; line-height: 1.15; margin-bottom: 1.5rem; color: var(--white); }
+  .contact-left h2 em { font-style: italic; color: var(--accent); }
+  .contact-left p { font-size: 1rem; color: var(--white); line-height: 1.75; margin-bottom: 2rem; }
   .contact-links { display: flex; flex-direction: column; gap: 0.75rem; }
-  .contact-link { display: flex; align-items: center; gap: 1rem; color: var(--white); text-decoration: none; padding: 0.85rem 0; border-bottom: 0.5px solid var(--border); transition: opacity 0.2s; }
-  .contact-link:hover { opacity: 1; }
-  .contact-link:hover .arrow { transform: translateX(3px); color: var(--teal); }
+  .contact-link { display: flex; align-items: center; gap: 1rem; color: var(--white); text-decoration: none; padding: 1rem 1.25rem; border: 0.5px solid var(--border); transition: background 0.2s, border-color 0.2s; }
+  .contact-link:hover { background: rgba(0,245,212,0.06); border-color: var(--teal); }
   .contact-link-text { flex: 1; }
   .contact-link .arrow { font-size: 1rem; color: var(--muted); transition: transform 0.2s, color 0.2s; }
   .contact-link:hover .arrow { transform: translateX(3px); color: var(--teal); }
@@ -210,18 +207,18 @@
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
   .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
   .form-label { font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--white); }
-  .form-input, .form-textarea { font-family: var(--sans); font-size: 0.88rem; font-weight: 300; color: rgba(238,234,248,0.9); background: transparent; border: none; border-bottom: 0.5px solid var(--border); padding: 0.75rem 0; outline: none; transition: border-color 0.2s; width: 100%; }
-  .form-input:focus, .form-textarea:focus { border-color: rgba(238,234,248,0.5); }
+  .form-input, .form-textarea { font-family: var(--sans); font-size: 0.95rem; font-weight: 300; color: var(--white); background: rgba(255,255,255,0.04); border: 0.5px solid var(--border); padding: 0.75rem 1rem; outline: none; transition: border-color 0.2s; width: 100%; }
+  .form-input:focus, .form-textarea:focus { border-color: var(--teal); }
   .form-textarea { resize: vertical; min-height: 120px; }
-  .form-submit { font-family: var(--sans); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: #0d0d12; background: var(--teal); border: none; padding: 0.9rem 2rem; cursor: pointer; transition: all 0.2s; align-self: flex-start; }
+  .form-submit { font-family: var(--sans); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: #0d0d12; background: var(--teal); border: none; padding: 1rem 2rem; cursor: pointer; transition: background 0.2s; align-self: flex-start; }
   .form-submit:hover { background: var(--accent); color: var(--white); }
 
-  footer { border-top: 0.5px solid var(--border); padding: 1.5rem 3rem; display: flex; align-items: center; justify-content: space-between; }
-  .footer-logo { font-family: var(--sans); font-weight: 300; font-size: 0.68rem; letter-spacing: 0.36em; text-transform: uppercase; color: #ff2d9b; text-shadow: 0 0 2px #fff, 0 0 8px #ff2d9b, 0 0 20px rgba(255,45,155,0.5); animation: neon-pink-pulse 5s ease-in-out infinite; }
+  footer { border-top: 0.5px solid var(--border); padding: 2rem 3rem; display: flex; align-items: center; justify-content: space-between; }
+  .footer-logo { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 0.72rem; letter-spacing: 0.38em; text-transform: uppercase; color: #ff2d9b; text-shadow: 0 0 2px #fff, 0 0 8px #ff2d9b, 0 0 20px #ff2d9b, 0 0 45px rgba(255,45,155,0.6); animation: neon-pink-pulse 5s ease-in-out infinite; }
   .footer-social { display: flex; gap: 1.5rem; align-items: center; }
   .footer-social-link { font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
   .footer-social-link:hover { color: var(--teal); }
-  .footer-copy { font-size: 0.65rem; letter-spacing: 0.06em; color: rgba(238,234,248,0.3); }
+  .footer-copy { font-size: 0.75rem; letter-spacing: 0.06em; color: var(--white); opacity: 0.5; }
   .footer-social { display: flex; gap: 1.5rem; align-items: center; }
   .footer-social-link { font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
   .footer-social-link:hover { color: var(--teal); }
@@ -267,7 +264,24 @@
         <path d="M10 8.5h2.7v1.2c.5-.8 1.3-1.4 2.4-1.4 2.2 0 2.7 1.45 2.7 3.35V17h-2.7v-4.6c0-.8-.05-1.85-1.2-1.85s-1.45.86-1.45 1.78V17H10V8.5z" fill="#fff"/>
       </svg>
     </a>
-
+    <!-- Instagram — filled gradient background, white marks -->
+    <a href="https://www.instagram.com/stephtheeditor" target="_blank" class="nav-social-link nav-social-ig" title="Instagram">
+      <svg width="22" height="22" viewBox="0 0 22 22">
+        <defs>
+          <linearGradient id="ig-fill" x1="0%" y1="100%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#f09433"/>
+            <stop offset="30%" stop-color="#e6683c"/>
+            <stop offset="60%" stop-color="#dc2743"/>
+            <stop offset="80%" stop-color="#cc2366"/>
+            <stop offset="100%" stop-color="#bc1888"/>
+          </linearGradient>
+        </defs>
+        <rect width="22" height="22" rx="5.5" fill="url(#ig-fill)"/>
+        <rect x="5.5" y="5.5" width="11" height="11" rx="3" fill="none" stroke="#fff" stroke-width="1.4"/>
+        <circle cx="11" cy="11" r="2.8" fill="none" stroke="#fff" stroke-width="1.4"/>
+        <circle cx="15" cy="7" r="1" fill="#fff"/>
+      </svg>
+    </a>
   </div>
 </nav>
 
@@ -287,7 +301,7 @@
 <hr class="divider">
 
 <section id="work">
-  <p id="manifesto-quote" style="font-family: var(--sans); font-weight: 300; font-size: 1.1rem; line-height: 1.8; color: var(--teal); margin: 0 0 3rem; padding-left: 1.5rem; border-left: 1.5px solid var(--accent); letter-spacing: 0.01em;">Stephanie edits television. She produces verticals and leads the creative edit. She tells stories that people cannot stop watching, on any screen, in any format.</p>
+  <p id="manifesto-quote" style="font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 1.25rem; line-height: 1.7; color: var(--teal); margin: 0 0 2.5rem; padding-left: 1.5rem; border-left: 2px solid var(--accent);">She edits television. She produces verticals and leads the creative edit. She tells stories that people cannot stop watching, on any screen, in any format.</p>
   <div class="section-label">Selected Work</div>
   <div class="filter-bar">
     <button class="filter-btn active" data-filter="all">All</button>
@@ -296,7 +310,13 @@
     <button class="filter-btn" data-filter="home-makeover">Home Makeover</button>
     <button class="filter-btn" data-filter="makeup">Makeup</button>
     <button class="filter-btn" data-filter="food">Food</button>
-    <button class="filter-btn" data-filter="talent">Stage</button>
+    <button class="filter-btn" data-filter="travel">Travel</button>
+    <button class="filter-btn" data-filter="dating">Dating</button>
+    <button class="filter-btn" data-filter="real-estate">Real Estate</button>
+    <button class="filter-btn" data-filter="build-show">Build Show</button>
+    <button class="filter-btn" data-filter="christmas">Christmas</button>
+    <button class="filter-btn" data-filter="talent">Talent</button>
+    <button class="filter-btn" data-filter="sports">Sports</button>
     <button class="filter-btn" data-filter="lead-editor">Lead Editor</button>
   </div>
 
@@ -511,7 +531,7 @@
       </div>
     </div>
 
-    <div class="work-card" data-tags="competition,talent">
+    <div class="work-card" data-tags="competition,talent,lead-editor">
       <img src="images/Drop The mic.jpg" style="object-fit: cover; object-position: center top;" alt="Drop the Mic">
       <div class="work-info">
         <div class="work-network">TBS</div>
@@ -771,18 +791,31 @@
   <div class="section-label">About</div>
   <div class="about-grid">
     <div class="about-body">
-      <p>Stephanie Erickson is a Creative Editor and Story Architect with credits spanning HBO, HGTV, ABC, Discovery, Roku, MTV, YouTube Originals, and Snapchat. She has built one of the most versatile editorial careers in unscripted television by staying ahead of where the medium is going, not where it has been.</p>
-      <p>Her signature is rhythmic precision. Whether shaping a competition format, building a docuseries from the ground up, or crafting vertical content for emerging platforms, she delivers the fast-paced, music-driven storytelling that holds modern audiences. A graduate of the School of Film and Television at Loyola Marymount University, she approaches every project as a storyteller first.</p>
-      <blockquote class="about-quote">&#8220;It&#8217;s just TV.&#8221;</blockquote>
+      <p>Stephanie Erickson is a Creative Editor and Story Architect specializing in the world of prestige streaming and the emerging frontier of platform native vertical content. With an expansive portfolio that includes HBO, Discovery, HGTV, ABC, Roku and MTV, she has built one of the most versatile editorial careers in the industry by constantly staying at the forefront of shifting visual languages.</p>
+      <p>Her range is her signature. Whether shaping a long form docuseries, building the story architecture of a competition series, or crafting a vertical format from the ground up, Stephanie brings a signature rhythmic precision to every project. She pairs deep technical mastery with an intuitive sense of the now, delivering the fast paced, music driven storytelling that modern audiences demand.</p>
+      <p>A graduate of the School of Film and Television at Loyola Marymount University, she approaches every edit as a storyteller first. Her work has been recognized with a Streamy Award win and a Critics Choice Award win, alongside nominations from the Directors Guild of America and the Television Critics Association.</p>
+      <!-- QUOTE PLACEHOLDER — replace with something personal and funny -->
+      <blockquote class="about-quote">&#8220;Add something funny and personal here.&#8221;</blockquote>
 
       <div class="about-credentials">
         <span class="about-cred">IATSE Local 700</span>
+        <span class="about-cred-dot">·</span>
+        <span class="about-cred">Motion Picture Editors Guild</span>
         <span class="about-cred-dot">·</span>
         <span class="about-cred">LMU, School of Film and Television</span>
         <span class="about-cred-dot">·</span>
         <span class="about-cred">Los Angeles</span>
       </div>
-
+      <div class="specialties">
+        <div class="specialty">Dating Shows</div>
+        <div class="specialty">Food Competition</div>
+        <div class="specialty">Build Shows</div>
+        <div class="specialty">Verticals</div>
+        <div class="specialty">Adventure &amp; Travel</div>
+        <div class="specialty">Home Makeover</div>
+        <div class="specialty">Stage Shows</div>
+        <div class="specialty">Comedy</div>
+      </div>
 
       <div class="section-label" style="margin-top: 3rem;">Full Credits</div>
       <div class="credits-section" id="credits">
@@ -859,8 +892,8 @@
 <hr class="divider">
 
 <section id="press">
-  <div class="section-label">Press</div>
-  <p style="font-size: 1.05rem; line-height: 1.85; color: var(--white); max-width: 780px; margin-bottom: 3rem;">The shows Stephanie edits tend to get noticed. <em style="color: #eeeaf8; font-style: italic;">Face Off</em> ran for thirteen seasons on Syfy — Entertainment Weekly called it <em style="color: #eeeaf8; font-style: italic;">"freakishly entertaining"</em> and TV Guide's Matt Roush declared <em style="color: #eeeaf8; font-style: italic;">"the creativity is astounding."</em> <em style="color: #eeeaf8; font-style: italic;">Barbie Dreamhouse Challenge</em> drew 10.2 million viewers. <em style="color: #eeeaf8; font-style: italic;">Instant Influencer with James Charles</em> pulled 53 million views in its first month and took home the Streamy for Show of the Year. And when Screen Rant reviewed <em style="color: #eeeaf8; font-style: italic;">Bachelor Mansion Takeover</em> in 2026, they called it the best Bachelor spin-off ever made. She is not keeping score. The work is.</p>
+  <div class="section-label">Press &amp; Awards</div>
+  <p style="font-size: 1.05rem; line-height: 1.85; color: var(--white); max-width: 780px; margin-bottom: 3rem;">Stephanie edits shows that win. <em style="color: #eeeaf8; font-style: italic;">Face Off</em> won the Critics Choice Award for Best Reality Series in Competition (2015), earned nominations from the Directors Guild of America, TV Guide, RealScreen, and Cablefax, and was called <em style="color: #eeeaf8; font-style: italic;">"freakishly entertaining"</em> by Entertainment Weekly and <em style="color: #eeeaf8; font-style: italic;">"the creativity is astounding"</em> by TV Guide's Matt Roush. <em style="color: #eeeaf8; font-style: italic;">Instant Influencer with James Charles</em> won the Streamy Award for Show of the Year at the 10th Annual Streamy Awards in 2020, drawing over 53 million views in its first month alone. <em style="color: #eeeaf8; font-style: italic;">Bachelor Mansion Takeover</em> was declared the best Bachelor spin-off series ever produced by Screen Rant upon its 2026 premiere on HGTV.</p>
 
   <div class="press-grid">
     <div class="press-item">
@@ -887,19 +920,16 @@
 
   <div class="awards-list">
     <div class="award-row">
-      <div class="award-year">2025</div>
-      <div><div class="award-name">RealScreen Award, Competition Lifestyle</div><div class="award-show">Barbie Dreamhouse Challenge, HGTV</div></div>
-      <div><span class="award-badge badge-winner">Winner</span></div>
-    </div>
-    <div class="award-row">
-      <div class="award-year">2021</div>
-      <div><div class="award-name">MTV Movie + TV Award, Best Lifestyle Show</div><div class="award-show">Deliciousness, MTV</div></div>
-      <div><span class="award-badge badge-nom">Nominated</span></div>
-    </div>
-    <div class="award-row">
       <div class="award-year">2020</div>
-      <div><div class="award-name">Streamy Award, Show of the Year</div><div class="award-show">Instant Influencer with James Charles</div></div>
+      <div><div class="award-name">Streamy Award, Show of the Year</div><div class="award-show">Instant Influencer with James Charles, 10th Annual Streamy Awards</div></div>
       <div><span class="award-badge badge-winner">Winner</span></div>
+    </div>
+
+
+    <div class="award-row">
+      <div class="award-year">2016</div>
+      <div><div class="award-name">Critics Choice Award, Best Reality Series in Competition</div><div class="award-show">Face Off, Syfy</div></div>
+      <div><span class="award-badge badge-nom">Nominated</span></div>
     </div>
     <div class="award-row">
       <div class="award-year">2015</div>
@@ -912,13 +942,23 @@
       <div><span class="award-badge badge-winner">Winner</span></div>
     </div>
     <div class="award-row">
-      <div class="award-year">2011</div>
-      <div><div class="award-name">Teen Choice Award, Choice Reality Competition</div><div class="award-show">America's Best Dance Crew, MTV</div></div>
+      <div class="award-year">2015</div>
+      <div><div class="award-name">RealScreen Award, Competition Reality Game</div><div class="award-show">Face Off, Syfy</div></div>
       <div><span class="award-badge badge-nom">Nominated</span></div>
     </div>
     <div class="award-row">
-      <div class="award-year">2011</div>
-      <div><div class="award-name">GLAAD Media Award, Outstanding Reality Program</div><div class="award-show">Girls Who Like Boys Who Like Boys, Sundance Channel</div></div>
+      <div class="award-year">2014</div>
+      <div><div class="award-name">TV Guide Award, Favorite Reality Competition Show</div><div class="award-show">Face Off, Syfy</div></div>
+      <div><span class="award-badge badge-nom">Nominated</span></div>
+    </div>
+    <div class="award-row">
+      <div class="award-year">2013</div>
+      <div><div class="award-name">Critics Choice Award, Best Reality Series in Competition</div><div class="award-show">Face Off, Syfy</div></div>
+      <div><span class="award-badge badge-nom">Nominated</span></div>
+    </div>
+    <div class="award-row">
+      <div class="award-year">2013</div>
+      <div><div class="award-name">DGA Award, Outstanding Directorial Achievement in Reality Programs</div><div class="award-show">Face Off, Syfy</div></div>
       <div><span class="award-badge badge-nom">Nominated</span></div>
     </div>
   </div>
@@ -933,8 +973,14 @@
       <h2>Currently <em>available</em> for new projects</h2>
       <p>Stephanie is actively seeking her next project — streaming series, branded content, vertical formats, and advertising work. Based in Los Angeles and available for remote collaboration worldwide. If you have a story that needs to be told, this is the conversation to have.</p>
       <div class="contact-links">
-
-
+        <a class="contact-link" href="mailto:stephtheeditor@yahoo.com">
+          <div class="contact-link-text"><div class="contact-link-label">Email</div><div class="contact-link-value">stephtheeditor@yahoo.com</div></div>
+          <span class="arrow">→</span>
+        </a>
+        <a class="contact-link" href="tel:3102668117">
+          <div class="contact-link-text"><div class="contact-link-label">Phone</div><div class="contact-link-value">310-266-8117</div></div>
+          <span class="arrow">→</span>
+        </a>
         <a class="contact-link" href="https://www.imdb.com/name/nm1178441/" target="_blank">
           <div class="contact-link-text"><div class="contact-link-label">IMDb</div><div class="contact-link-value">Stephanie Erickson</div></div>
           <span class="arrow">→</span>
@@ -947,7 +993,10 @@
           <div class="contact-link-text"><div class="contact-link-label">LinkedIn</div><div class="contact-link-value">Stephanie Erickson</div></div>
           <span class="arrow">→</span>
         </a>
-
+        <a class="contact-link" href="https://www.instagram.com/stephtheeditor" target="_blank">
+          <div class="contact-link-text"><div class="contact-link-label">Instagram</div><div class="contact-link-value">@stephtheeditor</div></div>
+          <span class="arrow">→</span>
+        </a>
       </div>
     </div>
     <div>
