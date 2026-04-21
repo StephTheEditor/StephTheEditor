@@ -113,12 +113,6 @@
   .section-label { font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--teal); margin-bottom: 3rem; display: flex; align-items: center; gap: 1rem; font-weight: 400; }
   .section-label::after { content: ''; flex: 1; height: 0.5px; background: var(--border); }
 
-  /* FILTER */
-  .filter-bar { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 3rem; }
-  .filter-btn { font-family: var(--sans); font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; border: 0.5px solid var(--border); background: transparent; color: rgba(238,234,248,0.55); padding: 0.42rem 1rem; border-radius: 999px; cursor: pointer; transition: all 0.2s; }
-  .filter-btn:hover { color: var(--white); border-color: rgba(238,234,248,0.35); }
-  .filter-btn.active { background: var(--accent); color: #0d0d12; border-color: var(--accent); }
-
   /* GRID */
   .works-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px; background: var(--border); border: 0.5px solid var(--border); }
   .work-card { background: #16162a; position: relative; overflow: hidden; cursor: pointer; aspect-ratio: 2/3; }
@@ -127,12 +121,10 @@
   .work-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top; transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94); filter: brightness(0.88); }
   .work-card:hover img { transform: scale(1.04); filter: brightness(0.72); }
 
-  .work-info { position: absolute; bottom: 0; left: 0; right: 0; padding: 1.25rem 1.5rem; background: linear-gradient(to top, rgba(17,17,16,0.84) 0%, transparent 100%); }
+  .work-info { position: absolute; bottom: 0; left: 0; right: 0; padding: 1.25rem 1.5rem; background: linear-gradient(to top, rgba(17,17,16,0.84) 0%, transparent 100%); opacity: 0; transition: opacity 0.3s; }
+  .work-card:hover .work-info { opacity: 1; }
   .work-network { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(250,250,248,0.7); margin-bottom: 0.25rem; }
   .work-title { font-family: var(--sans); font-size: 0.95rem; font-weight: 400; color: var(--white); line-height: 1.2; letter-spacing: 0.01em; }
-  .work-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.45rem; }
-  .work-tag { font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.16rem 0.55rem; border-radius: 999px; border: 0.5px solid var(--teal); color: var(--teal); }
-  .work-tag.role { border-color: rgba(238,234,248,0.3); color: rgba(238,234,248,0.5); }
 
   .work-overlay { position: absolute; inset: 0; background: rgba(13,13,18,0.82); display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 1.5rem; opacity: 0; transition: opacity 0.3s; text-align: center; gap: 0.75rem; }
   .work-card:hover .work-overlay { opacity: 1; }
@@ -150,19 +142,19 @@
   .credit-item { display: flex; flex-direction: column; gap: 0.15rem; }
   .credit-label { font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
   .credit-value { font-size: 0.9rem; color: var(--white); }
-  .about-body p { font-size: 1rem; line-height: 1.9; color: rgba(238,234,248,0.8); margin-bottom: 2rem; }
+  .about-body p { font-family: var(--sans); font-size: 1rem; line-height: 1.9; color: var(--white); margin-bottom: 2rem; }
   .about-quote { font-family: var(--serif); font-style: italic; font-size: 1.45rem; line-height: 1.5; color: var(--muted); margin: 2.5rem 0; padding: 0; border: none; opacity: 0.75; }
   .about-credentials { display: flex; flex-wrap: wrap; gap: 0.5rem 0; align-items: center; margin-top: 1rem; padding-top: 1.5rem; border-top: 0.5px solid var(--border); }
   .about-cred { font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
   .about-cred-dot { color: var(--teal); font-size: 0.8rem; margin: 0 0.5rem; }
-  .about-body p:first-child { color: rgba(238,234,248,0.95); font-size: 1.05rem; line-height: 1.9; }
+  .about-body p:first-child { font-family: var(--sans); color: var(--white); font-size: 1.05rem; line-height: 1.9; }
   .specialties { margin-top: 2.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
   .specialty { font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--white); padding: 0.75rem 1rem; border: 0.5px solid var(--border); display: flex; align-items: center; gap: 0.5rem; }
   .specialty::before { content: ''; display: block; width: 6px; height: 6px; background: var(--accent); border-radius: 50%; flex-shrink: 0; }
 
   /* CREDITS TABLE — editorial layout */
   .credits-section { margin-top: 3rem; }
-  .credits-category { font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--teal); margin: 2.5rem 0 0.75rem; display: flex; align-items: center; gap: 1rem; font-weight: 400; }
+  .credits-category { font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin: 2.5rem 0 0.75rem; display: flex; align-items: center; gap: 1rem; font-weight: 400; }
   .credits-category::after { content: ''; flex: 1; height: 0.5px; background: var(--border); }
   .credits-table { width: 100%; border-collapse: collapse; }
   .credits-table tr { border-bottom: 0.5px solid var(--border); transition: background 0.15s; }
@@ -177,7 +169,7 @@
   /* PRESS */
   .press-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; border-top: 0.5px solid var(--border); margin-bottom: 4rem; }
   .press-item { background: transparent; padding: 2rem 2.5rem; display: flex; flex-direction: column; gap: 0.75rem; border-left: none; }
-  .press-outlet { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--teal); }
+  .press-outlet { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); }
   .press-quote { font-family: var(--sans); font-weight: 300; font-style: italic; font-size: 1.1rem; line-height: 1.6; color: var(--white); flex: 1; }
   .press-meta { font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); opacity: 0.7; }
   .press-item { border-bottom: 0.5px solid var(--border); }
@@ -185,7 +177,7 @@
   /* AWARDS */
   .awards-list { display: flex; flex-direction: column; }
   .award-row { display: grid; grid-template-columns: 80px 1fr auto; gap: 2rem; padding: 1.25rem 0; border-top: 0.5px solid var(--border); align-items: center; }
-  .award-year { font-family: var(--sans); font-size: 0.95rem; letter-spacing: 0.05em; color: var(--purple); font-weight: 300; }
+  .award-year { font-family: var(--sans); font-size: 0.95rem; letter-spacing: 0.05em; color: var(--accent); font-weight: 300; }
   .award-name { font-size: 0.92rem; color: var(--white); font-weight: 400; }
   .award-show { font-size: 0.78rem; color: var(--muted); margin-top: 0.25rem; opacity: 0.8; }
   .award-badge { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.3rem 0.75rem; border-radius: 999px; text-align: center; display: inline-block; }
@@ -267,6 +259,23 @@
         <path d="M10 8.5h2.7v1.2c.5-.8 1.3-1.4 2.4-1.4 2.2 0 2.7 1.45 2.7 3.35V17h-2.7v-4.6c0-.8-.05-1.85-1.2-1.85s-1.45.86-1.45 1.78V17H10V8.5z" fill="#fff"/>
       </svg>
     </a>
+    <!-- Instagram -->
+    <a href="https://www.instagram.com/stephtheeditor" target="_blank" class="nav-social-link nav-social-ig" title="Instagram">
+      <svg width="22" height="22" viewBox="0 0 22 22">
+        <rect width="22" height="22" rx="5" fill="url(#ig-grad)"/>
+        <defs>
+          <radialGradient id="ig-grad" cx="30%" cy="107%" r="150%">
+            <stop offset="0%" stop-color="#fdf497"/>
+            <stop offset="10%" stop-color="#fd5949"/>
+            <stop offset="50%" stop-color="#d6249f"/>
+            <stop offset="100%" stop-color="#285AEB"/>
+          </radialGradient>
+        </defs>
+        <rect x="6" y="6" width="10" height="10" rx="3" fill="none" stroke="#fff" stroke-width="1.5"/>
+        <circle cx="11" cy="11" r="2.8" fill="none" stroke="#fff" stroke-width="1.5"/>
+        <circle cx="15.2" cy="6.8" r="0.9" fill="#fff"/>
+      </svg>
+    </a>
 
   </div>
 </nav>
@@ -289,26 +298,15 @@
 <section id="work">
   <p id="manifesto-quote" style="font-family: var(--serif); font-style: italic; font-size: 1.25rem; line-height: 1.7; color: var(--accent); margin: 0 0 3rem; padding-left: 1.5rem; border-left: 2px solid var(--teal); letter-spacing: 0.01em;">Stephanie edits television. She produces verticals and leads the creative edit. She tells stories that people cannot stop watching, on any screen, in any format.</p>
   <div class="section-label">Selected Work</div>
-  <div class="filter-bar">
-    <button class="filter-btn active" data-filter="all">All</button>
-    <button class="filter-btn" data-filter="competition">Competition</button>
-    <button class="filter-btn" data-filter="docuseries">Docuseries</button>
-    <button class="filter-btn" data-filter="home-makeover">Home Makeover</button>
-    <button class="filter-btn" data-filter="makeup">Makeup</button>
-    <button class="filter-btn" data-filter="food">Food</button>
-    <button class="filter-btn" data-filter="talent">Stage</button>
-    <button class="filter-btn" data-filter="lead-editor">Lead Editor</button>
-  </div>
 
   <div class="works-grid">
 
     <!-- ROW 1 — WIDE -->
-    <div class="work-card wide" data-tags="competition,docuseries">
+    <div class="work-card wide" data-tags="competition">
       <img src="images/THE CLIMB HBO.avif" style="object-fit: cover; object-position: center top;" alt="The Climb">
       <div class="work-info">
         <div class="work-network">HBO</div>
         <div class="work-title">The Climb</div>
-        <div class="work-tags"><span class="work-tag">Competition</span><span class="work-tag">HBO</span></div>
       </div>
       <div class="work-overlay">
         <div class="overlay-network-label">Watch</div>
@@ -322,7 +320,6 @@
       <div class="work-info">
         <div class="work-network">HGTV / MAX</div>
         <div class="work-title">Bachelor Mansion Takeover</div>
-        <div class="work-tags"><span class="work-tag">Competition</span><span class="work-tag">Home Makeover</span></div>
       </div>
       <div class="work-overlay">
         <div class="overlay-network-label">Watch</div>
@@ -335,7 +332,6 @@
       <div class="work-info">
         <div class="work-network">Syfy</div>
         <div class="work-title">Face Off, Seasons 1 through 13</div>
-        <div class="work-tags"><span class="work-tag">Competition</span><span class="work-tag">Makeup</span></div>
       </div>
       <div class="work-overlay"><div class="overlay-network-label">Watch</div><div class="overlay-links"><a class="overlay-link" href="https://www.syfy.com/face-off" target="_blank">Syfy</a></div></div>
     </div>
@@ -345,7 +341,6 @@
       <div class="work-info">
         <div class="work-network">Roku Original</div>
         <div class="work-title">The Great American Baking Show, S6</div>
-        <div class="work-tags"><span class="work-tag">Competition</span><span class="work-tag">Food</span></div>
       </div>
       <div class="work-overlay">
         <div class="overlay-network-label">Watch</div>
@@ -359,7 +354,6 @@
       <div class="work-info">
         <div class="work-network">HGTV / MAX</div>
         <div class="work-title">Barbie Dreamhouse Challenge</div>
-        <div class="work-tags"><span class="work-tag">Competition</span><span class="work-tag">Home Makeover</span></div>
       </div>
       <div class="work-overlay">
         <div class="overlay-network-label">Watch</div>
@@ -372,7 +366,6 @@
       <div class="work-info">
         <div class="work-network">BET+</div>
         <div class="work-title">The Impact: Atlanta</div>
-        <div class="work-tags"><span class="work-tag">Docuseries</span></div>
       </div>
       <div class="work-overlay">
         <div class="overlay-network-label">Watch</div>
@@ -385,7 +378,6 @@
       <div class="work-info">
         <div class="work-network">Snapchat Original</div>
         <div class="work-title">Fake Up, Seasons 1 and 2</div>
-        <div class="work-tags"><span class="work-tag">Makeup</span><span class="work-tag">Competition</span><span class="work-tag role">Lead Editor</span></div>
       </div>
       <div class="work-overlay">
         <div class="overlay-network-label">Watch</div>
@@ -402,7 +394,6 @@
       <div class="work-info">
         <div class="work-network">TruTV</div>
         <div class="work-title">101 Places to Party Before You Die</div>
-        <div class="work-tags"><span class="work-tag">Docuseries</span><span class="work-tag">Travel</span><span class="work-tag">Comedy</span></div>
       </div>
       <div class="work-overlay">
         <div class="overlay-network-label">Watch</div>
@@ -415,7 +406,6 @@
       <div class="work-info">
         <div class="work-network">TruTV</div>
         <div class="work-title">Fast Foodies, S2</div>
-        <div class="work-tags"><span class="work-tag">Food</span><span class="work-tag">Competition</span></div>
       </div>
     </div>
 
@@ -424,7 +414,6 @@
       <div class="work-info">
         <div class="work-network">Discovery</div>
         <div class="work-title">Alaska: The Last Frontier, S8 &amp; 9</div>
-        <div class="work-tags"><span class="work-tag">Docuseries</span></div>
       </div>
     </div>
 
@@ -434,7 +423,6 @@
       <div class="work-info">
         <div class="work-network">ABC</div>
         <div class="work-title">The Proposal</div>
-        <div class="work-tags"><span class="work-tag">Competition</span><span class="work-tag">Dating</span></div>
       </div>
       <div class="work-overlay">
         <div class="overlay-network-label">Watch</div>
@@ -610,8 +598,8 @@
   <div class="section-label">Get in Touch</div>
   <div class="contact-wrap">
     <div class="contact-left">
-      <h2>Currently <em>available</em> for new projects</h2>
-      <p>Stephanie is actively seeking her next project — streaming series, branded content, vertical formats, and advertising work. Based in Los Angeles and available for remote collaboration worldwide. If you have a story that needs to be told, this is the conversation to have.</p>
+      <h2>Always looking for the <em>next great</em> project</h2>
+      <p>Streaming series, branded content, vertical formats, advertising work. Stephanie takes on projects worth making. Based in Los Angeles and open to remote collaboration worldwide. If the story is right, so is the conversation.</p>
       <div class="contact-links">
 
 
@@ -657,19 +645,7 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-
-  // Filter
-  document.querySelectorAll('.filter-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const filter = btn.dataset.filter;
-      document.querySelectorAll('.work-card').forEach(card => {
-        if (filter === 'all') { card.classList.remove('hidden'); return; }
-        const tags = (card.dataset.tags || '').split(',').map(t => t.trim());
-        tags.includes(filter) ? card.classList.remove('hidden') : card.classList.add('hidden');
-      });
-    });
+});
   });
 
   // Form — powered by Formspree
