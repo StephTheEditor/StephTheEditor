@@ -10,7 +10,7 @@
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
-    --black: #0d0d12;
+    --black: #000000;
     --white: #eeeaf8;
     --cream: #1a1a2e;
     --muted: #9b8fc0;
@@ -25,7 +25,7 @@
   body { font-family: var(--sans); background: var(--black); color: var(--white); font-size: 16px; line-height: 1.6; font-weight: 300; }
 
   /* NAV */
-  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.1rem 3rem; background: rgba(13,13,18,0.94); backdrop-filter: blur(8px); border-bottom: 0.5px solid var(--border); }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.1rem 3rem; background: rgba(0,0,0,0.94); backdrop-filter: blur(8px); border-bottom: 0.5px solid var(--border); }
   .nav-logo { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 0.72rem; letter-spacing: 0.38em; text-transform: uppercase; color: #ff2d9b; text-decoration: none; text-shadow: 0 0 2px #fff, 0 0 8px #ff2d9b, 0 0 20px #ff2d9b, 0 0 45px rgba(255,45,155,0.6); animation: neon-pink-pulse 5s ease-in-out infinite; display: flex; align-items: center; }
   .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
   .nav-links a { font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(238,234,248,0.45); text-decoration: none; transition: color 0.2s; }
@@ -114,7 +114,7 @@
 
   /* GRID */
   .works-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px; background: var(--border); border: 0.5px solid var(--border); }
-  .work-card { background: #16162a; position: relative; overflow: hidden; cursor: pointer; aspect-ratio: 2/3; }
+  .work-card { background: #000000; position: relative; overflow: hidden; cursor: pointer; aspect-ratio: 2/3; }
   .work-card.wide { grid-column: 1 / -1; aspect-ratio: 21/9; }
   .work-card.hidden { display: none; }
   .work-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top; transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94); filter: brightness(0.88); }
@@ -125,11 +125,11 @@
   .work-network { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(250,250,248,0.7); margin-bottom: 0.25rem; }
   .work-title { font-family: var(--sans); font-size: 0.95rem; font-weight: 400; color: var(--white); line-height: 1.2; letter-spacing: 0.01em; }
 
-  .work-overlay { position: absolute; inset: 0; background: rgba(13,13,18,0.82); display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 1.5rem; opacity: 0; transition: opacity 0.3s; text-align: center; gap: 0.75rem; }
+  .work-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.82); display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 1.5rem; opacity: 0; transition: opacity 0.3s; text-align: center; gap: 0.75rem; }
   .work-card:hover .work-overlay { opacity: 1; }
   .overlay-network-label { font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--teal); margin-bottom: 0.25rem; }
   .overlay-links { display: flex; flex-direction: column; align-items: center; gap: 0.6rem; width: 100%; max-width: 220px; }
-  .overlay-link { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: #0d0d12; background: var(--teal); text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 0.4rem; padding: 0.55rem 1.2rem; border-radius: 999px; width: 100%; transition: background 0.2s, color 0.2s; font-weight: 500; }
+  .overlay-link { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: #000000; background: var(--teal); text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 0.4rem; padding: 0.55rem 1.2rem; border-radius: 999px; width: 100%; transition: background 0.2s, color 0.2s; font-weight: 500; }
   .overlay-link:hover { background: var(--accent); color: var(--white); }
   .overlay-link::before { content: '▶'; font-size: 0.65rem; }
 
@@ -204,7 +204,7 @@
   .form-input, .form-textarea { font-family: var(--sans); font-size: 0.88rem; font-weight: 300; color: rgba(238,234,248,0.9); background: transparent; border: none; border-bottom: 0.5px solid var(--border); padding: 0.75rem 0; outline: none; transition: border-color 0.2s; width: 100%; }
   .form-input:focus, .form-textarea:focus { border-color: rgba(238,234,248,0.5); }
   .form-textarea { resize: vertical; min-height: 120px; }
-  .form-submit { font-family: var(--sans); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: #0d0d12; background: var(--teal); border: none; padding: 0.9rem 2rem; cursor: pointer; transition: all 0.2s; align-self: flex-start; }
+  .form-submit { font-family: var(--sans); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: #000000; background: var(--teal); border: none; padding: 0.9rem 2rem; cursor: pointer; transition: all 0.2s; align-self: flex-start; }
   .form-submit:hover { background: var(--accent); color: var(--white); }
 
   footer { border-top: 0.5px solid var(--border); padding: 1.5rem 3rem; display: flex; align-items: center; justify-content: space-between; }
@@ -293,7 +293,6 @@
 
 
 <section id="work">
-  <p id="manifesto-quote" style="font-family: var(--serif); font-style: italic; font-size: 1.25rem; line-height: 1.7; color: var(--accent); margin: 0 0 5rem; padding-left: 1.5rem; border-left: 2px solid var(--teal); letter-spacing: 0.01em; max-width: 680px;">Stephanie edits television. She produces verticals and leads the creative edit. She tells stories that people cannot stop watching, on any screen, in any format.</p>
   <div class="section-label">Selected Work</div>
 
   <div class="works-grid">
@@ -431,13 +430,23 @@
 </section>
 
 
+<section style="padding: 5rem 3rem; max-width: 1100px; margin: 0 auto; text-align: center;">
+  <p style="font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: clamp(2.5rem, 5vw, 4.5rem); color: rgba(238,234,248,0.55); line-height: 1.2; margin: 0; letter-spacing: 0.01em;">&#8220;It&#8217;s just TV.&#8221;</p>
+</section>
+
 <section id="about">
   <div class="section-label">About</div>
   <div class="about-grid">
     <div class="about-body">
-      <p>Stephanie Erickson is a Creative Editor and Story Architect with credits spanning HBO, HGTV, ABC, Discovery, Roku, MTV, YouTube Originals, and Snapchat. She has built one of the most versatile editorial careers in unscripted television by staying ahead of where the medium is going, not where it has been.</p>
-      <p>Her signature is rhythmic precision — the cut that makes you feel something before you know why. Whether shaping a competition format, building a docuseries from the ground up, or crafting vertical content for emerging platforms, she delivers the fast-paced, music-driven storytelling that holds modern audiences across every screen. She is currently focused on scripted vertical formats and narrative long form work alongside her unscripted practice.</p>
-      <blockquote class="about-quote">&#8220;It&#8217;s just TV.&#8221;</blockquote>
+      <!-- COPY UPDATE -->
+      <p class="about-kicker">Stephanie edits television. She produces verticals and leads the creative edit. She tells stories that people cannot stop watching.</p>
+      <!-- COPY UPDATE -->
+      <p>She edits across competition, docuseries, and emerging formats — shaping story through rhythm, behavior, and structure.</p>
+      <!-- COPY UPDATE -->
+      <p>Meeting audiences where they are, without flattening the story to fit the format. She is currently focused on scripted vertical formats and narrative long form work alongside her unscripted practice.</p>
+
+      <!-- COPY UPDATE -->
+      <p style="font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 1.05rem; color: rgba(238,234,248,0.4); line-height: 1.7; margin-bottom: 0; max-width: 680px;">Each project demands a different system. The approach changes. The thinking doesn't.</p>
 
       <div class="about-credentials">
         <span class="about-cred">Loyola Marymount University, School of Film and Television</span>
