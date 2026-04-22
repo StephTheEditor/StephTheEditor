@@ -113,11 +113,12 @@
   .section-label::after { content: ''; flex: 1; height: 0.5px; background: var(--border); }
 
   /* GRID */
-  .works-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px; background: var(--border); border: 0.5px solid var(--border); }
-  .work-card { background: #000000; position: relative; overflow: hidden; cursor: pointer; aspect-ratio: 2/3; }
-  .work-card.wide { grid-column: 1 / -1; aspect-ratio: 21/9; }
+  .works-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; background: transparent; border: none; }
+  .work-card { background: #000000; position: relative; overflow: hidden; cursor: pointer; aspect-ratio: 2/3; border-radius: 8px; box-shadow: 0 8px 32px rgba(0,0,0,0.6), 0 0 0 1px rgba(0,212,245,0.04), 0 4px 24px rgba(0,212,245,0.06); transition: box-shadow 0.4s ease, transform 0.4s ease; }
+  .work-card.wide { grid-column: 1 / -1; aspect-ratio: 21/9; border-radius: 8px; }
   .work-card.hidden { display: none; }
-  .work-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top; transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94); filter: brightness(0.88); }
+  .work-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top; transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94); filter: brightness(0.88); border-radius: 8px; }
+  .work-card:hover { box-shadow: 0 12px 48px rgba(0,0,0,0.7), 0 0 0 1px rgba(0,212,245,0.08), 0 4px 32px rgba(0,212,245,0.1); transform: translateY(-3px); }
   .work-card:hover img { transform: scale(1.04); filter: brightness(0.72); }
 
   .work-info { position: absolute; bottom: 0; left: 0; right: 0; padding: 1.25rem 1.5rem; background: linear-gradient(to top, rgba(17,17,16,0.84) 0%, transparent 100%); opacity: 0; transition: opacity 0.3s; }
@@ -125,7 +126,7 @@
   .work-network { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(250,250,248,0.7); margin-bottom: 0.25rem; }
   .work-title { font-family: var(--sans); font-size: 0.95rem; font-weight: 400; color: var(--white); line-height: 1.2; letter-spacing: 0.01em; }
 
-  .work-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.82); display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 1.5rem; opacity: 0; transition: opacity 0.3s; text-align: center; gap: 0.75rem; }
+  .work-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.82); display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 1.5rem; opacity: 0; transition: opacity 0.3s; text-align: center; gap: 0.75rem; border-radius: 8px; }
   .work-card:hover .work-overlay { opacity: 1; }
   .overlay-network-label { font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--teal); margin-bottom: 0.25rem; }
   .overlay-links { display: flex; flex-direction: column; align-items: center; gap: 0.6rem; width: 100%; max-width: 220px; }
@@ -166,12 +167,6 @@
   .ct-ed { display: none; }
 
   /* PRESS */
-  .press-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; border-top: 0.5px solid var(--border); margin-bottom: 4rem; }
-  /* SPACING UPDATE */ .press-item { background: transparent; padding: 3rem 2.5rem; display: flex; flex-direction: column; gap: 1rem; border-left: none; }
-  .press-outlet { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); }
-  .press-quote { font-family: var(--sans); font-weight: 300; font-style: italic; font-size: 1.1rem; line-height: 1.6; color: var(--white); flex: 1; }
-  .press-meta { font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); opacity: 0.7; }
-  .press-item { border-bottom: 0.5px solid var(--border); }
 
   /* AWARDS */
   .awards-list { display: flex; flex-direction: column; }
@@ -225,10 +220,13 @@
     .work-card.wide { grid-column: 1 / -1; }
     .about-grid { grid-template-columns: 1fr; gap: 2.5rem; } .about-aside { position: static; }
     .contact-wrap { grid-template-columns: 1fr; gap: 3rem; }
-    .press-grid { grid-template-columns: 1fr; }
     .award-row { grid-template-columns: 1fr 2fr; } .award-badge { display: none; }
     .form-row { grid-template-columns: 1fr; }
   }
+  .press-staircase { display: flex; flex-direction: column; gap: 3.5rem; margin-bottom: 4rem; }
+  .press-step { display: flex; flex-direction: column; gap: 0.75rem; }
+  .press-quote-text { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-weight: 400; color: var(--white); line-height: 1.25; letter-spacing: -0.01em; }
+  .press-step-meta { font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); }
 </style>
 </head>
 <body>
@@ -506,26 +504,18 @@
   <div class="section-label">Press</div>
   <p style="font-size: 1.05rem; line-height: 1.85; color: var(--white); max-width: 780px; margin-bottom: 3rem;">The work gets noticed. These are some of the rooms it walked into.</p>
 
-  <div class="press-grid">
-    <div class="press-item">
-      <div class="press-outlet">Entertainment Weekly</div>
-      <div class="press-quote">"Freakishly entertaining."</div>
-      <div class="press-meta">Face Off, Syfy</div>
+  <div class="press-staircase">
+    <div class="press-step">
+      <div class="press-quote-text" style="font-size: clamp(1.4rem, 2.5vw, 2rem);">"Freakishly entertaining."</div>
+      <div class="press-step-meta">Entertainment Weekly &nbsp;·&nbsp; Face Off, Syfy</div>
     </div>
-    <div class="press-item">
-      <div class="press-outlet">TV Guide — Matt Roush</div>
-      <div class="press-quote">"The creativity is astounding. Absolutely terrific."</div>
-      <div class="press-meta">Face Off, Syfy</div>
+    <div class="press-step">
+      <div class="press-quote-text" style="font-size: clamp(1.7rem, 3.2vw, 2.8rem);">"The best Bachelor spin-off series ever produced."</div>
+      <div class="press-step-meta">Screen Rant &nbsp;·&nbsp; Bachelor Mansion Takeover, HGTV · 2026</div>
     </div>
-    <div class="press-item">
-      <div class="press-outlet">Screen Rant</div>
-      <div class="press-quote">"The best Bachelor spin-off series ever produced."</div>
-      <div class="press-meta">Bachelor Mansion Takeover, HGTV · 2026</div>
-    </div>
-    <div class="press-item">
-      <div class="press-outlet">New York Times</div>
-      <div class="press-quote">"One of the 50 best TV shows on Netflix right now."</div>
-      <div class="press-meta">Face Off, Syfy</div>
+    <div class="press-step">
+      <div class="press-quote-text" style="font-size: clamp(2rem, 4vw, 3.6rem);">"So polished it easily blurs the lines between YouTube and traditional television."</div>
+      <div class="press-step-meta">DBK News &nbsp;·&nbsp; Instant Influencer with James Charles, YouTube Originals · 2020</div>
     </div>
   </div>
 
