@@ -26,7 +26,7 @@
 
   /* NAV */
   nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.1rem 3rem; background: rgba(0,0,0,0.94); backdrop-filter: blur(8px); border-bottom: 0.5px solid var(--border); }
-  .nav-logo { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 0.72rem; letter-spacing: 0.38em; text-transform: uppercase; color: #ff2d9b; text-decoration: none; text-shadow: 0 0 2px #fff, 0 0 8px #ff2d9b, 0 0 20px #ff2d9b, 0 0 45px rgba(255,45,155,0.6); animation: neon-pink-pulse 5s ease-in-out infinite; display: flex; align-items: center; }
+  .nav-logo { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 0.72rem; letter-spacing: 0.38em; text-transform: uppercase; color: rgba(255,45,155,0.45); text-decoration: none; display: flex; align-items: center; }
   .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
   .nav-links a { font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(238,234,248,0.45); text-decoration: none; transition: color 0.2s; }
   .nav-links a:hover { color: #fff; }
@@ -353,7 +353,8 @@
       </div>
     </div>
 
-    <div class="work-card" data-tags="competition,makeup,lead-editor">
+    <!-- ROW 4 — DEPTH — Instant Influencer breaks grid as double wide -->
+    <div class="work-card wide" data-tags="competition,makeup,lead-editor" style="aspect-ratio: 21/9;">
       <img src="images/FakeUpHero.jpeg" style="object-fit: cover; object-position: center top;" alt="Fake Up">
       <div class="work-info">
         <div class="work-network">Snapchat Original</div>
@@ -368,7 +369,6 @@
       </div>
     </div>
 
-    <!-- ROW 4 — DEPTH -->
     <div class="work-card" data-tags="docuseries,travel">
       <img src="images/101 PLACES TO PARTY BEFORE YOU DIE.jpg" alt="101 Places to Party Before You Die">
       <div class="work-info">
@@ -488,18 +488,17 @@
 
 
 <section id="press">
-  <div class="section-label">Press</div>
   <div class="press-staircase">
     <div class="press-step">
-      <div class="press-quote-text" style="font-size: clamp(1.1rem, 1.8vw, 1.5rem);">"Freakishly entertaining."</div>
+      <div class="press-quote-text" style="font-size: clamp(2.8rem, 5.5vw, 5rem);">"Freakishly entertaining."</div>
       <div class="press-step-meta">Entertainment Weekly &nbsp;·&nbsp; Face Off, Syfy</div>
     </div>
     <div class="press-step">
-      <div class="press-quote-text" style="font-size: clamp(1.1rem, 1.8vw, 1.5rem);">"The best Bachelor spin-off series ever produced."</div>
+      <div class="press-quote-text" style="font-size: clamp(1.6rem, 3vw, 2.8rem);">"The best Bachelor spin-off series ever produced."</div>
       <div class="press-step-meta">Screen Rant &nbsp;·&nbsp; Bachelor Mansion Takeover, HGTV · 2026</div>
     </div>
     <div class="press-step">
-      <div class="press-quote-text" style="font-size: clamp(1.1rem, 1.8vw, 1.5rem);">"So polished it easily blurs the lines between YouTube and traditional television."</div>
+      <div class="press-quote-text" style="font-size: clamp(1.2rem, 2vw, 1.8rem);">"So polished it easily blurs the lines between YouTube and traditional television."</div>
       <div class="press-step-meta">DBK News &nbsp;·&nbsp; Instant Influencer with James Charles, YouTube Originals · 2020</div>
     </div>
   </div>
