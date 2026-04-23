@@ -137,17 +137,13 @@
   /* ABOUT */
   .about-grid { display: grid; grid-template-columns: 1fr; gap: 0; align-items: start; max-width: 100%; }
 
-  .about-kicker { font-family: var(--serif); font-style: italic; font-size: 2rem; line-height: 1.35; color: var(--teal); margin-bottom: 2rem; text-align: center; }
+  .about-kicker { font-family: var(--serif); font-style: italic; font-size: 2rem; line-height: 1.35; color: var(--teal); margin-bottom: 2rem; text-align: left; }
   .about-credits { border-top: 0.5px solid var(--border); padding-top: 1.5rem; display: flex; flex-direction: column; gap: 1rem; }
   .credit-item { display: flex; flex-direction: column; gap: 0.15rem; }
   .credit-label { font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
   .credit-value { font-size: 0.9rem; color: var(--white); }
-  /* SPACING UPDATE */ .about-body p { font-family: var(--sans); font-size: 1.05rem; line-height: 1.9; color: var(--white); margin-bottom: 2.5rem; max-width: 780px; text-align: center; margin-left: auto; margin-right: auto; }
-  /* SPACING UPDATE */ .about-quote { font-family: var(--serif); font-style: italic; font-size: 1.45rem; line-height: 1.5; color: var(--white); margin: 4rem 0; padding: 0; border: none; }
-  .about-credentials { display: flex; flex-wrap: wrap; gap: 0.5rem 0; align-items: center; margin-top: 1rem; padding-top: 1.5rem; border-top: 0.5px solid var(--border); }
-  .about-cred { font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--white); }
-  .about-cred-dot { color: var(--teal); font-size: 0.8rem; margin: 0 0.5rem; }
-  /* SPACING UPDATE */ .about-body p:first-child { font-family: var(--sans); color: var(--white); font-size: 1.1rem; line-height: 1.9; max-width: 780px; text-align: center; margin-left: auto; margin-right: auto; }
+  /* SPACING UPDATE */ .about-body p { font-family: var(--sans); font-size: 1.05rem; line-height: 1.9; color: var(--white); margin-bottom: 2.5rem; max-width: 780px; text-align: left; }
+  /* SPACING UPDATE */ .about-body p:first-child { font-family: var(--sans); color: var(--white); font-size: 1.1rem; line-height: 1.9; max-width: 780px; text-align: left; }
   .specialties { margin-top: 2.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
   .specialty { font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--white); padding: 0.75rem 1rem; border: 0.5px solid var(--border); display: flex; align-items: center; gap: 0.5rem; }
   .specialty::before { content: ''; display: block; width: 6px; height: 6px; background: var(--accent); border-radius: 50%; flex-shrink: 0; }
@@ -167,7 +163,7 @@
   .ct-net { color: rgba(238,234,248,0.45); font-size: 0.88rem; padding-left: 0; }
   .ct-role { text-align: right; white-space: nowrap; padding-left: 1rem; }
   .ct-lead { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); border: 0.5px solid rgba(0,212,245,0.5); padding: 0.28rem 0.85rem; border-radius: 999px; }
-  .ct-ed { font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(238,234,248,0.4); }
+  .ct-ed { font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
 
   /* PRESS */
 
@@ -230,7 +226,7 @@
   .press-step { display: flex; flex-direction: column; gap: 0.75rem; }
   .press-quote-text { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-weight: 400; color: var(--white); line-height: 1.25; letter-spacing: -0.01em; }
   .press-step-meta { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); }
-  .contact-thesis { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: clamp(1.2rem, 2vw, 1.8rem); line-height: 1.5; color: var(--white); max-width: 780px; margin-bottom: 3rem; }
+  .contact-thesis { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 0.95rem; line-height: 2; color: var(--white); max-width: 780px; margin-bottom: 3rem; letter-spacing: 0.18em; text-transform: uppercase; }
   .contact-icons { display: flex; gap: 2rem; align-items: center; margin-bottom: 4rem; }
   .contact-icon-phone { filter: drop-shadow(0 0 6px rgba(255,45,155,0.8)) drop-shadow(0 0 18px rgba(255,45,155,0.4)); animation: neon-pink-pulse 5s ease-in-out infinite; }
   .contact-icon-envelope { filter: drop-shadow(0 0 6px rgba(0,212,245,0.8)) drop-shadow(0 0 18px rgba(0,212,245,0.4)); animation: neon-blue-pulse 4s ease-in-out infinite; }
@@ -419,7 +415,7 @@
 
 
 <section style="padding: 4rem 3rem; max-width: 1100px; margin: 0 auto;">
-  <p style="font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: clamp(2.5rem, 5vw, 4.5rem); color: var(--white); line-height: 1.2; margin: 0 0 1rem 0; letter-spacing: 0.01em; text-align: left;">&#8220;It&#8217;s just TV.&#8221;</p>
+  <p style="font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: clamp(1.75rem, 3.5vw, 3.15rem); color: var(--white); line-height: 1.2; margin: 0 0 1rem 0; letter-spacing: 0.01em; text-align: left;">&#8220;It&#8217;s just TV.&#8221;</p>
   <p style="font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: clamp(0.85rem, 1.4vw, 1.05rem); letter-spacing: 0.22em; text-transform: uppercase; color: #00d4f5; margin: 0; text-align: center; text-shadow: 0 0 2px #fff, 0 0 8px #00d4f5, 0 0 20px rgba(0,212,245,0.6);">It&#8217;s always story.</p>
 </section>
 
@@ -517,21 +513,8 @@
   <!-- Thesis statement -->
   <p class="contact-thesis">Every format is different. The story is always the point. If you have one worth telling, this is the conversation.</p>
 
-  <!-- Icons positioned absolutely within section -->
+  <!-- Icons removed -->
   <div style="position: relative;">
-    <!-- Icon top right — envelope only -->
-    <div style="position: absolute; top: -2rem; right: 0; display: flex; gap: 1.5rem; align-items: center;">
-    <svg class="contact-icon contact-icon-envelope" width="64" height="64" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect x="8" y="14" width="32" height="22" rx="2" stroke="#00d4f5" stroke-width="1.5" fill="none" filter="url(#env-glow)"/>
-      <path d="M8 14l16 12 16-12" stroke="#00d4f5" stroke-width="1.5" stroke-linecap="round" fill="none" filter="url(#env-glow)"/>
-      <defs>
-        <filter id="env-glow" x="-50%" y="-50%" width="200%" height="200%">
-          <feGaussianBlur stdDeviation="2.5" result="blur"/>
-          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-        </filter>
-      </defs>
-    </svg>
-    </div>
 
   <div class="contact-wrap">
 <div style="width: 100%;">
