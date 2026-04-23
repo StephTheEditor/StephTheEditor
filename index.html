@@ -26,7 +26,7 @@
 
   /* NAV */
   nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.1rem 3rem; background: rgba(0,0,0,0.94); backdrop-filter: blur(8px); border-bottom: 0.5px solid var(--border); }
-  .nav-logo { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 0.72rem; letter-spacing: 0.38em; text-transform: uppercase; color: rgba(255,45,155,0.45); text-decoration: none; display: flex; align-items: center; }
+  .nav-logo { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 0.72rem; letter-spacing: 0.38em; text-transform: uppercase; color: #ff2d9b; text-decoration: none; text-shadow: 0 0 2px #fff, 0 0 8px #ff2d9b, 0 0 20px #ff2d9b, 0 0 45px rgba(255,45,155,0.6); display: flex; align-items: center; }
   .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
   .nav-links a { font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(238,234,248,0.45); text-decoration: none; transition: color 0.2s; }
   .nav-links a:hover { color: #fff; }
@@ -104,7 +104,7 @@
   }
 
   /* Network strip */
-  .hero-networks { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.48); font-family: var(--sans); opacity: 0; animation: fadein 0.6s cubic-bezier(0.22, 1, 0.36, 1) 4.2s forwards; position: absolute; bottom: 3rem; left: 50%; transform: translateX(-50%); text-align: center; white-space: nowrap; }
+  .hero-networks { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.48); font-family: var(--sans); opacity: 0; animation: fadein 0.6s cubic-bezier(0.22, 1, 0.36, 1) 4.2s forwards; position: absolute; bottom: 3rem; left: 0; right: 0; text-align: center; white-space: nowrap; z-index: 4; }
 
   .hero-desc { display: none; }
 
@@ -271,8 +271,8 @@
   <div class="hero-content">
     <h2 class="hero-name"><span class="n-first" id="nFirst">STEPHANIE&nbsp;</span><span class="n-last" id="nLast">ERICKSON</span></h2>
     <p class="hero-quote" id="nSub">The Editor</p>
-    <p class="hero-networks" id="nNets">HBO &nbsp;&middot;&nbsp; ABC &nbsp;&middot;&nbsp; HGTV &nbsp;&middot;&nbsp; Discovery &nbsp;&middot;&nbsp; Bravo &nbsp;&middot;&nbsp; YouTube</p>
   </div>
+  <p class="hero-networks" id="nNets">HBO &nbsp;&middot;&nbsp; ABC &nbsp;&middot;&nbsp; HGTV &nbsp;&middot;&nbsp; Discovery &nbsp;&middot;&nbsp; Bravo &nbsp;&middot;&nbsp; YouTube</p>
 </div>
 
 
@@ -353,8 +353,7 @@
       </div>
     </div>
 
-    <!-- ROW 4 — DEPTH — Instant Influencer breaks grid as double wide -->
-    <div class="work-card wide" data-tags="competition,makeup,lead-editor" style="aspect-ratio: 21/9;">
+    <div class="work-card" data-tags="competition,makeup,lead-editor">
       <img src="images/FakeUpHero.jpeg" style="object-fit: cover; object-position: center top;" alt="Fake Up">
       <div class="work-info">
         <div class="work-network">Snapchat Original</div>
@@ -369,7 +368,20 @@
       </div>
     </div>
 
-    <div class="work-card" data-tags="docuseries,travel">
+    <!-- GRID BREAK — The Proposal wide, interrupts the vertical rhythm -->
+    <div class="work-card wide" data-tags="competition,dating">
+      <img src="images/The Proposal hero.jpg" style="object-fit: cover; object-position: center 20%;" alt="The Proposal">
+      <div class="work-info">
+        <div class="work-network">ABC</div>
+        <div class="work-title">The Proposal</div>
+      </div>
+      <div class="work-overlay">
+        <div class="overlay-network-label">Watch</div>
+        <div class="overlay-links"><a class="overlay-link" href="https://www.youtube.com/watch?v=pYwiObHJ_uU" target="_blank">Episode Clip</a></div>
+      </div>
+    </div>
+
+    <!-- ROW 4 — DEPTH -->
       <img src="images/101 PLACES TO PARTY BEFORE YOU DIE.jpg" alt="101 Places to Party Before You Die">
       <div class="work-info">
         <div class="work-network">TruTV</div>
@@ -397,18 +409,6 @@
       </div>
     </div>
 
-    <!-- ROW 5 — WIDE -->
-    <div class="work-card wide" data-tags="competition,dating">
-      <img src="images/The Proposal hero.jpg" style="object-fit: cover; object-position: center 20%;" alt="The Proposal">
-      <div class="work-info">
-        <div class="work-network">ABC</div>
-        <div class="work-title">The Proposal</div>
-      </div>
-      <div class="work-overlay">
-        <div class="overlay-network-label">Watch</div>
-        <div class="overlay-links"><a class="overlay-link" href="https://www.youtube.com/watch?v=pYwiObHJ_uU" target="_blank">Episode Clip</a></div>
-      </div>
-    </div>
 
   </div>
 </section>
