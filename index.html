@@ -112,25 +112,17 @@
   /* SPACING UPDATE */ .section-label { font-size: 0.95rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--teal); margin-bottom: 4rem; display: flex; align-items: center; gap: 1rem; font-weight: 400; }
   .section-label::after { content: ''; flex: 1; height: 0.5px; background: var(--border); }
 
-  /* WORK COMPOSITION */
-  .work-composition { position: relative; height: 1200px; max-width: 1120px; }
-  .poster { position: absolute; border-radius: 14px; overflow: hidden; transition: transform 0.25s ease; cursor: pointer; }
-  .poster:hover { transform: translateY(-4px) scale(1.03); }
-  .poster img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
-  .poster-inner { position: absolute; inset: 0; display: flex; align-items: flex-end; padding: 1rem 1.1rem; }
-  .poster-inner::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 55%); z-index: 1; }
-  .poster-info { position: relative; z-index: 2; }
-  .poster-net { font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: #00d4f5; display: block; margin-bottom: 0.2rem; }
-  .poster-title { font-size: 0.8rem; font-weight: 400; color: #eeeaf8; letter-spacing: 0.02em; line-height: 1.3; display: block; }
+  /* WORK GRID */
+  .work-composition { display: grid; grid-template-columns: 1fr 80px 1fr 80px 1fr; align-items: start; width: 100%; }
+  .work-col { display: flex; flex-direction: column; gap: 3rem; }
+  .poster { overflow: hidden; cursor: pointer; transition: opacity 0.25s ease; position: relative; width: 100%; }
+  .poster:hover { opacity: 0.85; }
+  .poster img { width: 100%; display: block; object-fit: cover; }
+  .poster-inner { display: none; }
   .poster-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.82); display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 1.5rem; opacity: 0; transition: opacity 0.3s; text-align: center; gap: 0.75rem; z-index: 3; }
   .poster:hover .poster-overlay { opacity: 1; }
-
-  .p-climb { width: 720px; aspect-ratio: 2 / 1; top: 0; left: 0; }
-  .p-bachelor { width: 260px; aspect-ratio: 2 / 3; top: 40px; left: 780px; }
-  .p-fakeup { width: 260px; aspect-ratio: 2 / 3; top: 460px; left: 0; }
-  .p-faceoff { width: 260px; aspect-ratio: 2 / 3; top: 460px; left: 300px; }
-  .p-impact { width: 260px; aspect-ratio: 2 / 3; top: 460px; left: 600px; }
-  .p-baking { width: 260px; aspect-ratio: 2 / 3; top: 880px; left: 300px; }
+  .poster-net { font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: #00d4f5; display: block; margin-bottom: 0.2rem; }
+  .poster-title { font-size: 0.8rem; font-weight: 400; color: #eeeaf8; letter-spacing: 0.02em; line-height: 1.3; display: block; }
   .work-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top; transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94); filter: brightness(0.88); border-radius: 8px; }
   .work-card:hover { box-shadow: 0 12px 48px rgba(0,0,0,0.7), 0 0 0 1px rgba(0,212,245,0.08), 0 4px 32px rgba(0,212,245,0.1); transform: translateY(-3px); }
   .work-card:hover img { transform: scale(1.04); filter: brightness(0.72); }
@@ -290,102 +282,70 @@
 </div>
 
 
-<section id="work" style="padding: 140px 3rem 180px 3rem; background: #000;">
+<section id="work" style="padding: 11rem 3rem; max-width: 1100px; margin: 0 auto;">
   <div class="section-label">The Edit</div>
 
 
   <div class="work-composition">
 
-    <!-- The Climb — HERO -->
-    <div class="poster p-climb">
-      <img src="images/THE CLIMB HBO.avif" alt="The Climb">
-      <div class="poster-inner">
-        <div class="poster-info">
-          <span class="poster-net">HBO</span>
-          <span class="poster-title">The Climb</span>
+    <!-- Column 1 — Bachelor Mansion portrait, The Climb landscape -->
+    <div class="work-col">
+      <div class="poster">
+        <img src="images/BachelorMansionTakeoverHero.jpg" alt="Bachelor Mansion Takeover">
+        <div class="poster-overlay">
+          <div class="overlay-network-label">Watch</div>
+          <div class="overlay-links"><a class="overlay-link" href="https://www.youtube.com/watch?v=G66wKFsPzTY" target="_blank">Trailer</a></div>
         </div>
       </div>
-      <div class="poster-overlay">
-        <div class="overlay-network-label">Watch</div>
-        <div class="overlay-links"><a class="overlay-link" href="https://www.youtube.com/watch?v=wKUce1x-njY" target="_blank">Trailer</a></div>
-      </div>
-    </div>
-
-    <!-- Bachelor Mansion — right vertical -->
-    <div class="poster p-bachelor">
-      <img src="images/BachelorMansionTakeoverHero.jpg" style="object-fit: contain; background: #0a0a0a;" alt="Bachelor Mansion Takeover">
-      <div class="poster-inner">
-        <div class="poster-info">
-          <span class="poster-net">HGTV / MAX</span>
-          <span class="poster-title">Bachelor Mansion Takeover</span>
-        </div>
-      </div>
-      <div class="poster-overlay">
-        <div class="overlay-network-label">Watch</div>
-        <div class="overlay-links"><a class="overlay-link" href="https://www.youtube.com/watch?v=G66wKFsPzTY" target="_blank">Trailer</a></div>
-      </div>
-    </div>
-
-    <!-- Fake Up — middle row left -->
-    <div class="poster p-fakeup">
-      <img src="images/FakeUpHero.jpeg" alt="Fake Up">
-      <div class="poster-inner">
-        <div class="poster-info">
-          <span class="poster-net">Snapchat Original</span>
-          <span class="poster-title">Fake Up, Seasons 1 and 2</span>
-        </div>
-      </div>
-      <div class="poster-overlay">
-        <div class="overlay-network-label">Watch</div>
-        <div class="overlay-links">
-          <a class="overlay-link" href="https://www.youtube.com/watch?v=Yy5jpHAUxNo" target="_blank">Season 1 Trailer</a>
-          <a class="overlay-link" href="https://www.youtube.com/shorts/AfWUcm67Kng" target="_blank">Season 2 Clip</a>
+      <div class="poster">
+        <img src="images/THE CLIMB HBO.avif" style="object-fit: cover;" alt="The Climb">
+        <div class="poster-overlay">
+          <div class="overlay-network-label">Watch</div>
+          <div class="overlay-links"><a class="overlay-link" href="https://www.youtube.com/watch?v=wKUce1x-njY" target="_blank">Trailer</a></div>
         </div>
       </div>
     </div>
 
-    <!-- Face Off — middle row center -->
-    <div class="poster p-faceoff">
-      <img src="images/Face Off Hero.jpg" style="object-fit: contain; background: #0a0a0a;" alt="Face Off">
-      <div class="poster-inner">
-        <div class="poster-info">
-          <span class="poster-net">Syfy</span>
-          <span class="poster-title">Face Off, Seasons 1 through 13</span>
+    <div></div>
+
+    <!-- Column 2 — Face Off landscape, Fake Up portrait -->
+    <div class="work-col" style="margin-top: 4rem;">
+      <div class="poster">
+        <img src="images/Face Off Hero.jpg" alt="Face Off">
+        <div class="poster-overlay">
+          <div class="overlay-network-label">Watch</div>
+          <div class="overlay-links"><a class="overlay-link" href="https://www.syfy.com/face-off" target="_blank">Syfy</a></div>
         </div>
       </div>
-      <div class="poster-overlay">
-        <div class="overlay-network-label">Watch</div>
-        <div class="overlay-links"><a class="overlay-link" href="https://www.syfy.com/face-off" target="_blank">Syfy</a></div>
+      <div class="poster">
+        <img src="images/FakeUpHero.jpeg" alt="Fake Up">
+        <div class="poster-overlay">
+          <div class="overlay-network-label">Watch</div>
+          <div class="overlay-links">
+            <a class="overlay-link" href="https://www.youtube.com/watch?v=Yy5jpHAUxNo" target="_blank">Season 1 Trailer</a>
+            <a class="overlay-link" href="https://www.youtube.com/shorts/AfWUcm67Kng" target="_blank">Season 2 Clip</a>
+          </div>
+        </div>
       </div>
     </div>
 
-    <!-- The Impact — middle row right -->
-    <div class="poster p-impact">
-      <img src="images/The Impact.jpg" style="object-fit: contain; background: #0a0a0a;" alt="The Impact Atlanta">
-      <div class="poster-inner">
-        <div class="poster-info">
-          <span class="poster-net">BET+</span>
-          <span class="poster-title">The Impact: Atlanta</span>
-        </div>
-      </div>
-      <div class="poster-overlay">
-        <div class="overlay-network-label">Watch</div>
-        <div class="overlay-links"><a class="overlay-link" href="https://www.betplus.com/series/the-impact-atlanta" target="_blank">Stream on BET+</a></div>
-      </div>
-    </div>
+    <div></div>
 
-    <!-- Baking Show — detached bottom -->
-    <div class="poster p-baking">
-      <img src="images/The_Great_American_Baking_Show.jpg" alt="The Great American Baking Show">
-      <div class="poster-inner">
-        <div class="poster-info">
-          <span class="poster-net">Roku Original</span>
-          <span class="poster-title">The Great American Baking Show</span>
+    <!-- Column 3 — The Impact landscape, Baking Show portrait -->
+    <div class="work-col" style="margin-top: 8rem;">
+      <div class="poster">
+        <img src="images/The Impact.jpg" alt="The Impact Atlanta">
+        <div class="poster-overlay">
+          <div class="overlay-network-label">Watch</div>
+          <div class="overlay-links"><a class="overlay-link" href="https://www.betplus.com/series/the-impact-atlanta" target="_blank">Stream on BET+</a></div>
         </div>
       </div>
-      <div class="poster-overlay">
-        <div class="overlay-network-label">Watch</div>
-        <div class="overlay-links"><a class="overlay-link" href="https://www.youtube.com/watch?v=IlWLSAKEedk&t=91s" target="_blank">Trailer</a></div>
+      <div class="poster">
+        <img src="images/The_Great_American_Baking_Show.jpg" alt="The Great American Baking Show">
+        <div class="poster-overlay">
+          <div class="overlay-network-label">Watch</div>
+          <div class="overlay-links"><a class="overlay-link" href="https://www.youtube.com/watch?v=IlWLSAKEedk&t=91s" target="_blank">Trailer</a></div>
+        </div>
       </div>
     </div>
 
