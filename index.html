@@ -26,7 +26,7 @@
 
   /* NAV */
   nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.1rem 3rem; background: rgba(0,0,0,0.94); backdrop-filter: blur(8px); border-bottom: 0.5px solid var(--border); }
-  .nav-logo { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 0.72rem; letter-spacing: 0.38em; text-transform: uppercase; color: #ff2d9b; text-decoration: none; text-shadow: 0 0 2px #fff, 0 0 8px #ff2d9b, 0 0 20px #ff2d9b, 0 0 45px rgba(255,45,155,0.6); display: flex; align-items: center; }
+  .nav-logo { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 0.72rem; letter-spacing: 0.38em; text-transform: uppercase; color: #a87880; text-decoration: none; display: flex; align-items: center; }
   .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
   .nav-links a { font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(238,234,248,0.45); text-decoration: none; transition: color 0.2s; }
   .nav-links a:hover { color: #fff; }
@@ -112,11 +112,15 @@
   /* SPACING UPDATE */ .section-label { font-size: 0.95rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--teal); margin-bottom: 4rem; display: flex; align-items: center; gap: 1rem; font-weight: 400; }
   .section-label::after { content: ''; flex: 1; height: 0.5px; background: var(--border); }
 
-  /* GRID */
-  .works-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; background: transparent; border: none; }
-  .work-card { background: #000000; position: relative; overflow: hidden; cursor: pointer; aspect-ratio: 2/3; border-radius: 8px; box-shadow: 0 8px 32px rgba(0,0,0,0.6), 0 0 0 1px rgba(0,212,245,0.04), 0 4px 24px rgba(0,212,245,0.06); transition: box-shadow 0.4s ease, transform 0.4s ease; }
-  .work-card.wide { grid-column: 1 / -1; aspect-ratio: 21/9; border-radius: 8px; }
-  .work-card.hidden { display: none; }
+  /* EDITORIAL GRID */
+  .works-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.8rem; }
+  .work-card { background: #0a0a0a; position: relative; overflow: hidden; cursor: pointer; border-radius: 6px; transition: transform 0.4s ease; }
+  .work-card:hover { transform: scale(1.01); }
+  .work-card.landscape { aspect-ratio: 3/2; }
+  .work-card.portrait { aspect-ratio: 2/3; grid-row: span 2; }
+  .work-card.wide { grid-column: span 2; aspect-ratio: 3/2; }
+  .work-card.placeholder { background: rgba(255,255,255,0.03); border: 0.5px dashed rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; }
+  .placeholder-text { font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.2); text-align: center; line-height: 2; font-family: var(--sans); }
   .work-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top; transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94); filter: brightness(0.88); border-radius: 8px; }
   .work-card:hover { box-shadow: 0 12px 48px rgba(0,0,0,0.7), 0 0 0 1px rgba(0,212,245,0.08), 0 4px 32px rgba(0,212,245,0.1); transform: translateY(-3px); }
   .work-card:hover img { transform: scale(1.04); filter: brightness(0.72); }
@@ -202,7 +206,7 @@
   .form-submit:hover { background: rgba(0,212,245,0.1); color: #fff; box-shadow: 0 0 16px rgba(0,212,245,0.5), inset 0 0 12px rgba(0,212,245,0.1); text-shadow: 0 0 2px #fff, 0 0 12px #00d4f5, 0 0 24px rgba(0,212,245,0.8); }
 
   footer { border-top: 0.5px solid var(--border); padding: 1.5rem 3rem; display: flex; align-items: center; justify-content: space-between; }
-  .footer-logo { font-family: var(--sans); font-weight: 300; font-size: 0.72rem; letter-spacing: 0.38em; text-transform: uppercase; color: #ff2d9b; text-shadow: 0 0 2px #fff, 0 0 8px #ff2d9b, 0 0 20px #ff2d9b, 0 0 45px rgba(255,45,155,0.6); animation: neon-pink-pulse 5s ease-in-out infinite; }
+  .footer-logo { font-family: var(--sans); font-weight: 300; font-size: 0.72rem; letter-spacing: 0.38em; text-transform: uppercase; color: #a87880; }
   .footer-social { display: flex; gap: 1.5rem; align-items: center; }
   .footer-social-link { font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
   .footer-social-link:hover { color: var(--teal); }
@@ -281,8 +285,8 @@
 
   <div class="works-grid">
 
-    <!-- ROW 1 — WIDE -->
-    <div class="work-card wide" data-tags="competition">
+    <!-- ROW 1 — The Climb wide, Fake Up portrait spanning rows 1 and 2 -->
+    <div class="work-card wide">
       <img src="images/THE CLIMB HBO.avif" style="object-fit: cover; object-position: center top;" alt="The Climb">
       <div class="work-info">
         <div class="work-network">HBO</div>
@@ -294,66 +298,7 @@
       </div>
     </div>
 
-    <!-- ROW 2 — PRESTIGE -->
-    <div class="work-card" data-tags="competition,home-makeover">
-      <img src="images/BachelorMansionTakeoverHero.jpg" style="object-fit: cover; object-position: center top;" alt="Bachelor Mansion Takeover">
-      <div class="work-info">
-        <div class="work-network">HGTV / MAX</div>
-        <div class="work-title">Bachelor Mansion Takeover</div>
-      </div>
-      <div class="work-overlay">
-        <div class="overlay-network-label">Watch</div>
-        <div class="overlay-links"><a class="overlay-link" href="https://www.youtube.com/watch?v=G66wKFsPzTY" target="_blank">Trailer</a></div>
-      </div>
-    </div>
-
-    <div class="work-card" data-tags="competition,makeup">
-      <img src="images/Face Off Hero.jpg" style="object-fit: cover; object-position: center top;" alt="Face Off">
-      <div class="work-info">
-        <div class="work-network">Syfy</div>
-        <div class="work-title">Face Off, Seasons 1 through 13</div>
-      </div>
-      <div class="work-overlay"><div class="overlay-network-label">Watch</div><div class="overlay-links"><a class="overlay-link" href="https://www.syfy.com/face-off" target="_blank">Syfy</a></div></div>
-    </div>
-
-    <div class="work-card" data-tags="competition,food">
-      <img src="images/The Great American Baking Show.jpg" style="object-fit: cover; object-position: center top;" alt="The Great American Baking Show">
-      <div class="work-info">
-        <div class="work-network">Roku Original</div>
-        <div class="work-title">The Great American Baking Show, S6</div>
-      </div>
-      <div class="work-overlay">
-        <div class="overlay-network-label">Watch</div>
-        <div class="overlay-links"><a class="overlay-link" href="https://www.youtube.com/watch?v=IlWLSAKEedk&t=91s" target="_blank">Trailer</a></div>
-      </div>
-    </div>
-
-    <!-- ROW 3 — RANGE -->
-    <div class="work-card" data-tags="competition,home-makeover">
-      <img src="images/BarbieDreamHouseChallenge.jpg" style="object-fit: cover; object-position: center 30%;" alt="Barbie Dreamhouse Challenge">
-      <div class="work-info">
-        <div class="work-network">HGTV / MAX</div>
-        <div class="work-title">Barbie Dreamhouse Challenge</div>
-      </div>
-      <div class="work-overlay">
-        <div class="overlay-network-label">Watch</div>
-        <div class="overlay-links"><a class="overlay-link" href="https://www.youtube.com/watch?v=99ymfmkS2qo" target="_blank">Trailer</a></div>
-      </div>
-    </div>
-
-    <div class="work-card" data-tags="docuseries">
-      <img src="images/The Impact.jpg" alt="The Impact Atlanta">
-      <div class="work-info">
-        <div class="work-network">BET+</div>
-        <div class="work-title">The Impact: Atlanta</div>
-      </div>
-      <div class="work-overlay">
-        <div class="overlay-network-label">Watch</div>
-        <div class="overlay-links"><a class="overlay-link" href="https://www.betplus.com/series/the-impact-atlanta" target="_blank">Stream on BET+</a></div>
-      </div>
-    </div>
-
-    <div class="work-card" data-tags="competition,makeup,lead-editor">
+    <div class="work-card portrait">
       <img src="images/FakeUpHero.jpeg" style="object-fit: cover; object-position: center top;" alt="Fake Up">
       <div class="work-info">
         <div class="work-network">Snapchat Original</div>
@@ -368,47 +313,52 @@
       </div>
     </div>
 
-    <!-- GRID BREAK — The Proposal wide, interrupts the vertical rhythm -->
-    <div class="work-card wide" data-tags="competition,dating">
-      <img src="images/The Proposal hero.jpg" style="object-fit: cover; object-position: center 20%;" alt="The Proposal">
+    <!-- ROW 2 — Bachelor Mansion and Face Off beside the portrait -->
+    <div class="work-card landscape">
+      <img src="images/BachelorMansionTakeoverHero.jpg" style="object-fit: cover; object-position: center top;" alt="Bachelor Mansion Takeover">
       <div class="work-info">
-        <div class="work-network">ABC</div>
-        <div class="work-title">The Proposal</div>
+        <div class="work-network">HGTV / MAX</div>
+        <div class="work-title">Bachelor Mansion Takeover</div>
       </div>
       <div class="work-overlay">
         <div class="overlay-network-label">Watch</div>
-        <div class="overlay-links"><a class="overlay-link" href="https://www.youtube.com/watch?v=pYwiObHJ_uU" target="_blank">Episode Clip</a></div>
+        <div class="overlay-links"><a class="overlay-link" href="https://www.youtube.com/watch?v=G66wKFsPzTY" target="_blank">Trailer</a></div>
       </div>
     </div>
 
-    <!-- ROW 4 — DEPTH -->
-      <img src="images/101 PLACES TO PARTY BEFORE YOU DIE.jpg" alt="101 Places to Party Before You Die">
+    <div class="work-card landscape">
+      <img src="images/Face Off Hero.jpg" style="object-fit: cover; object-position: center top;" alt="Face Off">
       <div class="work-info">
-        <div class="work-network">TruTV</div>
-        <div class="work-title">101 Places to Party Before You Die</div>
+        <div class="work-network">Syfy</div>
+        <div class="work-title">Face Off, Seasons 1 through 13</div>
+      </div>
+      <div class="work-overlay"><div class="overlay-network-label">Watch</div><div class="overlay-links"><a class="overlay-link" href="https://www.syfy.com/face-off" target="_blank">Syfy</a></div></div>
+    </div>
+
+    <!-- ROW 3 — The Impact landscape + Baking Show wide -->
+    <div class="work-card landscape">
+      <img src="images/The Impact.jpg" alt="The Impact Atlanta">
+      <div class="work-info">
+        <div class="work-network">BET+</div>
+        <div class="work-title">The Impact: Atlanta</div>
       </div>
       <div class="work-overlay">
         <div class="overlay-network-label">Watch</div>
-        <div class="overlay-links"><a class="overlay-link" href="https://www.youtube.com/watch?v=Hju39oenz84" target="_blank">Trailer</a></div>
+        <div class="overlay-links"><a class="overlay-link" href="https://www.betplus.com/series/the-impact-atlanta" target="_blank">Stream on BET+</a></div>
       </div>
     </div>
 
-    <div class="work-card" data-tags="competition,food">
-      <img src="images/FastFoodiesHero.jpg" style="object-fit: cover; object-position: left top;" alt="Fast Foodies">
+    <div class="work-card wide">
+      <img src="images/The_Great_American_Baking_Show.jpg" style="object-fit: cover; object-position: center top;" alt="The Great American Baking Show">
       <div class="work-info">
-        <div class="work-network">TruTV</div>
-        <div class="work-title">Fast Foodies, S2</div>
+        <div class="work-network">Roku Original</div>
+        <div class="work-title">The Great American Baking Show</div>
+      </div>
+      <div class="work-overlay">
+        <div class="overlay-network-label">Watch</div>
+        <div class="overlay-links"><a class="overlay-link" href="https://www.youtube.com/watch?v=IlWLSAKEedk&t=91s" target="_blank">Trailer</a></div>
       </div>
     </div>
-
-    <div class="work-card" data-tags="docuseries">
-      <img src="images/AlaskaLastFrontierHero.jpg" alt="Alaska The Last Frontier">
-      <div class="work-info">
-        <div class="work-network">Discovery</div>
-        <div class="work-title">Alaska: The Last Frontier, S8 &amp; 9</div>
-      </div>
-    </div>
-
 
   </div>
 </section>
