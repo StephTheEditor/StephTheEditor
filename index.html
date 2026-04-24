@@ -28,7 +28,7 @@
   nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.1rem 3rem; background: rgba(0,0,0,0.94); backdrop-filter: blur(8px); border-bottom: 0.5px solid var(--border); }
   .nav-logo { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 0.72rem; letter-spacing: 0.38em; text-transform: uppercase; color: #a87880; text-decoration: none; display: flex; align-items: center; }
   .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
-  .nav-links a { font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(238,234,248,0.45); text-decoration: none; transition: color 0.2s; }
+  .nav-links a { font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--white); text-decoration: none; transition: color 0.2s; }
   .nav-links a:hover { color: #fff; }
   .nav-social { display: flex; align-items: center; gap: 1.5rem; margin-left: 1.5rem; padding-left: 1.5rem; border-left: 0.5px solid var(--border); }
   .nav-social-link { color: rgba(238,234,248,0.45); text-decoration: none; transition: color 0.2s, opacity 0.2s; display: flex; align-items: center; }
@@ -104,7 +104,7 @@
   }
 
   /* Network strip */
-  .hero-networks { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.48); font-family: var(--sans); opacity: 0; animation: fadein 0.6s cubic-bezier(0.22, 1, 0.36, 1) 4.2s forwards; position: absolute; bottom: 3rem; left: 0; right: 0; text-align: center; white-space: nowrap; z-index: 4; }
+  .hero-networks { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--white); font-family: var(--sans); opacity: 0; animation: fadein 0.6s cubic-bezier(0.22, 1, 0.36, 1) 4.2s forwards; position: absolute; bottom: 3rem; left: 0; right: 0; text-align: center; white-space: nowrap; z-index: 4; }
 
   .hero-desc { display: none; }
 
@@ -113,16 +113,13 @@
   .section-label::after { content: ''; flex: 1; height: 0.5px; background: var(--border); }
 
   /* WORK GRID */
-  .work-composition { display: grid; grid-template-columns: 1fr 80px 1fr 80px 1fr; align-items: start; width: 100%; }
-  .work-col { display: flex; flex-direction: column; gap: 3rem; }
-  .poster { overflow: hidden; cursor: pointer; transition: opacity 0.25s ease; position: relative; width: 100%; }
-  .poster:hover { opacity: 0.85; }
-  .poster img { width: 100%; display: block; object-fit: cover; }
-  .poster-inner { display: none; }
-  .poster-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.82); display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 1.5rem; opacity: 0; transition: opacity 0.3s; text-align: center; gap: 0.75rem; z-index: 3; }
-  .poster:hover .poster-overlay { opacity: 1; }
-  .poster-net { font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: #00d4f5; display: block; margin-bottom: 0.2rem; }
-  .poster-title { font-size: 0.8rem; font-weight: 400; color: #eeeaf8; letter-spacing: 0.02em; line-height: 1.3; display: block; }
+  .work-grid-wrap { display: flex; flex-direction: column; gap: 1.2rem; }
+  .work-row { display: flex; gap: 1.2rem; }
+  .work-card-r { overflow: hidden; border-radius: 18px; cursor: pointer; transition: transform 0.3s ease, opacity 0.3s ease; position: relative; flex-shrink: 0; }
+  .work-card-r:hover { transform: scale(1.02); opacity: 0.92; }
+  .work-card-r img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .work-card-r .poster-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.82); display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 1.5rem; opacity: 0; transition: opacity 0.3s; text-align: center; gap: 0.75rem; border-radius: 18px; }
+  .work-card-r:hover .poster-overlay { opacity: 1; }
   .work-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top; transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94); filter: brightness(0.88); border-radius: 8px; }
   .work-card:hover { box-shadow: 0 12px 48px rgba(0,0,0,0.7), 0 0 0 1px rgba(0,212,245,0.08), 0 4px 32px rgba(0,212,245,0.1); transform: translateY(-3px); }
   .work-card:hover img { transform: scale(1.04); filter: brightness(0.72); }
@@ -166,10 +163,10 @@
   .credits-table tr:hover { background: rgba(238,234,248,0.03); }
   .credits-table tr:last-child { border-bottom: none; }
   /* SPACING UPDATE */ .credits-table td { padding: 1rem 0.5rem 1rem 0; font-size: 0.95rem; vertical-align: middle; color: var(--white); line-height: 1.3; }
-  .ct-net { color: rgba(238,234,248,0.45); font-size: 0.88rem; padding-left: 0; }
+  .ct-net { color: var(--white); font-size: 0.88rem; padding-left: 0; }
   .ct-role { text-align: right; white-space: nowrap; padding-left: 1rem; }
   .ct-lead { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); border: 0.5px solid rgba(0,212,245,0.5); padding: 0.28rem 0.85rem; border-radius: 999px; }
-  .ct-ed { font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+  .ct-ed { font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--white); }
 
   /* PRESS */
 
@@ -286,19 +283,12 @@
   <div class="section-label">The Edit</div>
 
 
-  <div class="work-composition">
+  <div class="work-grid-wrap">
 
-    <!-- Column 1 — Bachelor Mansion portrait, The Climb landscape -->
-    <div class="work-col">
-      <div class="poster">
-        <img src="images/BachelorMansionTakeoverHero.jpg" alt="Bachelor Mansion Takeover">
-        <div class="poster-overlay">
-          <div class="overlay-network-label">Watch</div>
-          <div class="overlay-links"><a class="overlay-link" href="https://www.youtube.com/watch?v=G66wKFsPzTY" target="_blank">Trailer</a></div>
-        </div>
-      </div>
-      <div class="poster">
-        <img src="images/THE CLIMB HBO.avif" style="object-fit: cover;" alt="The Climb">
+    <!-- Row 1 — The Climb full width -->
+    <div class="work-row">
+      <div class="work-card-r" style="width: 100%; height: 420px;">
+        <img src="images/THE CLIMB HBO.avif" alt="The Climb">
         <div class="poster-overlay">
           <div class="overlay-network-label">Watch</div>
           <div class="overlay-links"><a class="overlay-link" href="https://www.youtube.com/watch?v=wKUce1x-njY" target="_blank">Trailer</a></div>
@@ -306,18 +296,23 @@
       </div>
     </div>
 
-    <div></div>
-
-    <!-- Column 2 — Face Off landscape, Fake Up portrait -->
-    <div class="work-col" style="margin-top: 4rem;">
-      <div class="poster">
+    <!-- Row 2 — Three portrait cards -->
+    <div class="work-row">
+      <div class="work-card-r" style="flex: 1; height: 380px;">
+        <img src="images/BachelorMansionTakeoverHero.jpg" alt="Bachelor Mansion Takeover">
+        <div class="poster-overlay">
+          <div class="overlay-network-label">Watch</div>
+          <div class="overlay-links"><a class="overlay-link" href="https://www.youtube.com/watch?v=G66wKFsPzTY" target="_blank">Trailer</a></div>
+        </div>
+      </div>
+      <div class="work-card-r" style="flex: 1; height: 380px;">
         <img src="images/Face Off Hero.jpg" alt="Face Off">
         <div class="poster-overlay">
           <div class="overlay-network-label">Watch</div>
           <div class="overlay-links"><a class="overlay-link" href="https://www.syfy.com/face-off" target="_blank">Syfy</a></div>
         </div>
       </div>
-      <div class="poster">
+      <div class="work-card-r" style="flex: 1; height: 380px;">
         <img src="images/FakeUpHero.jpeg" alt="Fake Up">
         <div class="poster-overlay">
           <div class="overlay-network-label">Watch</div>
@@ -329,22 +324,29 @@
       </div>
     </div>
 
-    <div></div>
-
-    <!-- Column 3 — The Impact landscape, Baking Show portrait -->
-    <div class="work-col" style="margin-top: 8rem;">
-      <div class="poster">
-        <img src="images/The Impact.jpg" alt="The Impact Atlanta">
-        <div class="poster-overlay">
-          <div class="overlay-network-label">Watch</div>
-          <div class="overlay-links"><a class="overlay-link" href="https://www.betplus.com/series/the-impact-atlanta" target="_blank">Stream on BET+</a></div>
+    <!-- Rows 3 & 4 — Left two vertical portraits, right The Proposal spanning full height -->
+    <div class="work-row" style="align-items: stretch; height: 761px;">
+      <div style="flex: 1; display: flex; flex-direction: column; gap: 1.2rem; height: 100%;">
+        <div class="work-card-r" style="flex: 1;">
+          <img src="images/The Impact.jpg" alt="The Impact Atlanta">
+          <div class="poster-overlay">
+            <div class="overlay-network-label">Watch</div>
+            <div class="overlay-links"><a class="overlay-link" href="https://www.betplus.com/series/the-impact-atlanta" target="_blank">Stream on BET+</a></div>
+          </div>
+        </div>
+        <div class="work-card-r" style="flex: 1;">
+          <img src="images/Get_a_room_with_carson_and_thom.avif" alt="Get a Room with Carson and Thom">
+          <div class="poster-overlay">
+            <div class="overlay-network-label">Watch</div>
+            <div class="overlay-links"><a class="overlay-link" href="https://www.bravotv.com/get-a-room-with-carson-thom" target="_blank">Bravo</a></div>
+          </div>
         </div>
       </div>
-      <div class="poster">
-        <img src="images/The_Great_American_Baking_Show.jpg" alt="The Great American Baking Show">
+      <div class="work-card-r" style="flex: 2; height: 100%;">
+        <img src="images/The Proposal hero.jpg" style="object-fit: cover; object-position: center 20%; height: 100%;" alt="The Proposal">
         <div class="poster-overlay">
           <div class="overlay-network-label">Watch</div>
-          <div class="overlay-links"><a class="overlay-link" href="https://www.youtube.com/watch?v=IlWLSAKEedk&t=91s" target="_blank">Trailer</a></div>
+          <div class="overlay-links"><a class="overlay-link" href="https://www.youtube.com/watch?v=pYwiObHJ_uU" target="_blank">Episode Clip</a></div>
         </div>
       </div>
     </div>
