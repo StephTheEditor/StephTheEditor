@@ -147,13 +147,16 @@
   /* ABOUT */
   .about-grid { display: grid; grid-template-columns: 1fr; gap: 0; align-items: start; max-width: 100%; }
 
-  .about-kicker { font-family: var(--sans); font-weight: 300; font-size: 1.35rem; line-height: 1.75; color: var(--white); margin-bottom: 2rem; text-align: left; }
+  .about-kicker { font-family: var(--sans); font-weight: 300; font-size: 1.15rem; line-height: 1.9; color: var(--white); margin-bottom: 2.5rem; text-align: left; }
   .about-credits { border-top: 0.5px solid var(--border); padding-top: 1.5rem; display: flex; flex-direction: column; gap: 1rem; }
   .credit-item { display: flex; flex-direction: column; gap: 0.15rem; }
   .credit-label { font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
   .credit-value { font-size: 0.9rem; color: var(--white); }
-  /* SPACING UPDATE */ .about-body p { font-family: var(--sans); font-size: 1.05rem; line-height: 1.9; color: var(--white); margin-bottom: 2.5rem; max-width: 780px; text-align: left; }
-  /* SPACING UPDATE */ .about-body p:first-child { font-family: var(--sans); color: var(--white); font-size: 1.1rem; line-height: 1.9; max-width: 780px; text-align: left; }
+  /* SPACING UPDATE */ .about-body p { font-family: var(--sans); font-size: 1.15rem; line-height: 1.9; color: var(--white); margin-bottom: 2.5rem; text-align: left; }
+  /* SPACING UPDATE */ .about-body p:first-child { font-family: var(--sans); color: var(--white); font-size: 1.15rem; line-height: 1.9; text-align: left; }
+  .about-offset { display: grid; grid-template-columns: 1fr 2.2fr; gap: 4rem; align-items: start; }
+  .about-left-space { padding-top: 0.5rem; display: flex; align-items: flex-start; justify-content: center; }
+  .about-vertical-label { font-size: 0.65rem; letter-spacing: 0.28em; text-transform: uppercase; color: rgba(238,234,248,0.15); writing-mode: vertical-rl; transform: rotate(180deg); }
   .specialties { margin-top: 2.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
   .specialty { font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--white); padding: 0.75rem 1rem; border: 0.5px solid var(--border); display: flex; align-items: center; gap: 0.5rem; }
   .specialty::before { content: ''; display: block; width: 6px; height: 6px; background: var(--accent); border-radius: 50%; flex-shrink: 0; }
@@ -361,8 +364,12 @@
 
 <section id="about">
   <div class="section-label">About</div>
-  <div class="about-grid">
-    <div class="about-body">
+  <div class="about-offset">
+    <div class="about-left-space">
+      <span class="about-vertical-label">Story Architect</span>
+    </div>
+    <div class="about-grid">
+      <div class="about-body">
       <p class="about-kicker">Stephanie Erickson loves people. The heroes, the villains, the ones who surprise you in the final act and the ones who break your heart in the first. Showcasing every moment that makes someone uniquely human brings her great joy.</p>
       <p>She gets footage. Hours and hours of real people, real moments, real lives, and she sits with it until she finds what nobody else could see. The story that was always there, waiting for someone to care enough to find it.</p>
       <p>She has done that on HBO, ABC, Discovery, Roku, MAX, BET+, YouTube Originals and Snapchat Originals before anyone knew what those could be. She has made audiences fall in love, cry, laugh and feel things they did not expect to feel watching content they thought they already understood.</p>
