@@ -4,6 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Stephanie Erickson, Creative Editor and Story Architect</title>
+<meta name="description" content="Stephanie Erickson — Television Editor and Story Architect. Credits include HBO, ABC, HGTV, Discovery, Roku, Snapchat Originals, and YouTube Originals. Specializing in prestige competition, docuseries, and emerging vertical formats.">
+<meta name="keywords" content="Stephanie Erickson, television editor, story architect, HBO editor, unscripted editor, The Climb, Face Off, Bachelor Mansion Takeover, Fake Up, Snapchat Originals, reality TV editor, Los Angeles editor">
+<meta property="og:title" content="Stephanie Erickson — Editor and Story Architect">
+<meta property="og:description" content="Television Editor with credits at HBO, ABC, HGTV, Discovery, Roku, Snapchat Originals, and YouTube Originals.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Stephanie Erickson — Editor and Story Architect">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@800&family=Outfit:wght@900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
@@ -115,11 +121,11 @@
   /* WORK GRID */
   .work-grid-wrap { display: flex; flex-direction: column; gap: 1.2rem; }
   .work-row { display: flex; gap: 1.2rem; }
-  .work-card-r { overflow: hidden; border-radius: 0; cursor: pointer; transition: transform 0.3s ease, opacity 0.3s ease; position: relative; flex-shrink: 0; }
+  .work-card-r { overflow: hidden; border-radius: 0; cursor: pointer; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1); position: relative; flex-shrink: 0; }
   .work-card-r:hover { transform: scale(1.02); opacity: 0.92; }
   .work-card-r img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .work-card-r img.contain { object-fit: contain; background: #000; }
-  .work-card-r .poster-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.82); display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 1.5rem; opacity: 0; transition: opacity 0.3s; text-align: center; gap: 0.75rem; border-radius: 0; }
+  .work-card-r .poster-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.82); display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 1.5rem; opacity: 0; transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1); text-align: center; gap: 0.75rem; border-radius: 0; }
   .work-card-r:hover .poster-overlay { opacity: 1; }
   .work-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top; transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94); filter: brightness(0.88); border-radius: 8px; }
   .work-card:hover { box-shadow: 0 12px 48px rgba(0,0,0,0.7), 0 0 0 1px rgba(0,212,245,0.08), 0 4px 32px rgba(0,212,245,0.1); transform: translateY(-3px); }
@@ -283,8 +289,8 @@
 
     <!-- Row 1 — The Climb full width, taller -->
     <div class="work-row">
-      <div class="work-card-r" style="width: 100%; height: 380px;">
-        <img src="images/THE CLIMB HBO.avif" alt="The Climb">
+      <div class="work-card-r" style="width: 100%; height: 380px;" aria-label="The Climb, HBO — prestige competition series; narrative pacing, intimate character arcs, and structural foundation for the finale">
+        <img src="images/THE CLIMB HBO.avif" alt="The Climb — HBO prestige competition series. Editor Stephanie Erickson established narrative pacing and structural foundation through the creative rounds.">
         <div class="poster-overlay">
           <div class="overlay-network-label">Watch</div>
           <div class="overlay-links"><a class="overlay-link" href="https://www.youtube.com/watch?v=wKUce1x-njY" target="_blank">Trailer</a></div>
@@ -294,29 +300,29 @@
 
     <!-- Row 2 — Four portrait cards: Bachelor, Baking Show, Impact, Face Off -->
     <div class="work-row" style="align-items: flex-start;">
-      <div class="work-card-r" style="flex: 1; aspect-ratio: 2/3;">
-        <img src="images/BachelorMansionTakeoverHero.jpg" alt="Bachelor Mansion Takeover">
+      <div class="work-card-r" style="flex: 1; aspect-ratio: 2/3;" aria-label="Bachelor Mansion Takeover, HGTV and MAX — fast-paced crossover narrative engineering drama and renovation">
+        <img src="images/BachelorMansionTakeoverHero.jpg" alt="Bachelor Mansion Takeover — HGTV and MAX. Editor Stephanie Erickson engineered a fast-paced crossover narrative integrating motion graphics and brand-specific style.">
         <div class="poster-overlay">
           <div class="overlay-network-label">Watch</div>
           <div class="overlay-links"><a class="overlay-link" href="https://www.youtube.com/watch?v=G66wKFsPzTY" target="_blank">Trailer</a></div>
         </div>
       </div>
-      <div class="work-card-r" style="flex: 1; aspect-ratio: 2/3;">
-        <img src="images/The_Great_American_Baking_Show.jpg" alt="The Great American Baking Show">
+      <div class="work-card-r" style="flex: 1; aspect-ratio: 2/3;" aria-label="The Great American Baking Show, Roku — blending scripted comedy with high-pressure competition beats">
+        <img src="images/The_Great_American_Baking_Show.jpg" alt="The Great American Baking Show — Roku Original. Editor Stephanie Erickson balanced scripted comedic cold opens with high-pressure competition story beats.">
         <div class="poster-overlay">
           <div class="overlay-network-label">Watch</div>
           <div class="overlay-links"><a class="overlay-link" href="https://www.youtube.com/watch?v=IlWLSAKEedk&t=91s" target="_blank">Trailer</a></div>
         </div>
       </div>
-      <div class="work-card-r" style="flex: 1; aspect-ratio: 2/3;">
-        <img class="contain" src="images/The Impact.jpg" alt="The Impact Atlanta">
+      <div class="work-card-r" style="flex: 1; aspect-ratio: 2/3;" aria-label="The Impact Atlanta, BET Plus — shaping high-stakes docuseries narratives for BET Plus original series">
+        <img class="contain" src="images/The Impact.jpg" alt="The Impact Atlanta — BET Plus original docuseries. Editor Stephanie Erickson shaped high-stakes narrative arcs across the series.">
         <div class="poster-overlay">
           <div class="overlay-network-label">Watch</div>
           <div class="overlay-links"><a class="overlay-link" href="https://www.betplus.com/series/the-impact-atlanta" target="_blank">Stream on BET+</a></div>
         </div>
       </div>
-      <div class="work-card-r" style="flex: 1; aspect-ratio: 2/3;">
-        <img src="images/Face Off Hero.jpg" alt="Face Off">
+      <div class="work-card-r" style="flex: 1; aspect-ratio: 2/3;" aria-label="Face Off, Syfy — long-running prestige competition series, Seasons 1 through 13">
+        <img src="images/Face Off Hero.jpg" alt="Face Off — Syfy. Lead Editor Stephanie Erickson managed complex competition arcs across 13 seasons, defining the visual DNA and musical rhythm of the series from inception.">
         <div class="poster-overlay">
           <div class="overlay-network-label">Watch</div>
           <div class="overlay-links"><a class="overlay-link" href="https://www.syfy.com/face-off" target="_blank">Syfy</a></div>
@@ -326,8 +332,8 @@
 
     <!-- Row 3 — Fake Up left, The Proposal right -->
     <div class="work-row" style="align-items: flex-start;">
-      <div class="work-card-r" style="flex: 1;">
-        <img class="contain" src="images/FakeUpHero.jpeg" alt="Fake Up">
+      <div class="work-card-r" style="flex: 1;" aria-label="Fake Up, Snapchat Originals — Lead Editor, platform-native vertical content, 8-minute mobile narratives">
+        <img class="contain" src="images/FakeUpHero.jpeg" alt="Fake Up — Snapchat Originals. Lead Editor and Consulting Producer Stephanie Erickson engineered the foundational story language and visual style for platform-native vertical media.">
         <div class="poster-overlay">
           <div class="overlay-network-label">Watch</div>
           <div class="overlay-links">
@@ -336,8 +342,8 @@
           </div>
         </div>
       </div>
-      <div class="work-card-r" style="flex: 2;">
-        <img class="contain" src="images/The Proposal hero.jpg" alt="The Proposal">
+      <div class="work-card-r" style="flex: 2;" aria-label="The Proposal, ABC — competition series blending romance and high-stakes decision making">
+        <img class="contain" src="images/The Proposal hero.jpg" alt="The Proposal — ABC. Editor Stephanie Erickson shaped competition narrative with romantic story arcs and high-stakes emotional beats.">
         <div class="poster-overlay">
           <div class="overlay-network-label">Watch</div>
           <div class="overlay-links"><a class="overlay-link" href="https://www.youtube.com/watch?v=pYwiObHJ_uU" target="_blank">Episode Clip</a></div>
