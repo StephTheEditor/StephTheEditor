@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Credits &amp; Resume — Stephanie Erickson</title>
-<meta name="description" content="Full credits and resume for Stephanie Erickson, Creative Editor and Story Architect. HBO, ABC, HGTV, Discovery, Roku, Snapchat Originals, YouTube Originals.">
+<title>Stephanie Erickson — Credits</title>
+<meta name="description" content="Full credits for Stephanie Erickson, Creative Editor and Story Architect. HBO, ABC, HGTV, Discovery, Roku, Snapchat Originals, YouTube Originals.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@800&family=Outfit:wght@900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
@@ -25,7 +25,7 @@
   html { scroll-behavior: smooth; }
   body { font-family: var(--sans); background: var(--black); color: var(--white); font-size: 16px; line-height: 1.75; font-weight: 300; }
 
-  /* NAV */
+  /* NAV — identical to index */
   nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.1rem 3rem; background: rgba(0,0,0,0.94); backdrop-filter: blur(8px); border-bottom: 0.5px solid var(--border); }
   .nav-logo { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 0.72rem; letter-spacing: 0.38em; text-transform: uppercase; color: #ff6db3; text-decoration: none; display: flex; align-items: center; }
   .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
@@ -39,27 +39,18 @@
   .nav-social-imdb:hover { filter: drop-shadow(0 0 8px rgba(245,197,24,1)) drop-shadow(0 0 20px rgba(245,197,24,0.6)); }
   .nav-social-li:hover   { filter: drop-shadow(0 0 8px rgba(10,102,194,1)) drop-shadow(0 0 20px rgba(10,102,194,0.6)); }
 
-  /* PAGE HEADER */
-  .page-header { padding: 10rem 3rem 3rem; max-width: 1100px; margin: 0 auto; }
-  .page-header-name { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 0.72rem; letter-spacing: 0.38em; text-transform: uppercase; color: #ff6db3; margin-bottom: 1.2rem; }
-  .page-header-title { font-family: 'Barlow', sans-serif; font-size: clamp(2.4rem, 5vw, 4.8rem); font-weight: 800; line-height: 0.9; letter-spacing: 0.02em; text-transform: uppercase; color: #00d4f5; text-shadow: 0 0 2px #fff, 0 0 8px #00d4f5, 0 0 20px #00d4f5, 0 0 50px rgba(0,212,245,0.7), 0 0 100px rgba(0,212,245,0.3); }
-  .page-header-sub { font-family: var(--sans); font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); margin-top: 1.5rem; }
-
-  /* RESUME BLOCK */
-  .resume-block { max-width: 1100px; margin: 0 auto; padding: 0 3rem 2rem; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; border-bottom: 0.5px solid var(--border); padding-bottom: 3rem; margin-bottom: 0; }
-  .resume-item { display: flex; flex-direction: column; gap: 0.3rem; }
-  .resume-label { font-size: 0.65rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
-  .resume-value { font-size: 0.88rem; color: var(--white); line-height: 1.5; }
-  .resume-value a { color: var(--accent); text-decoration: none; border-bottom: 0.5px solid rgba(0,212,245,0.4); transition: opacity 0.2s; }
-  .resume-value a:hover { opacity: 0.7; }
+  /* PAGE HEADER — name only, same visual treatment as credits-category */
+  .page-header { padding: 10rem 3rem 0; max-width: 1100px; margin: 0 auto; }
+  .page-name { font-size: 0.88rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); font-weight: 400; display: flex; align-items: center; gap: 1rem; }
+  .page-name::after { content: ''; flex: 1; height: 0.5px; background: var(--border); }
 
   /* SECTION */
   section { padding: 4rem 3rem; max-width: 1100px; margin: 0 auto; }
-  .section-label { font-size: 0.95rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--teal); margin-bottom: 4rem; display: flex; align-items: center; gap: 1rem; font-weight: 400; }
-  .section-label::after { content: ''; flex: 1; height: 0.5px; background: var(--border); }
 
-  /* CREDITS TABLE */
+  /* CREDITS TABLE — exact copy from main site, untouched */
+  .credits-section { margin-top: 2rem; }
   .credits-category { font-size: 0.88rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin: 3.5rem 0 1rem; display: flex; align-items: center; gap: 1rem; font-weight: 400; }
+  .credits-category:first-child { margin-top: 0; }
   .credits-category::after { content: ''; flex: 1; height: 0.5px; background: var(--border); }
   .credits-table { width: 100%; border-collapse: collapse; table-layout: fixed; }
   .credits-table tr { border-bottom: 0.5px solid var(--border); transition: background 0.15s; }
@@ -73,19 +64,21 @@
   .ct-role { text-align: right; white-space: nowrap; padding-left: 1rem; }
   .ct-lead { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); border: 0.5px solid rgba(0,212,245,0.5); padding: 0.28rem 0.85rem; border-radius: 999px; }
   .ct-ed { font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--white); }
-  .ct-cp { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--purple); border: 0.5px solid rgba(191,95,255,0.5); padding: 0.28rem 0.85rem; border-radius: 999px; }
 
-  /* SKILLS ROW */
-  .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 1rem; }
-  .skill-item { font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--white); padding: 0.75rem 1rem; border: 0.5px solid var(--border); display: flex; align-items: center; gap: 0.5rem; }
-  .skill-item::before { content: ''; display: block; width: 6px; height: 6px; background: var(--accent); border-radius: 50%; flex-shrink: 0; }
+  /* RESUME INFO — after credits, restrained, pink labels */
+  .resume-footer { max-width: 1100px; margin: 0 auto; padding: 3rem 3rem 1rem; border-top: 0.5px solid var(--border); display: flex; flex-direction: column; gap: 1.1rem; }
+  .resume-row { display: flex; gap: 1.5rem; align-items: baseline; }
+  .resume-label { font-size: 0.65rem; letter-spacing: 0.16em; text-transform: uppercase; color: #ff2d9b; flex-shrink: 0; width: 100px; }
+  .resume-value { font-size: 0.88rem; color: var(--white); line-height: 1.6; }
+  .resume-value a { color: var(--white); text-decoration: none; border-bottom: 0.5px solid rgba(238,234,248,0.3); transition: opacity 0.2s; }
+  .resume-value a:hover { opacity: 0.6; }
 
-  /* BACK LINK */
-  .back-link-wrap { max-width: 1100px; margin: 0 auto; padding: 0 3rem 5rem; }
-  .back-link { display: inline-flex; align-items: center; gap: 0.75rem; text-decoration: none; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); transition: color 0.2s; }
-  .back-link:hover { color: var(--white); }
+  /* EXTERNAL LINKS */
+  .external-links { max-width: 1100px; margin: 0 auto; padding: 2rem 3rem 5rem; display: flex; gap: 2rem; align-items: center; }
+  .external-link { font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); text-decoration: none; border-bottom: 0.5px solid rgba(238,234,248,0.2); transition: color 0.2s; }
+  .external-link:hover { color: var(--white); }
 
-  /* FOOTER */
+  /* FOOTER — identical to index */
   footer { border-top: 0.5px solid var(--border); padding: 1.5rem 3rem; display: flex; align-items: center; justify-content: space-between; }
   .footer-logo { font-family: var(--sans); font-weight: 300; font-size: 0.72rem; letter-spacing: 0.38em; text-transform: uppercase; color: #ff6db3; }
   .footer-social { display: flex; gap: 1.5rem; align-items: center; }
@@ -96,18 +89,19 @@
   @media (max-width: 900px) {
     nav { padding: 1rem 1.5rem; }
     .nav-links { gap: 1rem; }
+    .page-header { padding: 8rem 1.5rem 0; }
     section { padding: 3rem 1.5rem; }
-    .page-header { padding: 8rem 1.5rem 2rem; }
-    .resume-block { grid-template-columns: 1fr; padding: 0 1.5rem 2rem; }
-    .skills-grid { grid-template-columns: 1fr; }
-    .back-link-wrap { padding: 0 1.5rem 3rem; }
+    .resume-footer { padding: 2rem 1.5rem 1rem; }
+    .resume-row { flex-direction: column; gap: 0.15rem; }
+    .resume-label { width: auto; }
+    .external-links { padding: 1.5rem 1.5rem 3rem; }
     footer { padding: 1.5rem; flex-direction: column; gap: 1rem; text-align: center; }
   }
 </style>
 </head>
 <body>
 
-<!-- NAV — identical to index -->
+<!-- NAV -->
 <nav>
   <a class="nav-logo" href="index.html">Steph The Editor</a>
   <ul class="nav-links">
@@ -134,96 +128,87 @@
   </div>
 </nav>
 
-<!-- PAGE HEADER -->
+<!-- PAGE HEADER — name only, same treatment as credits-category line -->
 <div class="page-header">
-  <p class="page-header-name">Stephanie Erickson</p>
-  <h1 class="page-header-title">Credits<br>&amp; Resume</h1>
-  <p class="page-header-sub">Creative Editor &nbsp;·&nbsp; Story Architect &nbsp;·&nbsp; Los Angeles</p>
-</div>
-
-<!-- RESUME CONTACT / EDUCATION / SKILLS -->
-<div class="resume-block">
-  <div class="resume-item">
-    <span class="resume-label">Contact</span>
-    <span class="resume-value">310.266.8117</span>
-    <span class="resume-value"><a href="mailto:stephanieerickson@yahoo.com">stephanieerickson@yahoo.com</a></span>
-  </div>
-  <div class="resume-item">
-    <span class="resume-label">Education</span>
-    <span class="resume-value">Loyola Marymount University</span>
-    <span class="resume-value" style="color: var(--muted); font-size: 0.78rem;">BA Film Production &nbsp;·&nbsp; School of Film &amp; Television</span>
-  </div>
-  <div class="resume-item">
-    <span class="resume-label">Systems &amp; Software</span>
-    <span class="resume-value">Avid Media Composer &nbsp;·&nbsp; Nexis &nbsp;·&nbsp; Final Cut Pro &nbsp;·&nbsp; Photoshop</span>
-    <span class="resume-value" style="color: var(--muted); font-size: 0.78rem; margin-top: 0.4rem;">Mac and PC</span>
-  </div>
+  <div class="page-name">Stephanie Erickson</div>
 </div>
 
 <!-- CREDITS -->
 <section>
-  <div class="section-label">Full Credits</div>
+  <div class="credits-section">
 
-  <div class="credits-category">Competition</div>
-  <table class="credits-table">
-    <tr><td>Bachelor Mansion Takeover</td><td class="ct-net">HGTV / MAX</td><td class="ct-role"><span class="ct-ed">Editor</span></td></tr>
-    <tr><td>100 Day Hotel Challenge</td><td class="ct-net">HGTV / MAX</td><td class="ct-role"><span class="ct-ed">Editor</span></td></tr>
-    <tr><td>Barbie Dreamhouse Challenge</td><td class="ct-net">HGTV / MAX</td><td class="ct-role"><span class="ct-ed">Editor</span></td></tr>
-    <tr><td>The Great American Baking Show, S6</td><td class="ct-net">Roku</td><td class="ct-role"><span class="ct-ed">Editor</span></td></tr>
-    <tr><td>The Climb</td><td class="ct-net">HBO</td><td class="ct-role"><span class="ct-ed">Editor</span></td></tr>
-    <tr><td>Fast Foodies, S2</td><td class="ct-net">TruTV</td><td class="ct-role"><span class="ct-ed">Editor</span></td></tr>
-    <tr><td>Fake Up, Seasons 1 &amp; 2</td><td class="ct-net">Snapchat Originals</td><td class="ct-role"><span class="ct-lead">Lead Editor</span></td></tr>
-    <tr><td>Fake Up, Seasons 1 &amp; 2</td><td class="ct-net">Snapchat Originals</td><td class="ct-role"><span class="ct-cp">Consulting Producer</span></td></tr>
-    <tr><td>Instant Influencer with James Charles</td><td class="ct-net">YouTube Originals</td><td class="ct-role"><span class="ct-ed">Editor</span></td></tr>
-    <tr><td>Wrap Battle</td><td class="ct-net">Freeform</td><td class="ct-role"><span class="ct-ed">Editor</span></td></tr>
-    <tr><td>The Proposal</td><td class="ct-net">ABC</td><td class="ct-role"><span class="ct-ed">Editor</span></td></tr>
-    <tr><td>Amazingness</td><td class="ct-net">MTV</td><td class="ct-role"><span class="ct-ed">Editor</span></td></tr>
-    <tr><td>Drop the Mic</td><td class="ct-net">TBS</td><td class="ct-role"><span class="ct-ed">Editor</span></td></tr>
-    <tr><td>Face Off, Seasons 1 through 13</td><td class="ct-net">Syfy</td><td class="ct-role"><span class="ct-ed">Editor</span></td></tr>
-    <tr><td>Next Food Network Star, S9</td><td class="ct-net">Food Network</td><td class="ct-role"><span class="ct-ed">Editor</span></td></tr>
-    <tr><td>Master of the Mix, S2</td><td class="ct-net">BET</td><td class="ct-role"><span class="ct-lead">Lead Editor</span></td></tr>
-    <tr><td>America's Best Dance Crew</td><td class="ct-net">MTV</td><td class="ct-role"><span class="ct-ed">Editor</span></td></tr>
-    <tr><td>WCG Ultimate Gamer, S2</td><td class="ct-net">Syfy</td><td class="ct-role"><span class="ct-ed">Editor</span></td></tr>
-    <tr><td>I Want to Be a Hilton</td><td class="ct-net">NBC</td><td class="ct-role"><span class="ct-ed">Editor</span></td></tr>
-  </table>
+    <div class="credits-category">Competition</div>
+    <table class="credits-table">
+      <tr><td>Bachelor Mansion Takeover</td><td class="ct-net">HGTV/MAX</td><td class="ct-role"><span class="ct-ed">Editor</span></td></tr>
+      <tr><td>100 Day Hotel Challenge</td><td class="ct-net">HGTV/MAX</td><td class="ct-role"><span class="ct-ed">Editor</span></td></tr>
+      <tr><td>Barbie Dreamhouse Challenge</td><td class="ct-net">HGTV/MAX</td><td class="ct-role"><span class="ct-ed">Editor</span></td></tr>
+      <tr><td>The Great American Baking Show, S6</td><td class="ct-net">Roku</td><td class="ct-role"><span class="ct-ed">Editor</span></td></tr>
+      <tr><td>The Climb</td><td class="ct-net">HBO</td><td class="ct-role"><span class="ct-ed">Editor</span></td></tr>
+      <tr><td>Fast Foodies, S2</td><td class="ct-net">TruTV</td><td class="ct-role"><span class="ct-ed">Editor</span></td></tr>
+      <tr><td>Fake Up, Seasons 1 &amp; 2</td><td class="ct-net">Snapchat</td><td class="ct-role"><span class="ct-lead">Lead Editor</span></td></tr>
+      <tr><td>Instant Influencer with James Charles</td><td class="ct-net">YouTube</td><td class="ct-role"><span class="ct-ed">Editor</span></td></tr>
+      <tr><td>Wrap Battle</td><td class="ct-net">Freeform</td><td class="ct-role"><span class="ct-ed">Editor</span></td></tr>
+      <tr><td>The Proposal</td><td class="ct-net">ABC</td><td class="ct-role"><span class="ct-ed">Editor</span></td></tr>
+      <tr><td>Amazingness</td><td class="ct-net">MTV</td><td class="ct-role"><span class="ct-ed">Editor</span></td></tr>
+      <tr><td>Drop the Mic</td><td class="ct-net">TBS</td><td class="ct-role"><span class="ct-ed">Editor</span></td></tr>
+      <tr><td>Face Off, Seasons 1 through 13</td><td class="ct-net">Syfy</td><td class="ct-role"><span class="ct-ed">Editor</span></td></tr>
+      <tr><td>Next Food Network Star, S9</td><td class="ct-net">Food Network</td><td class="ct-role"><span class="ct-ed">Editor</span></td></tr>
+      <tr><td>Master of the Mix, S2</td><td class="ct-net">BET</td><td class="ct-role"><span class="ct-lead">Lead Editor</span></td></tr>
+      <tr><td>America's Best Dance Crew</td><td class="ct-net">MTV</td><td class="ct-role"><span class="ct-ed">Editor</span></td></tr>
+      <tr><td>WCG Ultimate Gamer, S2</td><td class="ct-net">Syfy</td><td class="ct-role"><span class="ct-ed">Editor</span></td></tr>
+      <tr><td>I Want to Be a Hilton</td><td class="ct-net">NBC</td><td class="ct-role"><span class="ct-ed">Editor</span></td></tr>
+    </table>
 
-  <div class="credits-category">Docuseries</div>
-  <table class="credits-table">
-    <tr><td>The Impact: Atlanta</td><td class="ct-net">BET+</td><td class="ct-role"><span class="ct-ed">Editor</span></td></tr>
-    <tr><td>101 Places to Party Before You Die</td><td class="ct-net">TruTV</td><td class="ct-role"><span class="ct-ed">Editor</span></td></tr>
-    <tr><td>Relatively Famous: Ranch Rules</td><td class="ct-net">E!</td><td class="ct-role"><span class="ct-ed">Editor</span></td></tr>
-    <tr><td>Ladies Who List: Atlanta</td><td class="ct-net">OWN</td><td class="ct-role"><span class="ct-ed">Editor</span></td></tr>
-    <tr><td>Naked &amp; Afraid: Origins</td><td class="ct-net">Discovery</td><td class="ct-role"><span class="ct-ed">Editor</span></td></tr>
-    <tr><td>Alaska: The Last Frontier, S8 &amp; 9</td><td class="ct-net">Discovery</td><td class="ct-role"><span class="ct-ed">Editor</span></td></tr>
-    <tr><td>Last Outpost</td><td class="ct-net">Discovery</td><td class="ct-role"><span class="ct-lead">Lead Editor</span></td></tr>
-    <tr><td>Dream Machines</td><td class="ct-net">Syfy</td><td class="ct-role"><span class="ct-lead">Lead Editor</span></td></tr>
-    <tr><td>Girls Who Like Boys Who Like Boys</td><td class="ct-net">Sundance Channel</td><td class="ct-role"><span class="ct-ed">Editor</span></td></tr>
-    <tr><td>Maui Fever</td><td class="ct-net">MTV</td><td class="ct-role"><span class="ct-ed">Editor</span></td></tr>
-    <tr><td>Laguna Beach: The Aftershow</td><td class="ct-net">MTV</td><td class="ct-role"><span class="ct-ed">Editor</span></td></tr>
-    <tr><td>The Hills: The Aftershow</td><td class="ct-net">MTV</td><td class="ct-role"><span class="ct-ed">Editor</span></td></tr>
-    <tr><td>Bridezillas</td><td class="ct-net">WE</td><td class="ct-role"><span class="ct-ed">Editor</span></td></tr>
-  </table>
+    <div class="credits-category">Docuseries</div>
+    <table class="credits-table">
+      <tr><td>The Impact: Atlanta</td><td class="ct-net">BET+</td><td class="ct-role"><span class="ct-ed">Editor</span></td></tr>
+      <tr><td>101 Places to Party Before You Die</td><td class="ct-net">TruTV</td><td class="ct-role"><span class="ct-ed">Editor</span></td></tr>
+      <tr><td>Relatively Famous: Ranch Rules</td><td class="ct-net">E!</td><td class="ct-role"><span class="ct-ed">Editor</span></td></tr>
+      <tr><td>Ladies Who List: Atlanta</td><td class="ct-net">OWN</td><td class="ct-role"><span class="ct-ed">Editor</span></td></tr>
+      <tr><td>Naked &amp; Afraid: Origins</td><td class="ct-net">Discovery</td><td class="ct-role"><span class="ct-ed">Editor</span></td></tr>
+      <tr><td>Alaska: The Last Frontier, S8 &amp; 9</td><td class="ct-net">Discovery</td><td class="ct-role"><span class="ct-ed">Editor</span></td></tr>
+      <tr><td>Last Outpost</td><td class="ct-net">Discovery</td><td class="ct-role"><span class="ct-lead">Lead Editor</span></td></tr>
+      <tr><td>Dream Machines</td><td class="ct-net">Syfy</td><td class="ct-role"><span class="ct-lead">Lead Editor</span></td></tr>
+      <tr><td>Girls Who Like Boys Who Like Boys</td><td class="ct-net">Sundance</td><td class="ct-role"><span class="ct-ed">Editor</span></td></tr>
+      <tr><td>Maui Fever</td><td class="ct-net">MTV</td><td class="ct-role"><span class="ct-ed">Editor</span></td></tr>
+      <tr><td>Laguna Beach: The Aftershow</td><td class="ct-net">MTV</td><td class="ct-role"><span class="ct-ed">Editor</span></td></tr>
+      <tr><td>The Hills: The Aftershow</td><td class="ct-net">MTV</td><td class="ct-role"><span class="ct-ed">Editor</span></td></tr>
+      <tr><td>Bridezillas</td><td class="ct-net">WE</td><td class="ct-role"><span class="ct-ed">Editor</span></td></tr>
+    </table>
 
-  <div class="credits-category">Stage Shows &amp; Makeover</div>
-  <table class="credits-table">
-    <tr><td>Deliciousness</td><td class="ct-net">MTV</td><td class="ct-role"><span class="ct-ed">Editor</span></td></tr>
-    <tr><td>Ridiculousness</td><td class="ct-net">MTV</td><td class="ct-role"><span class="ct-ed">Editor</span></td></tr>
-    <tr><td>Get a Room with Carson &amp; Thom</td><td class="ct-net">Bravo</td><td class="ct-role"><span class="ct-ed">Editor</span></td></tr>
-    <tr><td>Mobile Home Disaster</td><td class="ct-net">CMT</td><td class="ct-role"><span class="ct-ed">Editor</span></td></tr>
-    <tr><td>DVD on TV</td><td class="ct-net">FX</td><td class="ct-role"><span class="ct-ed">Editor</span></td></tr>
-  </table>
+    <div class="credits-category">Stage Shows &amp; Makeover</div>
+    <table class="credits-table">
+      <tr><td>Deliciousness</td><td class="ct-net">MTV</td><td class="ct-role"><span class="ct-ed">Editor</span></td></tr>
+      <tr><td>Ridiculousness</td><td class="ct-net">MTV</td><td class="ct-role"><span class="ct-ed">Editor</span></td></tr>
+      <tr><td>Get a Room with Carson &amp; Thom</td><td class="ct-net">Bravo</td><td class="ct-role"><span class="ct-ed">Editor</span></td></tr>
+      <tr><td>Mobile Home Disaster</td><td class="ct-net">CMT</td><td class="ct-role"><span class="ct-ed">Editor</span></td></tr>
+      <tr><td>DVD on TV</td><td class="ct-net">FX</td><td class="ct-role"><span class="ct-ed">Editor</span></td></tr>
+    </table>
 
-  <!-- EXTERNAL PROFILES -->
-  <div style="margin-top: 4rem; padding-top: 2rem; border-top: 0.5px solid var(--border); display: flex; gap: 2rem; align-items: center; flex-wrap: wrap;">
-    <a href="https://www.imdb.com/name/nm1178441/" target="_blank" style="font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--white); text-decoration: none; border-bottom: 0.5px solid rgba(238,234,248,0.4); transition: opacity 0.2s;" onmouseover="this.style.opacity=0.6" onmouseout="this.style.opacity=1">IMDb</a>
-    <a href="https://app.staffmeup.com/profile/stephanieerickson" target="_blank" style="font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--white); text-decoration: none; border-bottom: 0.5px solid rgba(238,234,248,0.4); transition: opacity 0.2s;" onmouseover="this.style.opacity=0.6" onmouseout="this.style.opacity=1">Staff Me Up</a>
-    <a href="https://www.linkedin.com/in/stephanieericksoneditor" target="_blank" style="font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--white); text-decoration: none; border-bottom: 0.5px solid rgba(238,234,248,0.4); transition: opacity 0.2s;" onmouseover="this.style.opacity=0.6" onmouseout="this.style.opacity=1">LinkedIn</a>
   </div>
 </section>
 
-<!-- BACK LINK -->
-<div class="back-link-wrap">
-  <a href="index.html" class="back-link">&#8592; &nbsp; Back to Main Site</a>
+<!-- RESUME INFO — after credits, restrained -->
+<div class="resume-footer">
+  <div class="resume-row">
+    <span class="resume-label">Contact</span>
+    <span class="resume-value">310.266.8117 &nbsp;&middot;&nbsp; <a href="mailto:stephanieerickson@yahoo.com">stephanieerickson@yahoo.com</a></span>
+  </div>
+  <div class="resume-row">
+    <span class="resume-label">Education</span>
+    <span class="resume-value">Loyola Marymount University &nbsp;&middot;&nbsp; BA Film Production</span>
+  </div>
+  <div class="resume-row">
+    <span class="resume-label">Software</span>
+    <span class="resume-value">Avid Media Composer &nbsp;&middot;&nbsp; Nexis &nbsp;&middot;&nbsp; Final Cut Pro &nbsp;&middot;&nbsp; Photoshop &nbsp;&middot;&nbsp; Mac and PC</span>
+  </div>
+</div>
+
+<!-- EXTERNAL LINKS -->
+<div class="external-links">
+  <a href="https://www.imdb.com/name/nm1178441/" target="_blank" class="external-link">IMDb</a>
+  <a href="https://app.staffmeup.com/profile/stephanieerickson" target="_blank" class="external-link">Staff Me Up</a>
+  <a href="https://www.linkedin.com/in/stephanieericksoneditor" target="_blank" class="external-link">LinkedIn</a>
 </div>
 
 <!-- FOOTER — identical to index -->
@@ -253,7 +238,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const obs = new IntersectionObserver(entries => entries.forEach(e => {
     if (e.isIntersecting) { e.target.style.opacity='1'; e.target.style.transform='translateY(0)'; }
   }), { threshold: 0.06 });
-  document.querySelectorAll('section, .page-header, .resume-block').forEach(el => {
+  document.querySelectorAll('section, .page-header, .resume-footer').forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(18px)';
     el.style.transition = 'opacity 0.55s ease, transform 0.55s ease';
