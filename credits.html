@@ -13,43 +13,74 @@
   :root {
     --black: #000000;
     --white: #eeeaf8;
-    --cream: #1a1a2e;
     --muted: #9b8fc0;
     --border: rgba(238,234,248,0.14);
     --accent: #00d4f5;
-    --teal: #ff2d9b;
-    --purple: #bf5fff;
-    --serif: 'Outfit', sans-serif;
+    --pink: #ff2d9b;
     --sans: 'DM Sans', sans-serif;
+    --serif: 'Outfit', sans-serif;
   }
   html { scroll-behavior: smooth; }
   body { font-family: var(--sans); background: var(--black); color: var(--white); font-size: 16px; line-height: 1.75; font-weight: 300; }
 
-  /* NAV — identical to index */
+  /* NAV */
   nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.1rem 3rem; background: rgba(0,0,0,0.94); backdrop-filter: blur(8px); border-bottom: 0.5px solid var(--border); }
-  .nav-logo { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 0.72rem; letter-spacing: 0.38em; text-transform: uppercase; color: #ff6db3; text-decoration: none; display: flex; align-items: center; }
-  .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
-  .nav-links a { font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--white); text-decoration: none; transition: color 0.2s; }
-  .nav-links a:hover { color: #fff; }
-  .nav-social { display: flex; align-items: center; gap: 1.5rem; margin-left: 1.5rem; padding-left: 1.5rem; border-left: 0.5px solid var(--border); }
-  .nav-social-link { color: rgba(238,234,248,0.45); text-decoration: none; transition: color 0.2s, opacity 0.2s; display: flex; align-items: center; }
-  .nav-social-link:hover { color: #ff2d9b; opacity: 1; }
-  .nav-social-imdb { filter: drop-shadow(0 0 5px rgba(245,197,24,0.85)) drop-shadow(0 0 12px rgba(245,197,24,0.4)); transition: filter 0.2s; }
-  .nav-social-li   { filter: drop-shadow(0 0 5px rgba(10,102,194,0.9)) drop-shadow(0 0 12px rgba(10,102,194,0.45)); transition: filter 0.2s; }
+  .nav-logo { font-family: var(--sans); font-weight: 300; font-size: 0.72rem; letter-spacing: 0.38em; text-transform: uppercase; color: #ff6db3; text-decoration: none; }
+  .nav-right { display: flex; align-items: center; gap: 1.5rem; }
+  .nav-social { display: flex; align-items: center; gap: 1.5rem; padding-right: 1.5rem; border-right: 0.5px solid var(--border); }
+  .nav-social-link { color: rgba(238,234,248,0.45); text-decoration: none; transition: filter 0.2s; display: flex; align-items: center; }
+  .nav-social-imdb { filter: drop-shadow(0 0 5px rgba(245,197,24,0.85)) drop-shadow(0 0 12px rgba(245,197,24,0.4)); }
+  .nav-social-li   { filter: drop-shadow(0 0 5px rgba(10,102,194,0.9)) drop-shadow(0 0 12px rgba(10,102,194,0.45)); }
   .nav-social-imdb:hover { filter: drop-shadow(0 0 8px rgba(245,197,24,1)) drop-shadow(0 0 20px rgba(245,197,24,0.6)); }
   .nav-social-li:hover   { filter: drop-shadow(0 0 8px rgba(10,102,194,1)) drop-shadow(0 0 20px rgba(10,102,194,0.6)); }
 
-  /* PAGE HEADER — name only, same visual treatment as credits-category */
+  /* HAMBURGER BUTTON */
+  .hamburger { background: none; border: none; cursor: pointer; display: flex; flex-direction: column; gap: 5px; padding: 4px; z-index: 101; position: relative; }
+  .hamburger span { display: block; width: 22px; height: 1px; background: var(--white); transition: all 0.3s ease; transform-origin: center; }
+  .hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  .hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+  /* MENU OVERLAY */
+  .menu-overlay { position: fixed; inset: 0; z-index: 99; background: rgba(0,0,0,0.97); display: flex; flex-direction: column; justify-content: center; align-items: flex-end; padding: 4rem 4rem; opacity: 0; pointer-events: none; transition: opacity 0.35s ease; overflow-y: auto; }
+  .menu-overlay.open { opacity: 1; pointer-events: all; }
+
+  .menu-nav { display: flex; flex-direction: column; align-items: flex-end; gap: 0; }
+  .menu-link { font-family: 'Barlow', sans-serif; font-size: clamp(2.2rem, 5vw, 3.8rem); font-weight: 800; letter-spacing: 0.02em; text-transform: uppercase; color: var(--white); text-decoration: none; line-height: 1.2; padding: 0.3rem 0; transition: color 0.2s; }
+  .menu-link:hover { color: var(--accent); }
+  .menu-link-sub { font-family: 'Barlow', sans-serif; font-size: clamp(2.2rem, 5vw, 3.8rem); font-weight: 800; letter-spacing: 0.02em; text-transform: uppercase; color: var(--white); text-decoration: none; line-height: 1.2; padding: 0.3rem 0; transition: color 0.2s; }
+
+  /* PAGE HEADER */
   .page-header { padding: 10rem 3rem 0; max-width: 1100px; margin: 0 auto; }
-  .page-name { font-size: 0.88rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); font-weight: 400; display: flex; align-items: center; gap: 1rem; }
-  .page-name::after { content: ''; flex: 1; height: 0.5px; background: var(--border); }
+
+  /* STEPHANIE ERICKSON — large teal, no glow, no dividing line */
+  .page-name {
+    font-family: 'Barlow', sans-serif;
+    font-weight: 800;
+    font-size: clamp(3.2rem, 7.5vw, 7rem);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    line-height: 0.95;
+    color: #00d4f5;
+  }
+  .page-anchor {
+    font-family: var(--sans);
+    font-weight: 300;
+    font-size: clamp(0.95rem, 1.6vw, 1.35rem);
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    color: #ff2d9b;
+    margin-top: 1.2rem;
+    padding-left: 3.5rem;
+    text-shadow: 0 0 2px #fff, 0 0 8px #ff2d9b, 0 0 20px rgba(255,45,155,0.6);
+  }
 
   /* SECTION */
   section { padding: 4rem 3rem; max-width: 1100px; margin: 0 auto; }
 
-  /* CREDITS TABLE — exact copy from main site, untouched */
-  .credits-section { margin-top: 2rem; }
-  .credits-category { font-size: 0.88rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin: 3.5rem 0 1rem; display: flex; align-items: center; gap: 1rem; font-weight: 400; }
+  /* CREDITS TABLE — exact copy from main site, category headings in pink */
+  .credits-section { margin-top: 3rem; }
+  .credits-category { font-size: 0.88rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--pink); margin: 3.5rem 0 1rem; display: flex; align-items: center; gap: 1rem; font-weight: 400; }
   .credits-category:first-child { margin-top: 0; }
   .credits-category::after { content: ''; flex: 1; height: 0.5px; background: var(--border); }
   .credits-table { width: 100%; border-collapse: collapse; table-layout: fixed; }
@@ -60,42 +91,43 @@
   .credits-table tr:hover { background: rgba(238,234,248,0.03); }
   .credits-table tr:last-child { border-bottom: none; }
   .credits-table td { padding: 1rem 0.5rem 1rem 0; font-size: 0.95rem; vertical-align: middle; color: var(--white); line-height: 1.3; }
-  .ct-net { color: var(--white); font-size: 0.88rem; padding-left: 0; }
-  .ct-role { text-align: right; white-space: nowrap; padding-left: 1rem; }
-  .ct-lead { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); border: 0.5px solid rgba(0,212,245,0.5); padding: 0.28rem 0.85rem; border-radius: 999px; }
-  .ct-ed { font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--white); }
+  .ct-net { color: var(--white); font-size: 0.88rem; }
+  .ct-role { text-align: right; white-space: nowrap; padding-left: 1rem; vertical-align: middle; }
+  .ct-lead { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); border: 0.5px solid rgba(0,212,245,0.5); padding: 0.28rem 0.85rem; border-radius: 999px; display: inline-block; }
+  .ct-ed { font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--white); display: inline-block; }
+  .ct-cp { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--pink); border: 0.5px solid rgba(255,45,155,0.5); padding: 0.28rem 0.85rem; border-radius: 999px; display: inline-block; }
 
-  /* RESUME INFO — after credits, restrained, pink labels */
+  /* RESUME INFO — after credits */
   .resume-footer { max-width: 1100px; margin: 0 auto; padding: 3rem 3rem 1rem; border-top: 0.5px solid var(--border); display: flex; flex-direction: column; gap: 1.1rem; }
   .resume-row { display: flex; gap: 1.5rem; align-items: baseline; }
-  .resume-label { font-size: 0.65rem; letter-spacing: 0.16em; text-transform: uppercase; color: #ff2d9b; flex-shrink: 0; width: 100px; }
+  .resume-label { font-size: 0.65rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--pink); flex-shrink: 0; width: 100px; }
   .resume-value { font-size: 0.88rem; color: var(--white); line-height: 1.6; }
   .resume-value a { color: var(--white); text-decoration: none; border-bottom: 0.5px solid rgba(238,234,248,0.3); transition: opacity 0.2s; }
   .resume-value a:hover { opacity: 0.6; }
 
   /* EXTERNAL LINKS */
-  .external-links { max-width: 1100px; margin: 0 auto; padding: 2rem 3rem 5rem; display: flex; gap: 2rem; align-items: center; }
+  .external-links { max-width: 1100px; margin: 0 auto; padding: 2rem 3rem 5rem; display: flex; gap: 2rem; }
   .external-link { font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); text-decoration: none; border-bottom: 0.5px solid rgba(238,234,248,0.2); transition: color 0.2s; }
   .external-link:hover { color: var(--white); }
 
-  /* FOOTER — identical to index */
+  /* FOOTER */
   footer { border-top: 0.5px solid var(--border); padding: 1.5rem 3rem; display: flex; align-items: center; justify-content: space-between; }
   .footer-logo { font-family: var(--sans); font-weight: 300; font-size: 0.72rem; letter-spacing: 0.38em; text-transform: uppercase; color: #ff6db3; }
-  .footer-social { display: flex; gap: 1.5rem; align-items: center; }
-  .footer-social-link { font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--white); text-decoration: none; transition: color 0.2s; }
-  .footer-social-link:hover { color: var(--teal); }
+  .footer-links { display: flex; gap: 1.5rem; align-items: center; }
+  .footer-link { font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--white); text-decoration: none; transition: color 0.2s; }
+  .footer-link:hover { color: var(--pink); }
   .footer-copy { font-size: 0.65rem; letter-spacing: 0.06em; color: rgba(238,234,248,0.3); }
 
   @media (max-width: 900px) {
     nav { padding: 1rem 1.5rem; }
-    .nav-links { gap: 1rem; }
     .page-header { padding: 8rem 1.5rem 0; }
     section { padding: 3rem 1.5rem; }
     .resume-footer { padding: 2rem 1.5rem 1rem; }
     .resume-row { flex-direction: column; gap: 0.15rem; }
     .resume-label { width: auto; }
     .external-links { padding: 1.5rem 1.5rem 3rem; }
-    footer { padding: 1.5rem; flex-direction: column; gap: 1rem; text-align: center; }
+    footer { padding: 1.5rem; flex-wrap: wrap; gap: 1rem; }
+    .menu-overlay { padding: 6rem 2rem; }
   }
 </style>
 </head>
@@ -104,33 +136,46 @@
 <!-- NAV -->
 <nav>
   <a class="nav-logo" href="index.html">Steph The Editor</a>
-  <ul class="nav-links">
-    <li><a href="index.html#work">Work</a></li>
-    <li><a href="index.html#about">About</a></li>
-    <li><a href="credits.html">Credits</a></li>
-    <li><a href="index.html#contact">Contact</a></li>
-  </ul>
-  <div class="nav-social">
-    <a href="https://www.imdb.com/name/nm1178441/" target="_blank" class="nav-social-link nav-social-imdb" title="IMDb">
-      <svg width="44" height="22" viewBox="0 0 44 22">
-        <rect width="44" height="22" rx="3" fill="#F5C518"/>
-        <text x="22" y="15.5" text-anchor="middle" font-family="Arial Black,Arial,sans-serif" font-size="11" font-weight="900" fill="#000">IMDb</text>
-      </svg>
-    </a>
-    <a href="https://www.linkedin.com/in/stephanieericksoneditor" target="_blank" class="nav-social-link nav-social-li" title="LinkedIn">
-      <svg width="22" height="22" viewBox="0 0 22 22">
-        <rect width="22" height="22" rx="3" fill="#0A66C2"/>
-        <rect x="4" y="8.5" width="2.8" height="8.5" fill="#fff"/>
-        <circle cx="5.4" cy="6" r="1.6" fill="#fff"/>
-        <path d="M10 8.5h2.7v1.2c.5-.8 1.3-1.4 2.4-1.4 2.2 0 2.7 1.45 2.7 3.35V17h-2.7v-4.6c0-.8-.05-1.85-1.2-1.85s-1.45.86-1.45 1.78V17H10V8.5z" fill="#fff"/>
-      </svg>
-    </a>
+  <div class="nav-right">
+    <div class="nav-social">
+      <a href="https://www.imdb.com/name/nm1178441/" target="_blank" class="nav-social-link nav-social-imdb" title="IMDb">
+        <svg width="44" height="22" viewBox="0 0 44 22">
+          <rect width="44" height="22" rx="3" fill="#F5C518"/>
+          <text x="22" y="15.5" text-anchor="middle" font-family="Arial Black,Arial,sans-serif" font-size="11" font-weight="900" fill="#000">IMDb</text>
+        </svg>
+      </a>
+      <a href="https://www.linkedin.com/in/stephanieericksoneditor" target="_blank" class="nav-social-link nav-social-li" title="LinkedIn">
+        <svg width="22" height="22" viewBox="0 0 22 22">
+          <rect width="22" height="22" rx="3" fill="#0A66C2"/>
+          <rect x="4" y="8.5" width="2.8" height="8.5" fill="#fff"/>
+          <circle cx="5.4" cy="6" r="1.6" fill="#fff"/>
+          <path d="M10 8.5h2.7v1.2c.5-.8 1.3-1.4 2.4-1.4 2.2 0 2.7 1.45 2.7 3.35V17h-2.7v-4.6c0-.8-.05-1.85-1.2-1.85s-1.45.86-1.45 1.78V17H10V8.5z" fill="#fff"/>
+        </svg>
+      </a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </div>
 </nav>
 
-<!-- PAGE HEADER — name only, same treatment as credits-category line -->
+<!-- MENU OVERLAY -->
+<div class="menu-overlay" id="menuOverlay">
+  <nav class="menu-nav">
+    <a href="index.html#work" class="menu-link">Work</a>
+    <a href="index.html#about" class="menu-link">About</a>
+    <a href="index.html#contact" class="menu-link">Contact</a>
+    <a href="digital-creator.html" class="menu-link">Digital &amp; Creator</a>
+    <a href="editors-kit.html" class="menu-link" style="color: var(--white); font-size: clamp(1.4rem, 3vw, 2.4rem);">Editor&#8217;s Kit</a>
+  </nav>
+</div>
+
+<!-- PAGE HEADER -->
 <div class="page-header">
-  <div class="page-name">Stephanie Erickson</div>
+  <h1 class="page-name">Stephanie Erickson</h1>
+  <p class="page-anchor">The Editor</p>
 </div>
 
 <!-- CREDITS -->
@@ -145,7 +190,7 @@
       <tr><td>The Great American Baking Show, S6</td><td class="ct-net">Roku</td><td class="ct-role"><span class="ct-ed">Editor</span></td></tr>
       <tr><td>The Climb</td><td class="ct-net">HBO</td><td class="ct-role"><span class="ct-ed">Editor</span></td></tr>
       <tr><td>Fast Foodies, S2</td><td class="ct-net">TruTV</td><td class="ct-role"><span class="ct-ed">Editor</span></td></tr>
-      <tr><td>Fake Up, Seasons 1 &amp; 2</td><td class="ct-net">Snapchat</td><td class="ct-role"><span class="ct-lead">Lead Editor</span></td></tr>
+      <tr><td>Fake Up, Seasons 1 &amp; 2</td><td class="ct-net">Snapchat</td><td class="ct-role"><span class="ct-lead" style="display: block; margin-bottom: 0.4rem;">Lead Editor</span><span class="ct-cp" style="display: block;">Consulting Producer</span></td></tr>
       <tr><td>Instant Influencer with James Charles</td><td class="ct-net">YouTube</td><td class="ct-role"><span class="ct-ed">Editor</span></td></tr>
       <tr><td>Wrap Battle</td><td class="ct-net">Freeform</td><td class="ct-role"><span class="ct-ed">Editor</span></td></tr>
       <tr><td>The Proposal</td><td class="ct-net">ABC</td><td class="ct-role"><span class="ct-ed">Editor</span></td></tr>
@@ -188,52 +233,54 @@
   </div>
 </section>
 
-<!-- RESUME INFO — after credits, restrained -->
+<!-- RESUME INFO -->
 <div class="resume-footer">
-  <div class="resume-row">
-    <span class="resume-label">Contact</span>
-    <span class="resume-value">310.266.8117 &nbsp;&middot;&nbsp; <a href="mailto:stephanieerickson@yahoo.com">stephanieerickson@yahoo.com</a></span>
-  </div>
   <div class="resume-row">
     <span class="resume-label">Education</span>
     <span class="resume-value">Loyola Marymount University &nbsp;&middot;&nbsp; BA Film Production</span>
   </div>
   <div class="resume-row">
-    <span class="resume-label">Software</span>
-    <span class="resume-value">Avid Media Composer &nbsp;&middot;&nbsp; Nexis &nbsp;&middot;&nbsp; Final Cut Pro &nbsp;&middot;&nbsp; Photoshop &nbsp;&middot;&nbsp; Mac and PC</span>
+    <span class="resume-label">Union</span>
+    <span class="resume-value">Motion Picture Editors Guild, Local 700</span>
+  </div>
+  <div class="resume-row">
+    <span class="resume-label"></span>
+    <span class="resume-value" style="display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; padding-top: 0.5rem;">
+      <a href="https://www.imdb.com/name/nm1178441/" target="_blank" class="nav-social-link nav-social-imdb" title="IMDb">
+        <svg width="44" height="22" viewBox="0 0 44 22"><rect width="44" height="22" rx="3" fill="#F5C518"/><text x="22" y="15.5" text-anchor="middle" font-family="Arial Black,Arial,sans-serif" font-size="11" font-weight="900" fill="#000">IMDb</text></svg>
+      </a>
+      <a href="https://www.linkedin.com/in/stephanieericksoneditor" target="_blank" class="nav-social-link nav-social-li" title="LinkedIn">
+        <svg width="22" height="22" viewBox="0 0 22 22"><rect width="22" height="22" rx="3" fill="#0A66C2"/><rect x="4" y="8.5" width="2.8" height="8.5" fill="#fff"/><circle cx="5.4" cy="6" r="1.6" fill="#fff"/><path d="M10 8.5h2.7v1.2c.5-.8 1.3-1.4 2.4-1.4 2.2 0 2.7 1.45 2.7 3.35V17h-2.7v-4.6c0-.8-.05-1.85-1.2-1.85s-1.45.86-1.45 1.78V17H10V8.5z" fill="#fff"/></svg>
+      </a>
+      <a href="https://app.staffmeup.com/profile/stephanieerickson" target="_blank" style="font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); text-decoration: none; border-bottom: 0.5px solid rgba(238,234,248,0.2); transition: color 0.2s;" onmouseover="this.style.color='#eeeaf8'" onmouseout="this.style.color='#9b8fc0'">Staff Me Up</a>
+    </span>
   </div>
 </div>
 
-<!-- EXTERNAL LINKS -->
-<div class="external-links">
-  <a href="https://www.imdb.com/name/nm1178441/" target="_blank" class="external-link">IMDb</a>
-  <a href="https://app.staffmeup.com/profile/stephanieerickson" target="_blank" class="external-link">Staff Me Up</a>
-  <a href="https://www.linkedin.com/in/stephanieericksoneditor" target="_blank" class="external-link">LinkedIn</a>
-</div>
-
-<!-- FOOTER — identical to index -->
+<!-- FOOTER -->
 <footer>
   <span class="footer-logo">Steph The Editor</span>
-  <div style="display: flex; flex-direction: column; align-items: center; gap: 0.4rem;">
-    <div class="footer-social">
-      <a href="index.html#work" class="footer-social-link">Work</a>
-      <a href="index.html#about" class="footer-social-link">About</a>
-      <a href="credits.html" class="footer-social-link">Credits</a>
-      <a href="index.html#contact" class="footer-social-link">Contact</a>
-    </div>
-    <span class="footer-copy">&#169; 2026 &nbsp;&#183;&nbsp; Stephanie Erickson</span>
-  </div>
-  <div style="display: flex; align-items: center; gap: 1rem;">
-    <a href="https://www.imdb.com/name/nm1178441/" target="_blank" class="nav-social-link nav-social-imdb" title="IMDb">
-      <svg width="44" height="22" viewBox="0 0 44 22"><rect width="44" height="22" rx="3" fill="#F5C518"/><text x="22" y="15.5" text-anchor="middle" font-family="Arial Black,Arial,sans-serif" font-size="11" font-weight="900" fill="#000">IMDb</text></svg>
-    </a>
-    <a href="https://www.linkedin.com/in/stephanieericksoneditor" target="_blank" class="nav-social-link nav-social-li" title="LinkedIn">
-      <svg width="22" height="22" viewBox="0 0 22 22"><rect width="22" height="22" rx="3" fill="#0A66C2"/><rect x="4" y="8.5" width="2.8" height="8.5" fill="#fff"/><circle cx="5.4" cy="6" r="1.6" fill="#fff"/><path d="M10 8.5h2.7v1.2c.5-.8 1.3-1.4 2.4-1.4 2.2 0 2.7 1.45 2.7 3.35V17h-2.7v-4.6c0-.8-.05-1.85-1.2-1.85s-1.45.86-1.45 1.78V17H10V8.5z" fill="#fff"/></svg>
-    </a>
-  </div>
+  <span class="footer-copy">&#169; 2026 &nbsp;&#183;&nbsp; Stephanie Erickson</span>
 </footer>
 
 <script>
+const hamburger = document.getElementById('hamburger');
+const menuOverlay = document.getElementById('menuOverlay');
+
+hamburger.addEventListener('click', function() {
+  hamburger.classList.toggle('open');
+  menuOverlay.classList.toggle('open');
+  document.body.style.overflow = menuOverlay.classList.contains('open') ? 'hidden' : '';
+});
+
+menuOverlay.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', function() {
+    hamburger.classList.remove('open');
+    menuOverlay.classList.remove('open');
+    document.body.style.overflow = '';
+  });
+});
+
 document.addEventListener('DOMContentLoaded', function() {
   const obs = new IntersectionObserver(entries => entries.forEach(e => {
     if (e.isIntersecting) { e.target.style.opacity='1'; e.target.style.transform='translateY(0)'; }
