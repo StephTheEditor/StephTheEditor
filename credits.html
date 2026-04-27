@@ -50,13 +50,18 @@
   .hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
 
   /* MENU OVERLAY */
-  .menu-overlay { position: fixed; inset: 0; z-index: 99; background: rgba(0,0,0,0.97); display: flex; flex-direction: column; justify-content: center; align-items: flex-end; padding: 8rem 4rem 4rem; opacity: 0; pointer-events: none; transition: opacity 0.35s ease; overflow-y: auto; }
+  .menu-overlay { position: fixed; inset: 0; z-index: 99; background: rgba(0,0,0,0.97); display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-end; padding: 0 4rem 6rem; opacity: 0; pointer-events: none; transition: opacity 0.35s ease; }
   .menu-overlay.open { opacity: 1; pointer-events: all; }
 
   .menu-nav { display: flex; flex-direction: column; align-items: flex-end; gap: 0; }
-  .menu-link { font-family: 'Barlow', sans-serif; font-size: clamp(2.2rem, 5vw, 3.8rem); font-weight: 800; letter-spacing: 0.02em; text-transform: uppercase; color: var(--white); text-decoration: none; line-height: 1.2; padding: 0.3rem 0; transition: color 0.2s; }
+  .menu-link { font-family: 'Barlow', sans-serif; font-size: clamp(1.4rem, 5vw, 3.8rem); font-weight: 800; letter-spacing: 0.02em; text-transform: uppercase; color: var(--white); text-decoration: none; line-height: 1.15; padding: 0.2rem 0; transition: color 0.2s; }
   .menu-link:hover { color: var(--accent); }
-  .menu-link-sub { font-family: 'Barlow', sans-serif; font-size: clamp(2.2rem, 5vw, 3.8rem); font-weight: 800; letter-spacing: 0.02em; text-transform: uppercase; color: var(--white); text-decoration: none; line-height: 1.2; padding: 0.3rem 0; transition: color 0.2s; }
+  .menu-link-sub { font-family: 'Barlow', sans-serif; font-size: clamp(1.4rem, 5vw, 3.8rem); font-weight: 800; letter-spacing: 0.02em; text-transform: uppercase; color: var(--white); text-decoration: none; line-height: 1.15; padding: 0.2rem 0; transition: color 0.2s; }
+
+  @media (max-width: 600px) {
+    .menu-overlay { justify-content: center; padding: 5rem 2rem 2rem; }
+    .menu-link { font-size: clamp(1.8rem, 11vw, 3rem); }
+  }
 
   /* PAGE HEADER */
   .page-header { padding: 10rem 3rem 0; max-width: 1100px; margin: 0 auto; }
