@@ -8,9 +8,9 @@
 <meta property="og:title" content="Stephanie Erickson — Editor and Story Architect">
 <meta property="og:description" content="Television Editor with credits at HBO, ABC, HGTV, Discovery, Roku, Snapchat Originals, and YouTube Originals.">
 <meta name="twitter:card" content="summary_large_image">
-<meta property="og:image" content="https://www.stephtheeditor.com/images/og-image.svg">
-<meta name="twitter:image" content="https://www.stephtheeditor.com/images/og-image.svg">
 <meta property="og:url" content="https://www.stephtheeditor.com">
+<meta property="og:image" content="https://www.stephtheeditor.com/images/og-image.jpg">
+<meta name="twitter:image" content="https://www.stephtheeditor.com/images/og-image.jpg">
 <meta name="twitter:title" content="Stephanie Erickson — Editor and Story Architect">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -66,9 +66,6 @@
     .hamburger { border-left: none; padding-left: 0; margin-left: 0; }
     .nav-logo { display: none !important; }
     body { overflow-x: hidden; }
-    /* Climb card: auto height so contain image doesn't leave black space */
-    .work-row:first-child .work-card-r { height: auto !important; }
-    .work-row:first-child .work-card-r img { height: auto; width: 100%; object-fit: contain; }
   }
 
   @media (max-width: 600px) and (orientation: portrait) {
@@ -188,7 +185,7 @@
   .hero-desc { display: none; }
 
   /* SPACING UPDATE */ section { padding: 5.5rem 3rem; max-width: 1100px; margin: 0 auto; }
-  /* SPACING UPDATE */ .section-label { font-size: 0.95rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--teal); margin-bottom: 4rem; display: flex; align-items: center; gap: 1rem; font-weight: 400; }
+  /* SPACING UPDATE */ .section-label { font-size: 0.72rem; letter-spacing: 0.38em; text-transform: uppercase; color: var(--teal); margin-bottom: 4rem; display: flex; align-items: center; gap: 1rem; font-weight: 300; }
   .section-label::after { content: ''; flex: 1; height: 0.5px; background: var(--border); }
 
   /* WORK GRID */
@@ -372,9 +369,9 @@
 
   <div class="work-grid-wrap">
 
-    <!-- Row 1 — The Climb full width, taller -->
-    <div class="work-row">
-      <div class="work-card-r" style="width: 100%; height: 380px;" aria-label="The Climb, HBO — prestige competition series; narrative pacing, intimate character arcs, and structural foundation for the finale">
+    <!-- Row 1 — The Climb full width -->
+    <div class="work-row" style="align-items: flex-start;">
+      <div class="work-card-r" style="flex: 1; aspect-ratio: 16/9;" aria-label="The Climb, HBO — prestige competition series; narrative pacing, intimate character arcs, and structural foundation for the finale">
         <img class="contain" src="images/THE_CLIMB_HBO.avif" alt="The Climb — HBO prestige competition series. Editor Stephanie Erickson established narrative pacing and structural foundation through the creative rounds.">
         <div class="poster-overlay">
           <div class="overlay-network-label">Watch</div>
@@ -437,14 +434,13 @@
     </div>
 
   </div>
+</section>
 
-  <div style="margin-top: 2.5rem;">
-    <a href="credits.html" style="display: inline-flex; align-items: center; gap: 1rem; text-decoration: none; color: var(--white); font-family: var(--sans); font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; transition: opacity 0.2s;" onmouseover="this.style.opacity=0.7" onmouseout="this.style.opacity=1">
-      <span style="color: var(--accent); text-shadow: 0 0 2px #fff, 0 0 8px #00d4f5, 0 0 18px rgba(0,212,245,0.5);">Full Credits &amp; Resume</span>
-      <span style="font-size: 1rem; color: var(--muted);">&#8594;</span>
-    </a>
-  </div>
-
+<section style="padding: 0 3rem 4rem; max-width: 1100px; margin: 0 auto;">
+  <a href="credits.html" style="display: inline-flex; align-items: center; gap: 1rem; text-decoration: none; color: var(--white); font-family: var(--sans); font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; transition: opacity 0.2s;" onmouseover="this.style.opacity=0.7" onmouseout="this.style.opacity=1">
+    <span style="color: var(--accent); text-shadow: 0 0 2px #fff, 0 0 8px #00d4f5, 0 0 18px rgba(0,212,245,0.5);">Full Credits &amp; Resume</span>
+    <span style="font-size: 1rem; color: var(--muted);">&#8594;</span>
+  </a>
 </section>
 
 <section class="quote-section" style="padding: 8rem 3rem 4rem; max-width: 1100px; margin: 0 auto;">
@@ -463,6 +459,12 @@
       <p>A graduate of Loyola Marymount University's School of Film and Television. She finds the story. She tells it best.</p>
 
 
+            <div style="margin-top: 4rem; padding-top: 2rem; border-top: 0.5px solid var(--border);">
+        <a href="credits.html" style="display: inline-flex; align-items: center; gap: 1rem; text-decoration: none; color: var(--white); font-family: var(--sans); font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; transition: opacity 0.2s;" onmouseover="this.style.opacity=0.7" onmouseout="this.style.opacity=1">
+          <span style="color: var(--accent); text-shadow: 0 0 2px #fff, 0 0 8px #00d4f5, 0 0 18px rgba(0,212,245,0.5);">Full Credits &amp; Resume</span>
+          <span style="font-size: 1rem; color: var(--muted);">&#8594;</span>
+        </a>
+      </div>
     </div>
   </div>
 </section>
@@ -491,7 +493,7 @@
   <div class="section-label">Contact</div>
 
   <!-- Thesis statement -->
-  <p class="contact-thesis">Every format is different. The story is always the point. If you have one worth telling, this is the conversation.</p>
+  <p class="contact-thesis">Every format is different. The story is always the point.</p>
 
   <!-- Icons removed -->
   <div style="position: relative;">
