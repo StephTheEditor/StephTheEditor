@@ -412,7 +412,7 @@
       </div>
     </div>
 
-    <!-- Row 3 — Fake Up left, The Proposal right -->
+    <!-- Row 3 — Fake Up left, The Proposal + credits link right -->
     <div class="work-row" style="align-items: flex-start;">
       <div class="work-card-r" style="flex: 1;" aria-label="Fake Up, Snapchat Originals — Lead Editor, platform-native vertical content, 8-minute mobile narratives">
         <img class="contain" src="images/FakeUpHero.jpeg" alt="Fake Up — Snapchat Originals. Lead Editor and Consulting Producer Stephanie Erickson engineered the foundational story language and visual style for platform-native vertical media.">
@@ -424,23 +424,23 @@
           </div>
         </div>
       </div>
-      <div class="work-card-r" style="flex: 2;" aria-label="The Proposal, ABC — competition series blending romance and high-stakes decision making">
-        <img class="contain" src="images/The_Proposal_hero.jpg" alt="The Proposal — ABC. Editor Stephanie Erickson shaped competition narrative with romantic story arcs and high-stakes emotional beats.">
-        <div class="poster-overlay">
-          <div class="overlay-network-label">Watch</div>
-          <div class="overlay-links"><a class="overlay-link" href="https://www.youtube.com/watch?v=pYwiObHJ_uU" target="_blank">Episode Clip</a></div>
+      <div style="flex: 2; display: flex; flex-direction: column; justify-content: space-between; align-self: stretch; min-width: 0;">
+        <div class="work-card-r" style="width: 100%;" aria-label="The Proposal, ABC — competition series blending romance and high-stakes decision making">
+          <img class="contain" src="images/The_Proposal_hero.jpg" alt="The Proposal — ABC. Editor Stephanie Erickson shaped competition narrative with romantic story arcs and high-stakes emotional beats.">
+          <div class="poster-overlay">
+            <div class="overlay-network-label">Watch</div>
+            <div class="overlay-links"><a class="overlay-link" href="https://www.youtube.com/watch?v=pYwiObHJ_uU" target="_blank">Episode Clip</a></div>
+          </div>
+        </div>
+        <div style="display: flex; align-items: flex-end; padding-top: 1.2rem;">
+          <a href="credits.html" style="display: inline-flex; align-items: center; text-decoration: none; color: var(--white); font-family: var(--sans); font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; transition: opacity 0.2s;" onmouseover="this.style.opacity=0.7" onmouseout="this.style.opacity=1">
+            <span style="color: var(--accent); text-shadow: 0 0 2px #fff, 0 0 8px #00d4f5, 0 0 18px rgba(0,212,245,0.5);">Full Credits &amp; Resume</span>
+          </a>
         </div>
       </div>
     </div>
 
   </div>
-</section>
-
-<section style="padding: 0 3rem 4rem; max-width: 1100px; margin: 0 auto;">
-  <a href="credits.html" style="display: inline-flex; align-items: center; gap: 1rem; text-decoration: none; color: var(--white); font-family: var(--sans); font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; transition: opacity 0.2s;" onmouseover="this.style.opacity=0.7" onmouseout="this.style.opacity=1">
-    <span style="color: var(--accent); text-shadow: 0 0 2px #fff, 0 0 8px #00d4f5, 0 0 18px rgba(0,212,245,0.5);">Full Credits &amp; Resume</span>
-    <span style="font-size: 1rem; color: var(--muted);">&#8594;</span>
-  </a>
 </section>
 
 <section class="quote-section" style="padding: 8rem 3rem 4rem; max-width: 1100px; margin: 0 auto;">
@@ -462,7 +462,7 @@
             <div style="margin-top: 4rem; padding-top: 2rem; border-top: 0.5px solid var(--border);">
         <a href="credits.html" style="display: inline-flex; align-items: center; gap: 1rem; text-decoration: none; color: var(--white); font-family: var(--sans); font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; transition: opacity 0.2s;" onmouseover="this.style.opacity=0.7" onmouseout="this.style.opacity=1">
           <span style="color: var(--accent); text-shadow: 0 0 2px #fff, 0 0 8px #00d4f5, 0 0 18px rgba(0,212,245,0.5);">Full Credits &amp; Resume</span>
-          <span style="font-size: 1rem; color: var(--muted);">&#8594;</span>
+          
         </a>
       </div>
     </div>
@@ -505,7 +505,6 @@
           <div class="form-group"><label class="form-label">Name</label><input class="form-input" type="text" name="name" required></div>
           <div class="form-group"><label class="form-label">Email</label><input class="form-input" type="email" name="email" required></div>
         </div>
-        <div class="form-group"><label class="form-label">Project</label><input class="form-input" type="text" name="project_type"></div>
         <div class="form-group"><label class="form-label">Message</label><textarea class="form-textarea" name="message"></textarea></div>
         <button type="submit" class="form-submit">Send</button>
       </form>
